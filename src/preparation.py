@@ -73,7 +73,8 @@ torch.backends.cudnn.deterministic = True
 if torch.cuda.is_available():
     torch.cuda.manual_seed(args.seed)
 else:
-    print('[CUDA unavailable]'); sys.exit()
+    print('[CUDA unavailable]');
+    #sys.exit()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 n_gpu = torch.cuda.device_count()
 

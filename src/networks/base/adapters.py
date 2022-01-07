@@ -203,9 +203,9 @@ class CapsuleLayerImp(nn.Module): #it has its own number of capsule for output
                 self.larger=torch.nn.Linear(config.semantic_cap_size*config.num_semantic_cap,config.bert_hidden_size) #each task has its own larger way
 
             if  config.no_tsv_mask:
-                self.tsv = torch.ones( config.ntasks,config.ntasks).data.cuda()# for backward
+                self.tsv = torch.ones( config.ntasks,config.ntasks).data.cuda()  if torch.cuda.is_availabe()  else  torch.ones( config.ntasks,config.ntasks)# for backward
             else:
-                self.tsv = torch.tril(torch.ones(config.ntasks,config.ntasks)).data.cuda()# for backward
+                self.tsv = torch.tril(torch.ones(config.ntasks,config.ntasks)).data.cuda() if torch.cuda.is_availabe()  else  torch.tril( config.ntasks,config.ntasks)# for backward
 
 
 
@@ -254,9 +254,9 @@ class CapsuleLayerImp(nn.Module): #it has its own number of capsule for output
 
 
             if  config.no_tsv_mask:
-                self.tsv = torch.ones( config.ntasks,config.ntasks).data.cuda()# for backward
+                self.tsv = torch.ones( config.ntasks,config.ntasks).data.cuda()  if torch.cuda.is_availabe()  else  torch.ones( config.ntasks,config.ntasks) # for backward
             else:
-                self.tsv = torch.tril(torch.ones(config.ntasks,config.ntasks)).data.cuda()# for backward
+                self.tsv = torch.tril(torch.ones(config.ntasks,config.ntasks)).data.cuda()  if torch.cuda.is_availabe()  else torch.tril(torch.ones(config.ntasks,config.ntasks))# for backward
 
         self.config = config
 
@@ -481,9 +481,9 @@ class CapsuleLayer(nn.Module): #it has its own number of capsule for output
                 nn.Parameter(torch.randn(self.num_capsules, self.num_routes, self.in_channel, self.class_dim))
 
             if  config.no_tsv_mask:
-                self.tsv = torch.ones( config.ntasks,config.ntasks).data.cuda()# for backward
+                self.tsv = torch.ones( config.ntasks,config.ntasks).data.cuda()  if torch.cuda.is_availabe()  else  torch.ones( config.ntasks,config.ntasks)# for backward
             else:
-                self.tsv = torch.tril(torch.ones(config.ntasks,config.ntasks)).data.cuda()# for backward
+                self.tsv = torch.tril(torch.ones(config.ntasks,config.ntasks)).data.cuda() if torch.cuda.is_availabe()  else  torch.tril( config.ntasks,config.ntasks)# for backward
 
 
         elif layer_type=='semantic':
@@ -504,9 +504,9 @@ class CapsuleLayer(nn.Module): #it has its own number of capsule for output
         if layer_type=='tsv':
             batch_size = x.size(0)
             priors = x[None, :, :, None, :] @ self.route_weights[:, None, :, :, :]
-            logits = torch.zeros(*priors.size()).cuda()
+            logits = torch.zeros(*priors.size()).cuda()  if torch.cuda.is_availabe()  else torch.zeros(*priors.size())
             # print('logits: ',logits.size())  torch.Size([3, 32, 19, 1, 128])
-            mask=torch.zeros(self.config.ntasks).data.cuda()
+            mask = torch.zeros(self.config.ntasks).data.cuda()   if torch.cuda.is_availabe()  else torch.zeros(self.config.ntasks)
             # print('self.tsv[t]: ',self.tsv[t])
             for x_id in range(self.config.ntasks):
                 if self.tsv[t][x_id] == 0: mask[x_id].fill_(-10000) # block future, all previous are the same

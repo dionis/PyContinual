@@ -67,7 +67,7 @@ class Appr(object):
                 self.param_name.append(name)
 
         if  args.baseline=='owm':
-            dtype = torch.cuda.FloatTensor  # run on GPU
+            dtype = torch.cuda.FloatTensor  if self.device == "gpu" else torch.FloatTensor   # run on GPU
             self.Pc1 = torch.autograd.Variable(torch.eye(100).type(dtype), volatile=True)
             self.Pc2 = torch.autograd.Variable(torch.eye(100).type(dtype), volatile=True)
             self.Pc3 = torch.autograd.Variable(torch.eye(100).type(dtype), volatile=True)
