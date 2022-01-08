@@ -98,7 +98,7 @@ class Appr(ApprBase):
             s = (1-0.1) * math.exp(-0.1*t)+0.1
             # print('s: ',s) samller than 1
 
-            task=torch.autograd.Variable(torch.LongTensor([t]).cuda(),volatile=True)
+            task=torch.autograd.Variable(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]),volatile=True)
 
             # Forward
             # outputs,fln_outputs,krn_outputs,krn_hidden=self.model.forward(task,input_ids, segment_ids, input_mask)
@@ -128,21 +128,21 @@ class Appr(ApprBase):
             self.control_1_s = (self.control_1_s - torch.min(self.control_1_s))/(torch.max(self.control_1_s)-torch.min(self.control_1_s))
             control_1_sorted, control_1_indices = torch.sort(self.control_1_s)
 
-            control_1_mask = torch.zeros_like(self.control_1_s).cuda()
+            control_1_mask = torch.zeros_like(self.control_1_s).cuda() if torch.cuda.is_available() else torch.zeros_like(self.control_1_s)
             control_1_mask[:int(self.control_1_s.size(-1)*s)] = 1 - control_1_sorted[:int(self.control_1_s.size(-1)*s)]
 
             self.control_2_s += torch.abs(control_2.sum(0))
             self.control_2_s = (self.control_2_s - torch.min(self.control_2_s))/(torch.max(self.control_2_s)-torch.min(self.control_2_s))
             control_2_sorted, control_2_indices = torch.sort(self.control_2_s)
 
-            control_2_mask = torch.zeros_like(self.control_2_s).cuda()
+            control_2_mask = torch.zeros_like(self.control_2_s).cuda() if torch.cuda.is_available() else torch.zeros_like(self.control_2_s)
             control_2_mask[:int(self.control_2_s.size(-1)*s)] = 1 - control_2_sorted[:int(self.control_2_s.size(-1)*s)]
 
             self.control_3_s += torch.abs(control_3.sum(0))
             self.control_3_s = (self.control_3_s - torch.min(self.control_3_s))/(torch.max(self.control_3_s)-torch.min(self.control_3_s))
             control_3_sorted, control_3_indices = torch.sort(self.control_3_s)
 
-            control_3_mask = torch.zeros_like(self.control_3_s).cuda()
+            control_3_mask = torch.zeros_like(self.control_3_s).cuda() if torch.cuda.is_available() else torch.zeros_like(self.control_3_s)
             control_3_mask[:int(self.control_3_s.size(-1)*s)] = 1 - control_3_sorted[:int(self.control_3_s.size(-1)*s)]
 
 
@@ -178,7 +178,7 @@ class Appr(ApprBase):
                     bat.to(self.device) if bat is not None else None for bat in batch]
                 tokens_term_ids, tokens_sentence_ids, targets= batch
                 real_b=tokens_term_ids.size(0)
-                task=torch.autograd.Variable(torch.LongTensor([t]).cuda(),volatile=True)
+                task=torch.autograd.Variable(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]),volatile=True)
                 # outputs,fln_outputs,krn_outputs,krn_hidden = self.model.forward(task,input_ids, segment_ids, input_mask)
 
                 output_dict = self.model.forward(task,tokens_term_ids, tokens_sentence_ids)

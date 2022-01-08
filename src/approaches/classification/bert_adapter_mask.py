@@ -240,7 +240,7 @@ class Appr(ApprBase):
                         output=outputs[inf_task_id] #but don't know which one
 
                 elif 'til' in self.args.scenario:
-                    task=torch.LongTensor([t]).cuda()
+                    task=torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t])
                     output_dict=self.model.forward(task,input_ids, segment_ids, input_mask,s=self.smax)
                     outputs = output_dict['y']
                     masks = output_dict['masks']

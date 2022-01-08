@@ -387,7 +387,7 @@ class CapsuleLayerImp(nn.Module): #it has its own number of capsule for output
 
 
     def mask(self,t,s):
-        glarger=self.gate(s*self.elarger(torch.LongTensor([t]).cuda()))
+        glarger=self.gate(s*self.elarger(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t])))
         return glarger
 
     def my_softmax(self,input, dim=1):
@@ -545,7 +545,7 @@ class CapsuleLayer(nn.Module): #it has its own number of capsule for output
             return outputs.transpose(2,1)
     #
     def mask(self,t,s):
-        glarger=self.gate(s*self.elarger(torch.LongTensor([t]).cuda()))
+        glarger=self.gate(s*self.elarger(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
         return glarger
 
     def my_softmax(self,input, dim=1):

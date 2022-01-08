@@ -108,7 +108,7 @@ class AC(nn.Module):
 
 
     def mask(self,t,s=1):
-        gfc=self.gate(s*self.efc(torch.LongTensor([t]).cuda()))
+        gfc=self.gate(s*(self.efc(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else self.efc(torch.LongTensor([t])))))
         return gfc
 
 

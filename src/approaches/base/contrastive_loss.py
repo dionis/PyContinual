@@ -26,7 +26,8 @@ class MyContrastive(nn.Module):
 
         #Z function as a simple 2 layers of MLP
         self.contrast_encoder = nn.Sequential(
-                      nn.Linear(self.args.bert_hidden_size, self.args.bert_hidden_size)).cuda()
+                      nn.Linear(self.args.bert_hidden_size, self.args.bert_hidden_size)).cuda() if torch.cuda.is_available() else nn.Sequential(
+                      nn.Linear(self.args.bert_hidden_size, self.args.bert_hidden_size))
 
 
         self.T = self.args.temp

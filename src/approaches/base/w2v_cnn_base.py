@@ -76,9 +76,9 @@ class Appr(object):
             self.test_max = 0
 
         if  args.baseline=='srk':
-            self.control_1_s = torch.zeros(args.w2v_hidden_size).cuda()
-            self.control_2_s = torch.zeros(args.w2v_hidden_size).cuda()
-            self.control_3_s = torch.zeros(args.w2v_hidden_size).cuda()
+            self.control_1_s = torch.zeros(args.w2v_hidden_size).cuda() if torch.cuda.is_available() else torch.zeros(args.w2v_hidden_size)
+            self.control_2_s = torch.zeros(args.w2v_hidden_size).cuda() if torch.cuda.is_available() else torch.zeros(args.w2v_hidden_size)
+            self.control_3_s = torch.zeros(args.w2v_hidden_size).cuda() if torch.cuda.is_available() else torch.zeros(args.w2v_hidden_size)
 
         if  args.baseline=='hat':
             self.smax = 400
@@ -289,7 +289,7 @@ class Appr(object):
             entrop_to_test = range(0, trained_task + 1)
 
         for e in entrop_to_test:
-            e_task=torch.LongTensor([e]).cuda()
+            e_task=torch.LongTensor([e]).cuda() if torch.cuda.is_available() else torch.LongTensor([e])
             if 'hat' in self.args.baseline:
                 output_dict = self.model.forward(e_task,tokens_term_ids, tokens_sentence_ids,s=self.smax)
                 masks = output_dict['masks']
