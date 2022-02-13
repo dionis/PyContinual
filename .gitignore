@@ -11,7 +11,7 @@ __pycache__/
 build/
 develop-eggs/
 dist/
-downloads/
+https://github.com/dionis/PyContinual.git
 eggs/
 .eggs/
 lib/
@@ -19,6 +19,7 @@ lib64/
 parts/
 sdist/
 var/
+Transformer/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
@@ -26,6 +27,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
