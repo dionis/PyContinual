@@ -1,5 +1,6 @@
 #coding: utf-8
 import sys
+import os
 import torch
 from transformers import  BertConfig
 import utils
@@ -18,11 +19,11 @@ class Net(torch.nn.Module):
     def __init__(self,taskcla,args):
 
         super(Net,self).__init__()
-        config = BertConfig.from_pretrained(args.bert_model)
+        config = BertConfig.from_pretrained(args.bert_model, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
         config.return_dict=False
 
         self.args = args
-        self.bert = BertModel.from_pretrained(args.bert_model,config=config) #nomral bert here, and fixed weight
+        self.bert = BertModel.from_pretrained(args.bert_model,config=config, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True) #nomral bert here, and fixed weight
         if args.use_imp:
             from adapters import BertAdapterCapsuleMaskImp as BertAdapterCapsuleMask
             from adapters import BertAdapterCapsuleImp as BertAdapterCapsule

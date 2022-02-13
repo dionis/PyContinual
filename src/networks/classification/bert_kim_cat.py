@@ -1,4 +1,5 @@
 import sys
+import os
 import torch
 from transformers import BertModel, BertConfig
 import utils
@@ -305,9 +306,9 @@ class MainContinualLearning(torch.nn.Module):
 
         self.taskcla = taskcla
 
-        config = BertConfig.from_pretrained(args.bert_model)
+        config = BertConfig.from_pretrained(args.bert_model, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
         config.return_dict=False
-        self.bert = BertModel.from_pretrained(args.bert_model,config=config)
+        self.bert = BertModel.from_pretrained(args.bert_model,config=config, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
 
         #BERT fixed, i.e. BERT as feature extractor===========
         for param in self.bert.parameters():
@@ -351,9 +352,9 @@ class TransferLayer(torch.nn.Module):
 
         self.taskcla = taskcla
         self.args = args
-        config = BertConfig.from_pretrained(args.bert_model)
+        config = BertConfig.from_pretrained(args.bert_model, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
         config.return_dict=False
-        self.bert = BertModel.from_pretrained(args.bert_model,config=config)
+        self.bert = BertModel.from_pretrained(args.bert_model,config=config, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
 
         #BERT fixed, i.e. BERT as feature extractor===========
         for param in self.bert.parameters():

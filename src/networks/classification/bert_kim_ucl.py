@@ -1,5 +1,6 @@
 import math
 import numpy as np
+import os
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -18,10 +19,10 @@ class Net(nn.Module):
         self.WORD_DIM = args.bert_hidden_size
         self.MAX_SENT_LEN = args.max_seq_length
 
-        config = BertConfig.from_pretrained(args.bert_model)
+        config = BertConfig.from_pretrained(args.bert_model, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
         config.return_dict=False
 
-        self.bert = BertModel.from_pretrained(args.bert_model,config=config)
+        self.bert = BertModel.from_pretrained(args.bert_model,config=config, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
 
         #BERT fixed, i.e. BERT as feature extractor===========
         for param in self.bert.parameters():
