@@ -79,7 +79,7 @@ class Appr(object):
 
 
         if  args.baseline=='owm':
-            dtype = torch.cuda.FloatTensor  # run on GPU
+            dtype = torch.cuda.FloatTensor  if self.device == "gpu" else torch.FloatTensor   # run on GPU
             self.test_max = 0
 
             if args.backbone=='cnn':

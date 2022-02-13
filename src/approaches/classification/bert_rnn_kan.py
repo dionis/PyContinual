@@ -94,7 +94,7 @@ class Appr(ApprBase):
                 bat.to(self.device) if bat is not None else None for bat in batch]
             input_ids, segment_ids, input_mask, targets,_= batch
             s=(self.smax-1/self.smax)*step/len(data)+1/self.smax
-            task=torch.autograd.Variable(torch.LongTensor([t]).cuda(),volatile=True)
+            task=torch.autograd.Variable(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ,volatile=True)
 
             # Forward
             output_dict=self.model.forward(task,input_ids, segment_ids, input_mask,which_type,s)
@@ -112,7 +112,7 @@ class Appr(ApprBase):
             loss.backward()
 
             if t>0 and which_type=='mcl':
-                task=torch.autograd.Variable(torch.LongTensor([t]).cuda(),volatile=False)
+                task=torch.autograd.Variable(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ,volatile=False)
                 mask=self.model.ac.mask(task,s=self.smax)
                 mask = torch.autograd.Variable(mask.data.clone(),requires_grad=False)
                 for n,p in self.model.named_parameters():
@@ -153,7 +153,7 @@ class Appr(ApprBase):
                     bat.to(self.device) if bat is not None else None for bat in batch]
                 input_ids, segment_ids, input_mask, targets,_= batch
                 real_b=input_ids.size(0)
-                task=torch.LongTensor([trained_task]).cuda()
+                task=torch.LongTensor([trained_task]).cuda() if torch.cuda.is_available() else torch.LongTensor([trained_task])
 
                 if 'dil' in self.args.scenario:
                     if self.args.last_id: # fix 0
@@ -165,7 +165,7 @@ class Appr(ApprBase):
                         output = output_d['output']
 
                 elif 'til' in self.args.scenario:
-                    task=torch.LongTensor([t]).cuda()
+                    task=torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t])
                     output_dict=self.model.forward(task,input_ids, segment_ids, input_mask,which_type,s=self.smax)
                     outputs = output_dict['y']
                     output = outputs[t]

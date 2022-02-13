@@ -44,7 +44,8 @@ print('Inits...')
 # ----------------------------------------------------------------------
 
 if 'owm' in args.baseline:
-    torch.set_default_tensor_type('torch.cuda.FloatTensor')
+
+    torch.set_default_tensor_type('torch.cuda.FloatTensor' if torch.cuda.is_available() else 'torch.FloatTensor')
     if 'w2v' in args.baseline:
         net=import_modules.network.Net(taskcla,embeddings,args=args)
     else:
@@ -53,7 +54,7 @@ if 'owm' in args.baseline:
 
 
 elif 'ucl' in args.baseline:
-    torch.set_default_tensor_type('torch.cuda.FloatTensor')
+    torch.set_default_tensor_type('torch.cuda.FloatTensor' if torch.cuda.is_available() else 'torch.FloatTensor')
     if 'w2v' in args.baseline:
         net = import_modules.network.Net(taskcla, embeddings, args.ratio,args=args)
         net_old = import_modules.network.Net(taskcla, embeddings, args.ratio,args=args)

@@ -69,7 +69,7 @@ class Appr(ApprBase):
         utils.set_model_(self.model,best_model)
 
         # Activations mask
-        task=torch.autograd.Variable(torch.LongTensor([t]).cuda(),volatile=False)
+        task=torch.autograd.Variable(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]),volatile=False)
         mask=self.model.mask(task,s=self.smax)
         for i in range(len(mask)):
             mask[i]=torch.autograd.Variable(mask[i].data.clone(),requires_grad=False)
@@ -98,7 +98,7 @@ class Appr(ApprBase):
             batch = [
                 bat.to(self.device) if bat is not None else None for bat in batch]
             input_ids, segment_ids, input_mask, targets,_= batch
-            task=torch.autograd.Variable(torch.LongTensor([t]).cuda(),volatile=False)
+            task=torch.autograd.Variable(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]),volatile=False)
             s=(self.smax-1/self.smax)*step/len(data)+1/self.smax
 
             # print('tokens_term_ids: ',tokens_term_ids)
@@ -167,7 +167,7 @@ class Appr(ApprBase):
                 if 'dil' in self.args.scenario:
 
                     if self.args.last_id: # fix 0
-                        task=torch.LongTensor([trained_task]).cuda()
+                        task=torch.LongTensor([trained_task]).cuda() if torch.cuda.is_available() else torch.LongTensor([trained_task])
                         output_dict=self.model.forward(task,input_ids, segment_ids, input_mask,s=self.smax)
                         output = output_dict['y']
                         masks = output_dict['masks']
@@ -180,7 +180,7 @@ class Appr(ApprBase):
                         masks = output_d['masks']
 
                 elif 'til' in self.args.scenario:
-                    task=torch.LongTensor([t]).cuda()
+                    task=torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t])
                     output_dict=self.model.forward(task,input_ids, segment_ids, input_mask,s=self.smax)
                     outputs = output_dict['y']
                     masks = output_dict['masks']

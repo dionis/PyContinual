@@ -146,7 +146,7 @@ class Appr(ApprBase):
 
         if phase=='mcl':
             # Activations mask
-            task=torch.autograd.Variable(torch.LongTensor([t]).cuda(),volatile=False)
+            task=torch.autograd.Variable(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ,volatile=False)
             mask=self.model.mask(task,s=self.smax)
 
 

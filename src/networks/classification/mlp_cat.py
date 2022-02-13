@@ -98,7 +98,7 @@ class Net(torch.nn.Module):
                     #Cautions: testing needs to be careful
                     continue
 
-                pre_gfc1,pre_gfc2=self.mask(torch.autograd.Variable(torch.LongTensor([pre_t]).cuda(),volatile=False),s=self.smax)
+                pre_gfc1,pre_gfc2=self.mask(torch.autograd.Variable(torch.LongTensor([pre_t]).cuda() if torch.cuda.is_available() else torch.LongTensor([pre_t]),volatile=False),s=self.smax)
                 pre_gfc1 = pre_gfc1.data.clone()
                 pre_gfc2 = pre_gfc2.data.clone()
 
@@ -218,8 +218,8 @@ class Net(torch.nn.Module):
     def mask(self,t,s=1,phase=None):
         #used by training
 
-        gfc1=self.gate(s*self.mcl.efc1(torch.LongTensor([t]).cuda()))
-        gfc2=self.gate(s*self.mcl.efc2(torch.LongTensor([t]).cuda()))
+        gfc1=self.gate(s*self.mcl.efc1(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
+        gfc2=self.gate(s*self.mcl.efc2(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
         return [gfc1,gfc2]
 
     def Tsim_mask(self,t, history_mask_pre=None,similarity=None,phase=None):
@@ -228,8 +228,8 @@ class Net(torch.nn.Module):
         #want aggregate Tsim
         if phase is None:
            #Tsim mask
-            Tsim_gfc1=torch.ones_like(self.gate(0*self.mcl.efc1(torch.LongTensor([t]).cuda())))
-            Tsim_gfc2=torch.ones_like(self.gate(0*self.mcl.efc2(torch.LongTensor([t]).cuda())))
+            Tsim_gfc1=torch.ones_like(self.gate(0*self.mcl.efc1(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) )))
+            Tsim_gfc2=torch.ones_like(self.gate(0*self.mcl.efc2(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) )))
 
 
         for history_t in range(t):
@@ -267,7 +267,7 @@ class Net(torch.nn.Module):
         for pre_t in range(t):
             if similarity[pre_t]==0:
                 continue
-            pre_gfc1,pre_gfc2=self.mask(torch.autograd.Variable(torch.LongTensor([pre_t]).cuda(),volatile=False),s=self.smax)
+            pre_gfc1,pre_gfc2=self.mask(torch.autograd.Variable(torch.LongTensor([pre_t]).cuda() if torch.cuda.is_available() else torch.LongTensor([pre_t]),volatile=False),s=self.smax)
 
             pre_h=self.drop1(x.view(x.size(0),-1))
 

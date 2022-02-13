@@ -108,7 +108,7 @@ def fisher_matrix_diag_bert_ner(t,train,device,model,criterion,sbatch=20):
     model.train()
 
     for i in tqdm(range(0,len(train),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)])))
         batch=train[b]
         batch = [
             bat.to(device) if bat is not None else None for bat in batch]
@@ -140,7 +140,7 @@ def fisher_matrix_diag_ner_w2v(t,train,device,model,criterion,sbatch=20):
     model.train()
 
     for i in tqdm(range(0,len(train),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)])))
         batch=train[b]
         batch = [
             bat.to(device) if bat is not None else None for bat in batch]
@@ -173,7 +173,7 @@ def fisher_matrix_diag_bert(t,train,device,model,criterion,sbatch=20):
     model.train()
 
     for i in tqdm(range(0,len(train),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)])))
         batch=train[b]
         batch = [
             bat.to(device) if bat is not None else None for bat in batch]
@@ -207,7 +207,7 @@ def fisher_matrix_diag_bert_dil(t,train,device,model,criterion,sbatch=20):
     model.train()
 
     for i in tqdm(range(0,len(train),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)])))
         batch=train[b]
         batch = [
             bat.to(device) if bat is not None else None for bat in batch]
@@ -239,7 +239,7 @@ def fisher_matrix_diag_cnn(t,train,device,model,criterion,args,sbatch=20):
     model.train()
 
     for i in tqdm(range(0,len(train),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)])))
         batch=train[b]
         batch = [
             bat.to(device) if bat is not None else None for bat in batch]
@@ -277,7 +277,7 @@ def fisher_matrix_diag_adapter_head(t,train,device,model,criterion,sbatch=20,
     model.train()
 
     for i in tqdm(range(0,len(train),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)])))
         batch=train[b]
         batch = [
             bat.to(device) if bat is not None else None for bat in batch]
@@ -314,7 +314,7 @@ def fisher_matrix_diag_cnn_head(t,train,device,model,criterion,sbatch=20,
     model.train()
 
     for i in tqdm(range(0,len(train),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)])))
         batch=train[b]
         batch = [
             bat.to(device) if bat is not None else None for bat in batch]
@@ -322,7 +322,7 @@ def fisher_matrix_diag_cnn_head(t,train,device,model,criterion,sbatch=20,
 
         # Forward and backward
         model.zero_grad()
-        task = torch.LongTensor([t]).cuda()
+        task = torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t])
         output_dict=model.forward(task,images,s=args.smax)
         output = output_dict['y']
         masks = output_dict['masks']
@@ -350,7 +350,7 @@ def fisher_matrix_diag_w2v(t,train,device,model,criterion,args,sbatch=20):
     model.train()
 
     for i in tqdm(range(0,len(train),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,len(train)])))
         batch=train[b]
         batch = [
             bat.to(device) if bat is not None else None for bat in batch]
@@ -385,7 +385,7 @@ def fisher_matrix_diag(t,x,y,model,criterion,sbatch=20):
     # Compute
     model.train()
     for i in tqdm(range(0,x.size(0),sbatch),desc='Fisher diagonal',ncols=100,ascii=True):
-        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,x.size(0)]))).cuda()
+        b=torch.LongTensor(np.arange(i,np.min([i+sbatch,x.size(0)]))).cuda() if torch.cuda.is_available() else torch.LongTensor(np.arange(i,np.min([i+sbatch,x.size(0)])))
         images=torch.autograd.Variable(x[b],volatile=False)
         target=torch.autograd.Variable(y[b],volatile=False)
         # Forward and backward

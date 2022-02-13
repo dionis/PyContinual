@@ -2,7 +2,7 @@ import sys, time
 import numpy as np
 import torch
 
-dtype = torch.cuda.FloatTensor  # run on GPU
+dtype = torch.cuda.FloatTensor  if torch.cuda.is_available() else torch.FloatTensor  # run on GPU
 import utils
 from tqdm import tqdm, trange
 from tqdm import tqdm, trange

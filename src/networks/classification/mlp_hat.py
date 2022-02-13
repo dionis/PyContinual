@@ -211,8 +211,8 @@ class Net(torch.nn.Module):
 
 
     def mask(self,t,s=1):
-        gfc1=self.gate(s*self.efc1(torch.LongTensor([t]).cuda()))
-        gfc2=self.gate(s*self.efc2(torch.LongTensor([t]).cuda()))
+        gfc1=self.gate(s*self.efc1(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
+        gfc2=self.gate(s*self.efc2(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
         return [gfc1,gfc2]
 
     def get_view_for(self,n,masks):

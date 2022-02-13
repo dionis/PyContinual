@@ -12,7 +12,8 @@ class ContrastMemory(nn.Module):
         self.nLem = outputSize
         self.unigrams = torch.ones(self.nLem)
         self.multinomial = AliasMethod(self.unigrams)
-        self.multinomial.cuda()
+        if torch.cuda.is_available():
+           self.multinomial.cuda()
         self.K = K
 
         self.register_buffer('params', torch.tensor([K, T, -1, -1, momentum]))
@@ -121,8 +122,8 @@ class AliasMethod(object):
             self.prob[last_one] = 1
 
     def cuda(self):
-        self.prob = self.prob.cuda()
-        self.alias = self.alias.cuda()
+        self.prob = self.prob.cuda() if torch.cuda.is_available() else self.prob
+        self.alias = self.alias.cuda() if torch.cuda.is_available() else self.alias
 
     def draw(self, N):
         """ Draw N samples from multinomial """

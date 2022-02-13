@@ -120,7 +120,7 @@ class Net(torch.nn.Module):
                 task_models = torch.stack(pre_models)
                 task_models = task_models.permute(1, 0, 2)
 
-                query = torch.unsqueeze(self.relu(self.kt.q1(torch.LongTensor([t]).cuda())).expand(task_models.size(0),-1),1) #hard to train
+                query = torch.unsqueeze(self.relu(self.kt.q1(   torch.LongTensor([t]).cuda()  if torch.cuda.is_available() else torch.LongTensor([t])  )).expand(task_models.size(0),-1),1) #hard to train
 
                 h_attn,_ = self.kt.encoder(task_models,query)
 
@@ -220,11 +220,11 @@ class Net(torch.nn.Module):
     def mask(self,t,s=1,phase=None):
         #used by training
 
-        gc1=self.gate(s*self.mcl.ec1(torch.LongTensor([t]).cuda()))
-        gc2=self.gate(s*self.mcl.ec2(torch.LongTensor([t]).cuda()))
-        gc3=self.gate(s*self.mcl.ec3(torch.LongTensor([t]).cuda()))
-        gfc1=self.gate(s*self.mcl.efc1(torch.LongTensor([t]).cuda()))
-        gfc2=self.gate(s*self.mcl.efc2(torch.LongTensor([t]).cuda()))
+        gc1=self.gate(s*self.mcl.ec1(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
+        gc2=self.gate(s*self.mcl.ec2(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
+        gc3=self.gate(s*self.mcl.ec3(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
+        gfc1=self.gate(s*self.mcl.efc1(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
+        gfc2=self.gate(s*self.mcl.efc2(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) ))
         return [gc1,gc2,gc3,gfc1,gfc2]
 
     def Tsim_mask(self,t, history_mask_pre=None,similarity=None,phase=None):
@@ -233,11 +233,11 @@ class Net(torch.nn.Module):
         #want aggregate Tsim
         if phase is None:
            #Tsim mask
-            Tsim_gc1=torch.ones_like(self.gate(0*self.mcl.ec1(torch.LongTensor([t]).cuda())))
-            Tsim_gc2=torch.ones_like(self.gate(0*self.mcl.ec2(torch.LongTensor([t]).cuda())))
-            Tsim_gc3=torch.ones_like(self.gate(0*self.mcl.ec3(torch.LongTensor([t]).cuda())))
-            Tsim_gfc1=torch.ones_like(self.gate(0*self.mcl.efc1(torch.LongTensor([t]).cuda())))
-            Tsim_gfc2=torch.ones_like(self.gate(0*self.mcl.efc2(torch.LongTensor([t]).cuda())))
+            Tsim_gc1=torch.ones_like(self.gate(0*self.mcl.ec1(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) )))
+            Tsim_gc2=torch.ones_like(self.gate(0*self.mcl.ec2(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) )))
+            Tsim_gc3=torch.ones_like(self.gate(0*self.mcl.ec3(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) )))
+            Tsim_gfc1=torch.ones_like(self.gate(0*self.mcl.efc1(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) )))
+            Tsim_gfc2=torch.ones_like(self.gate(0*self.mcl.efc2(torch.LongTensor([t]).cuda() if torch.cuda.is_available() else torch.LongTensor([t]) )))
 
 
         for history_t in range(t):

@@ -110,7 +110,7 @@ class Net(torch.nn.Module):
         print("Gamma = ", gamma)
 
         # Update new layer's weight
-        updated_new_weight = torch.Tensor(gamma * new_weight).cuda()
+        updated_new_weight = torch.Tensor(gamma * new_weight).cuda() if torch.cuda.is_available() else  torch.Tensor(gamma * new_weight)
         self.last.weight = torch.nn.Parameter(updated_new_weight)
 
 

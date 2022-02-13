@@ -28,8 +28,8 @@ def _calculate_fan_in_and_fan_out(tensor):
 class Gaussian(object):
     def __init__(self, mu, rho):
         super().__init__()
-        self.mu = mu.cuda()
-        self.rho = rho.cuda()
+        self.mu = mu.cuda() if torch.cuda.is_available() else mu
+        self.rho = rho.cuda() if torch.cuda.is_available() else rho
         self.normal = torch.distributions.Normal(0,1)
     
     @property
@@ -37,7 +37,7 @@ class Gaussian(object):
         return torch.log1p(torch.exp(self.rho))
     
     def sample(self):
-        epsilon = self.normal.sample(self.mu.size()).cuda()
+        epsilon = self.normal.sample(self.mu.size()).cuda() if torch.cuda.is_available() else self.normal.sample(self.mu.size())
         return self.mu + self.sigma * epsilon   
 
 class BayesianLinear(nn.Module):

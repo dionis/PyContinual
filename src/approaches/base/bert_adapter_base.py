@@ -60,7 +60,7 @@ class Appr(object):
 
         #OWM ============
         if args.baseline=='owm':
-            dtype = torch.cuda.FloatTensor  # run on GPU
+            dtype = torch.cuda.FloatTensor  if self.device == "gpu" else torch.FloatTensor  # run on GPU or CPU
             self.P1 = torch.autograd.Variable(torch.eye(self.args.bert_adapter_size).type(dtype), volatile=True) #inference only
             self.P2 = torch.autograd.Variable(torch.eye(self.args.bert_adapter_size).type(dtype), volatile=True)
 
