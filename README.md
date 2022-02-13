@@ -50,6 +50,9 @@ This repository contains the code for the following papers:
 * [Continual Learning with Knowledge Transfer for Sentiment Classification](https://www.cs.uic.edu/~liub/publications/ECML-PKDD-2020.pdf), Zixuan Ke, [Bing Liu](https://www.cs.uic.edu/~liub/), [Hao Wang](https://cshaowang.github.io/) and [Lei Shu](https://leishu02.github.io/), ECML-PKDD 2020 (if you only care about this model, you can also check [LifelongSentClass](https://github.com/ZixuanKe/LifelongSentClass))
 * **[40+](https://github.com/ZixuanKe/PyContinual/blob/master/docs/baselines.md)** baselines and variants (and keeps "continually" growing!)
 
+##Notes 
+
+* The file SECESSFUL_LL_APPROACH.ipynb is the google colab script succesful for the PyContinual execution
 
 ## Features
 * **Datasets**: It currently supports **Language Datasets** (Document/Sentence/Aspect Sentiment Classification, Natural Language Inference, Topic Classification) and **Image Datasets** (CelebA, CIFAR10, CIFAR100, FashionMNIST, F-EMNIST, MNIST, VLCS)
