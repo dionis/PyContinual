@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b4f02ae-e1b4-4d98-a612-f5428efef1f3" name="Default Changelist" comment="Include phd_HPC_PyContinualExecution_official.sl for executing in HPC with Slurm configurations">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_capsule_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_capsule_mask.py" afterDir="false" />
-    </list>
+    <list default="true" id="0b4f02ae-e1b4-4d98-a612-f5428efef1f3" name="Default Changelist" comment="Delted Transformer request in local file II" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645745840313</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Delted Transformer request in local file II">
+      <created>1645745896398</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645745896398</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +118,7 @@
     <MESSAGE value="Updated Phd's algorithm in model and networks directories" />
     <MESSAGE value="Include phd_HPC_PyContinualExecution_official.sl for executing in HPC with Slurm configurations" />
     <MESSAGE value="Delted Transformer request in local file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delted Transformer request in local file" />
+    <MESSAGE value="Delted Transformer request in local file II" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delted Transformer request in local file II" />
   </component>
 </project>
