@@ -18,7 +18,7 @@ class Net(torch.nn.Module):
         config = BertConfig.from_pretrained(args.bert_model)
         config.return_dict=False
         args.build_adapter_capsule_mask = True
-        self.bert = MyBertModel.from_pretrained(args.bert_model,config=config,args=args, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
+        self.bert = MyBertModel.from_pretrained(args.bert_model,config=config,args=args)
 
         for param in self.bert.parameters():
             # param.requires_grad = True
