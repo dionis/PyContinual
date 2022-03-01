@@ -35,6 +35,8 @@ datasets = [
             './dat/absa/Bing9Domains/asc/MicroMP3',
             './dat/absa/Bing9Domains/asc/Nokia6600',
             './dat/absa/Bing9Domains/asc/Norton',
+
+            './dat/absa/Bing9Domains/asc/TripAdvisor'
             ]
 
 
@@ -60,7 +62,10 @@ domains = [
      'Bing9domains_LinksysRouter',
      'Bing9domains_MicroMP3',
      'Bing9domains_Nokia6600',
-     'Bing9domains_Norton']
+     'Bing9domains_Norton',
+
+     'TripAdvisor'
+   ]
 
 
 
