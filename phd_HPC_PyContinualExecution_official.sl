@@ -1,12 +1,12 @@
 #!/bin/bash 
 #SBATCH --job-name=phd_HPC_PyContinualExecution
-#SBATCH --exclusive=user
+##SBATCH --exclusive=user
 ##SBATCH --partition=public
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --array=0-3
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=30G
+##SBATCH --mem=30G
 #SBATCH --time=unlimited
 #SBATCH --mail-user=dionis@uo.edu.cu
 #SBATCH --mail-type=END
