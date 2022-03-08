@@ -21,6 +21,14 @@ import pickle
 # ########################################################################################################################
 
 # Args -- Experiment
+# --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_experiment_phd --use_predefine_args
+#
+#
+#--bert_model bert-base-uncased --backbone bert_adapter --baseline ar1 --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_experiment_phd --use_predefine_args
+#
+# --model_name bert_spc --approach ar1
+#
+
 import import_classification as import_modules
 
 # ########################################################################################################################
@@ -28,6 +36,14 @@ import import_classification as import_modules
 # Load Data.
 # ----------------------------------------------------------------------
 print('Load data...')
+
+#
+#
+#Execution parameters with my solution and current
+#
+#  --model_name bert_spc --approach ar1
+#
+
 if args.backbone=='w2v' or args.backbone=='w2v_as':
     data,taskcla,vocab_size,embeddings=import_modules.dataloader.get(logger=logger,args=args)
 else:

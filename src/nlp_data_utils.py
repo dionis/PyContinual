@@ -161,6 +161,29 @@ class DataProcessor(object):
         """Reads a tab separated value file."""
         return readfile(input_file)
 
+    @classmethod
+    def _read_raw(cls, input_file):
+        import codecs
+        types_of_encoding = ["utf8", "cp1252"]
+        """Reads a json file for tasks in sentiment analysis."""
+        label_map = {'1':'+', '-1':'-', '0':'neutral'}
+        all_data = dict()
+        with open(input_file, encoding ="cp1252", errors ='replace') as f:
+            lines = f.readlines()
+            counter = 0
+            for i in range(0, len(lines), 3):
+                text_left, _, text_right = [s.lower().strip() for s in lines[i].partition("$T$")]
+                if len(text_left) + len(text_right) > 0:
+                    aspect = lines[i + 1].lower().strip()
+                    polarity = lines[i + 2].strip()
+                    text_info = dict()
+                    text_info["sentence"] = lines[i]
+                    text_info["polarity"] = label_map[polarity]
+                    text_info["term"] = aspect
+                    all_data[counter] = text_info
+                    counter += 1
+        return all_data
+
 
 
 class DtcProcessor(DataProcessor):
@@ -223,15 +246,30 @@ class AscProcessor(DataProcessor):
         return self._create_examples(
             self._read_json(os.path.join(data_dir, fn)), "train")
 
+    def get_train_examplesEx(self, data_dir, fn="train.raw"):
+        """See base class."""
+        return self._create_examples(
+            self._read_raw(os.path.join(data_dir, fn)), "train")
+
     def get_dev_examples(self, data_dir, fn="dev.json"):
         """See base class."""
         return self._create_examples(
             self._read_json(os.path.join(data_dir, fn)), "dev")
 
+    def get_dev_examplesEx(self, data_dir, fn="dev.raw"):
+        """See base class."""
+        return self._create_examples(
+            self._read_raw(os.path.join(data_dir, fn)), "dev")
+
     def get_test_examples(self, data_dir, fn="test.json"):
         """See base class."""
         return self._create_examples(
             self._read_json(os.path.join(data_dir, fn)), "test")
+
+    def get_test_examplesEx(self, data_dir, fn="test.raw"):
+        """See base class."""
+        return self._create_examples(
+            self._read_raw(os.path.join(data_dir, fn)), "test")
 
     def get_labels(self):
         """See base class."""

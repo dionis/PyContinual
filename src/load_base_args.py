@@ -6,7 +6,8 @@ args = set_args()
 def load():
     # ============= dataset base ==================
     if args.task == 'asc': #aspect sentiment classication
-        args.ntasks = 19
+        if args.ntasks == 10:
+           args.ntasks = 19
         args.num_train_epochs = 10
         args.xusemeval_num_train_epochs = 10
         args.bingdomains_num_train_epochs = 30
