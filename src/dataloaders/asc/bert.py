@@ -10,7 +10,8 @@ import numpy as np
 import random
 import nlp_data_utils as data_utils
 from nlp_data_utils import ABSATokenizer
-from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
+from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler, random_split
+
 import math
 datasets = [
             './dat/absa/XuSemEval/asc/14/rest',
@@ -36,7 +37,7 @@ datasets = [
             './dat/absa/Bing9Domains/asc/Nokia6600',
             './dat/absa/Bing9Domains/asc/Norton',
 
-            './dat/absa/Bing9Domains/asc/TripAdvisor'
+            './dat/absa/TripAdvisor/asc'
             ]
 
 
@@ -78,6 +79,9 @@ def get(logger=None,args=None):
     # Others
     f_name = 'asc_random'
 
+    if args != None and args.dataloaders != None and type( args.dataloaders) == str and  args.dataloaders != '':
+        f_name =  args.dataloaders
+
     with open(f_name,'r') as f_random_seq:
         random_sep = f_random_seq.readlines()[args.idrandom].split()
 
@@ -98,11 +102,18 @@ def get(logger=None,args=None):
         elif 'XuSemEval' in dataset:
             data[t]['name']=dataset
             data[t]['ncla']=3
+        else:
+            data[t]['name'] = dataset
+            data[t]['ncla'] = 3
 
         processor = data_utils.AscProcessor()
         label_list = processor.get_labels()
-        tokenizer = ABSATokenizer.from_pretrained(args.bert_model)
-        train_examples = processor.get_train_examples(dataset)
+        #,cache_dir = "Transformer" + os.path.sep,  local_files_only=True
+        tokenizer = ABSATokenizer.from_pretrained(   args.bert_model,cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
+        if "TripAdvisor" in dataset:
+          train_examples = processor.get_train_examplesEx(dataset)
+        else:
+          train_examples = processor.get_train_examples(dataset)
 
         num_train_steps = int(math.ceil(len(train_examples) / args.train_batch_size)) * args.num_train_epochs
 
@@ -124,7 +135,20 @@ def get(logger=None,args=None):
         data[t]['train'] = train_data
         data[t]['num_train_steps']=num_train_steps
 
-        valid_examples = processor.get_dev_examples(dataset)
+        eval_examples = None
+        if "TripAdvisor" in dataset:
+            #Remember split in dev and test examples
+            valid_examples = processor.get_test_examplesEx(dataset)
+            assert 0 <= args.valset_ratio < 1
+            if args.valset_ratio > 0: #Split text dataset in valid and test subset
+                valset_len = int(len(valid_examples) * args.valset_ratio)
+                valid_examples, eval_examples= random_split(valid_examples, (len(valid_examples) - valset_len, valset_len))
+            else:
+                eval_examples = valid_examples
+
+        else:
+            valid_examples = processor.get_dev_examples(dataset)
+
         valid_features=data_utils.convert_examples_to_features(
             valid_examples, label_list, args.max_seq_length, tokenizer, "asc")
         valid_all_input_ids = torch.tensor([f.input_ids for f in valid_features], dtype=torch.long)
@@ -145,8 +169,11 @@ def get(logger=None,args=None):
 
         processor = data_utils.AscProcessor()
         label_list = processor.get_labels()
-        tokenizer = BertTokenizer.from_pretrained(args.bert_model)
-        eval_examples = processor.get_test_examples(dataset)
+        tokenizer = BertTokenizer.from_pretrained(args.bert_model,cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
+
+        if not ("TripAdvisor"  in dataset):
+            eval_examples = processor.get_test_examples(dataset)
+
         eval_features = data_utils.convert_examples_to_features(eval_examples, label_list, args.max_seq_length, tokenizer, "asc")
 
         logger.info("***** Running evaluation *****")

@@ -184,6 +184,12 @@ def asc_config(parser):
                         help="Number of updates steps to accumulate before performing a backward/update pass.")
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
                         help="Max gradient norm.")
+    parser.add_argument('--dataloaders', type=str, default='asc_random',
+                        help="Dataset to train models. Optios are: asc_random, asc_random_10, asc_random_20, asc_experiment_phd, asc_wexperiment_phd."
+                             "See details at https://nvidia.github.io/apex/amp.html")
+
+    parser.add_argument('--valset_ratio', default=0.5, type=float,
+                        help='set ratio between 0 and 1 for validation support')
     return parser
 
 def train_config(parser):

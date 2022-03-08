@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b4f02ae-e1b4-4d98-a612-f5428efef1f3" name="Default Changelist" comment="Add new dataset and domain Tripadvisor for our PhD test">
+    <list default="true" id="0b4f02ae-e1b4-4d98-a612-f5428efef1f3" name="Default Changelist" comment="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained">
+      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/approaches/classification/ar1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/approaches/classification/lwfNLP.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/asc_experiment_phd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/asc_wexperiment_phd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_electronic_near_experiment_phd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_experiment_phd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_fareway_hotels_experiment_phd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_fareway_restaurant_experiment_phd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_wexperiment_phd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networks/base/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phd_HPC_PyContinualExecution_official.sl" beforeDir="false" afterPath="$PROJECT_DIR$/phd_HPC_PyContinualExecution_official.sl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/import_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/import_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/load_base_args.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/load_base_args.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/base/phdBert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nlp_data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/nlp_data_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -16,6 +43,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="253jfg89r9czwyWg6uvmTGpjVuZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -27,9 +62,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GitIgnore" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/data_prep" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data_prep" />
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\TripAdvisor\ae" />
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\networks\base" />
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\TripAdvisor\asc" />
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data_prep" />
       <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data\absa" />
     </key>
   </component>
@@ -68,7 +112,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/run.py" />
-      <option name="PARAMETERS" value="--bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
+      <option name="PARAMETERS" value="--ntasks 8 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_experiment_phd --use_predefine_args" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -154,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646169432446</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained">
+      <created>1646220969344</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1646220969345</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,7 +241,8 @@
     <MESSAGE value="Delted Transformer request in local file" />
     <MESSAGE value="Delted Transformer request in local file II" />
     <MESSAGE value="Add new dataset and domain Tripadvisor for our PhD test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new dataset and domain Tripadvisor for our PhD test" />
+    <MESSAGE value="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained" />
+    <option name="LAST_COMMIT_MESSAGE" value="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -207,18 +259,63 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/run.py</url>
-          <line>35</line>
+          <line>51</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/run.py</url>
-          <line>30</line>
+          <line>46</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/import_classification.py</url>
           <line>23</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>200</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/preparation.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/load_base_args.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/run.py</url>
+          <line>85</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
