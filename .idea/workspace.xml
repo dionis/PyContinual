@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b4f02ae-e1b4-4d98-a612-f5428efef1f3" name="Default Changelist" comment="Add new element for execute remote action">
-      <change afterPath="$PROJECT_DIR$/phd_PyContinualExecution_official.sh" afterDir="false" />
+    <list default="true" id="0b4f02ae-e1b4-4d98-a612-f5428efef1f3" name="Default Changelist" comment="Add new script to execute">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phd_HPC_PyContinualExecution_official.sl" beforeDir="false" afterPath="$PROJECT_DIR$/phd_HPC_PyContinualExecution_official.sl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phd_PyContinualExecution_official.sh" beforeDir="false" afterPath="$PROJECT_DIR$/phd_PyContinualExecution_official.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="remote_execution" />
+        <entry key="$PROJECT_DIR$" value="develop_wgpu" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -209,7 +210,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="develop_wgpu" />
+                        <option value="remote_execution" />
                       </list>
                     </value>
                   </entry>
@@ -250,12 +251,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/run.py</url>
-          <line>51</line>
+          <line>67</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/run.py</url>
-          <line>46</line>
+          <line>62</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -265,17 +266,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>79</line>
+          <line>88</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>200</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>91</line>
+          <line>100</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -290,7 +286,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/run.py</url>
-          <line>85</line>
+          <line>101</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
