@@ -25,6 +25,8 @@ module load Python/3.7.0-foss-2018b
 
 cd  $SLURM_SUBMIT_DIR
 
+conda activate phdContinualLearning
+
 python3 -u run.py  $ARGS > phd_HPC_PyContinualExecution-$SLURM_ARRAY_TASK_ID.txt
 
 #python3 run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args
