@@ -109,7 +109,7 @@ def get(logger=None,args=None):
         processor = data_utils.AscProcessor()
         label_list = processor.get_labels()
         #,cache_dir = "Transformer" + os.path.sep,  local_files_only=True
-        tokenizer = ABSATokenizer.from_pretrained(   args.bert_model,cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
+        tokenizer = ABSATokenizer.from_pretrained( args.bert_model)
         if "TripAdvisor" in dataset:
           train_examples = processor.get_train_examplesEx(dataset)
         else:
@@ -169,7 +169,7 @@ def get(logger=None,args=None):
 
         processor = data_utils.AscProcessor()
         label_list = processor.get_labels()
-        tokenizer = BertTokenizer.from_pretrained(args.bert_model,cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
+        tokenizer = BertTokenizer.from_pretrained(args.bert_model)
 
         if not ("TripAdvisor"  in dataset):
             eval_examples = processor.get_test_examples(dataset)

@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b4f02ae-e1b4-4d98-a612-f5428efef1f3" name="Default Changelist" comment="Add new script to execute">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phd_HPC_PyContinualExecution_official.sl" beforeDir="false" afterPath="$PROJECT_DIR$/phd_HPC_PyContinualExecution_official.sl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phd_PyContinualExecution_official.sh" beforeDir="false" afterPath="$PROJECT_DIR$/phd_PyContinualExecution_official.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +194,28 @@
       <option name="project" value="LOCAL" />
       <updated>1646703367460</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add new script to execute">
+      <created>1646738292033</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1646738292033</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add new script to execute">
+      <created>1646738364836</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1646738364836</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add new script to execute">
+      <created>1646738400384</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1646738400384</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,7 +253,8 @@
     <MESSAGE value="Add new dataset and domain Tripadvisor for our PhD test" />
     <MESSAGE value="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained" />
     <MESSAGE value="Add new element for execute remote action" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new element for execute remote action" />
+    <MESSAGE value="Add new script to execute" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new script to execute" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
