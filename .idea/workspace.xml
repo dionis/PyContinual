@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b4f02ae-e1b4-4d98-a612-f5428efef1f3" name="Default Changelist" comment="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained">
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/approaches/classification/ar1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/approaches/classification/lwfNLP.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asc_experiment_phd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asc_wexperiment_phd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_electronic_near_experiment_phd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_experiment_phd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_fareway_hotels_experiment_phd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_fareway_restaurant_experiment_phd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data_prep/asc_wexperiment_phd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/networks/base/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phd_HPC_PyContinualExecution_official.sl" beforeDir="false" afterPath="$PROJECT_DIR$/phd_HPC_PyContinualExecution_official.sl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/import_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/import_classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/load_base_args.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/load_base_args.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/base/phdBert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nlp_data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/nlp_data_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
-    </list>
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add slurm script" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
