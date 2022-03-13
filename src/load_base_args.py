@@ -14,6 +14,9 @@ def load():
         args.bingdomains_num_train_epochs_multiplier = 3
         args.nepochs = 100
 
+        #Updating for tree level clasess (positive, negative, neutral)
+        args.nclasses = 3
+
     if args.task == 'dsc': #document sentiment classication
         args.ntasks = 10
         args.num_train_epochs = 20
