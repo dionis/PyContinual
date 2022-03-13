@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add slurm script">
-      <change afterPath="$PROJECT_DIR$/src/asc_texperiment_phd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asc_wexperiment_phd" beforeDir="false" afterPath="$PROJECT_DIR$/src/asc_wexperiment_phd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/load_base_args.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/load_base_args.py" afterDir="false" />
-    </list>
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add slurm script" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.run" />
         <item itemvalue="Python.run" />
         <item itemvalue="Python.run" />
       </list>
