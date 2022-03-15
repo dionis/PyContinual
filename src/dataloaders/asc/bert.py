@@ -37,7 +37,11 @@ datasets = [
             './dat/absa/Bing9Domains/asc/Nokia6600',
             './dat/absa/Bing9Domains/asc/Norton',
 
-            './dat/absa/TripAdvisor/asc'
+            './dat/absa/TripAdvisor/asc',
+
+            './dat/absa/FewItemsDomains/asc/CanonG3',
+            './dat/absa/FewItemsDomains/asc/Nokia6610',
+            './dat/absa/FewItemsTripAdvisor/asc'
             ]
 
 
@@ -65,7 +69,10 @@ domains = [
      'Bing9domains_Nokia6600',
      'Bing9domains_Norton',
 
-     'TripAdvisor'
+     'TripAdvisor',
+     'FewItemsDomains_CanonG3',
+     'FewItemsDomains_Nokia6610',
+     'FewItemsTripAdvisor'
    ]
 
 

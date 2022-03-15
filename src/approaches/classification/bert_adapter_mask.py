@@ -251,6 +251,11 @@ class Appr(ApprBase):
 
                 _,pred=output.max(1)
                 hits=(pred==targets).float()
+
+                ##### Find the sentences with hits equal one #####
+
+
+                ##################################################
                 target_list.append(targets)
                 pred_list.append(pred)
                 # Log

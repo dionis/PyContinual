@@ -16,6 +16,7 @@ def load():
 
         #Updating for tree level clasess (positive, negative, neutral)
         args.nclasses = 3
+        args.last_id  = True
 
     if args.task == 'dsc': #document sentiment classication
         args.ntasks = 10
