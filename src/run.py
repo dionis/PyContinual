@@ -43,11 +43,11 @@ print('Load data...')
 #
 #  --model_name bert_spc --approach ar1
 #
-
+tokenizer = None
 if args.backbone=='w2v' or args.backbone=='w2v_as':
     data,taskcla,vocab_size,embeddings=import_modules.dataloader.get(logger=logger,args=args)
 else:
-    data,taskcla=import_modules.dataloader.get(logger=logger,args=args)
+    data,taskcla, tokenizer=import_modules.dataloader.get(logger=logger,args=args)
 
 print('\nTask info =',taskcla)
 #
@@ -88,7 +88,7 @@ else:
 
 if 'net' in locals(): net = net.to(device)
 if 'net_old' in locals(): net_old = net_old.to(device)
-appr=import_modules.approach.Appr(net,logger=logger,taskcla=taskcla,args=args)
+appr=import_modules.approach.Appr(net,logger=logger,taskcla=taskcla,args=args, tokenizer = tokenizer)
 
 if not args.eval_each_step:
     resume_checkpoint(appr,net)

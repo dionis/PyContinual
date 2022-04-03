@@ -135,8 +135,10 @@ def get(logger=None,args=None):
         all_segment_ids = torch.tensor([f.segment_ids for f in train_features], dtype=torch.long)
         all_input_mask = torch.tensor([f.input_mask for f in train_features], dtype=torch.long)
         all_label_ids = torch.tensor([f.label_id for f in train_features], dtype=torch.long)
+        #all_example_ids = torch.tensor([f.example_id for f in train_features], dtype=torch.long) #All id in task to extract bat examples
         all_tasks = torch.tensor([t for f in train_features], dtype=torch.long)
 
+        #train_data = TensorDataset(all_input_ids, all_segment_ids, all_input_mask, all_label_ids,all_example_ids,all_tasks)
         train_data = TensorDataset(all_input_ids, all_segment_ids, all_input_mask, all_label_ids,all_tasks)
 
         data[t]['train'] = train_data
@@ -208,6 +210,6 @@ def get(logger=None,args=None):
     data['ncla']=n
 
 
-    return data,taskcla
+    return data,taskcla, tokenizer
 
 

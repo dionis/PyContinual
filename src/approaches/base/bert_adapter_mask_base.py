@@ -47,7 +47,7 @@ class Appr(object):
         return 1.0 - x
 
 
-    def __init__(self,model,aux_model=None,logger=None,taskcla=None, args=None):
+    def __init__(self,model,aux_model=None,logger=None,taskcla=None, args=None, tokenizer=None):
         # can deal with aux and unaux
         random.seed(args.seed)
         np.random.seed(args.seed)

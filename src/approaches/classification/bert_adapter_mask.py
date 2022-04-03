@@ -32,10 +32,10 @@ from my_optimization import BertAdam
 class Appr(ApprBase):
 
 
-    def __init__(self,model,logger,taskcla, args=None):
-        super().__init__(model=model,logger=logger,taskcla=taskcla,args=args)
+    def __init__(self,model,logger,taskcla, args=None, tokenizer = None):
+        super().__init__(model=model,logger=logger,taskcla=taskcla,args=args, tokenizer = tokenizer)
         print('DIL BERT ADAPTER MASK SUP NCL')
-
+        self.tokenizer = tokenizer;
         return
 
     def train(self,t,train,valid,num_train_steps,train_data,valid_data):
@@ -197,6 +197,7 @@ class Appr(ApprBase):
     def eval(self,t,data,test=None,trained_task=None):
         total_loss=0
         total_acc=0
+        total_f1=0
         total_num=0
         self.model.eval()
 
@@ -252,7 +253,22 @@ class Appr(ApprBase):
                 _,pred=output.max(1)
                 hits=(pred==targets).float()
 
-                ##### Find the sentences with hits equal one #####
+                print ("BAD Prediction in batch %d", step," in task %d ",t)
+                if self.tokenizer != None:
+                  badClassfiSentence = [(self.tokenizer.decode(input_ids[ipos]), (pred[ipos],targets[ipos])) for ipos, iElement in enumerate(hits.detach().numpy()) if iElement == 0]
+                  if len(badClassfiSentence) > 0:
+                      bert_token = ['[CLS]','[PAD]']
+                      for ipos, iElement in enumerate (badClassfiSentence):
+                         nElement, evaluation =  iElement
+                         nElement = nElement.replace( bert_token[0],"")
+                         nElement = nElement.replace(bert_token[1],"")
+                         badClassfiSentence[ ipos ] = nElement.strip()
+                   ##### Find the sentences with hits equal not equal to zero #####
+                   #input_ids : It has all sentences and it useful to untokenize with BertTokenizer
+
+                  #https://stackoverflow.com/questions/66232938/how-to-untokenize-bert-tokens
+
+                  #https://albertauyeung.github.io/2020/06/19/bert-tokenization.html/
 
 
                 ##################################################
@@ -263,7 +279,7 @@ class Appr(ApprBase):
                 total_acc+=hits.sum().data.cpu().numpy().item()
                 total_num+=real_b
 
-            f1=self.f1_compute_fn(y_pred=torch.cat(pred_list,0),y_true=torch.cat(target_list,0),average='macro')
+            f1 =self.f1_compute_fn(y_pred=torch.cat(pred_list,0),y_true=torch.cat(target_list,0),average='macro')
 
 
         return total_loss/total_num,total_acc/total_num,f1

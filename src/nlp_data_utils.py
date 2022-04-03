@@ -98,7 +98,8 @@ class InputFeatures(object):
                     position_ids=None,
 
                     valid_ids=None,
-                    label_mask=None
+                    label_mask=None,
+                    example_id=None
 
                     ):
         self.input_ids = input_ids
@@ -128,6 +129,8 @@ class InputFeatures(object):
 
         self.valid_ids = valid_ids
         self.label_mask = label_mask
+
+        self.example_id = example_id
 
 
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add slurm script">
-      <change afterPath="$PROJECT_DIR$/src/data_prep/test_dataset_execution" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test_dataset_execution" afterDir="false" />
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Update data for save bad classification files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/approaches/base/bert_adapter_mask_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/base/bert_adapter_mask_base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data_prep/asc_wexperiment_phd" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_prep/asc_wexperiment_phd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/load_base_args.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/load_base_args.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nlp_data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/nlp_data_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,15 +48,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/dat/absa/FewItemsDomains/asc/Nokia6610" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\FewItemsDomains\asc\Nokia6610" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\FewItemsDomains\asc\CanonG3" />
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual" />
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data_prep" />
+      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\TripAdvisor\ae" />
       <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\FewItemsTripAdvisor\ae" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\FewItemsTripAdvisor\asc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\networks\base" />
@@ -91,6 +90,9 @@
       <module name="PyContinual" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -116,7 +118,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add slurm script" />
+      <changelist id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Fix valid error with args.last_id  = True argument" />
       <created>1644762770633</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -192,21 +194,49 @@
       <option name="project" value="LOCAL" />
       <updated>1646220969345</updated>
     </task>
-    <task id="LOCAL-00011" summary="Add data to process">
-      <created>1646954431559</created>
+    <task id="LOCAL-00011" summary="Add new element for execute remote action">
+      <created>1646703367460</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1646954431559</updated>
+      <updated>1646703367460</updated>
     </task>
-    <task id="LOCAL-00012" summary="Add slurm script">
-      <created>1647139677089</created>
+    <task id="LOCAL-00012" summary="Add new script to execute">
+      <created>1646738292033</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1647139677089</updated>
+      <updated>1646738292033</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add new script to execute">
+      <created>1646738364836</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1646738364836</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add new script to execute">
+      <created>1646738400384</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1646738400384</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Delete the trasformer load path references">
+      <created>1646739052132</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1646739052132</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add conda activate environament in slurm script">
+      <created>1646739861410</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1646739861410</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -243,9 +273,12 @@
     <MESSAGE value="Delted Transformer request in local file II" />
     <MESSAGE value="Add new dataset and domain Tripadvisor for our PhD test" />
     <MESSAGE value="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained" />
-    <MESSAGE value="Add data to process" />
-    <MESSAGE value="Add slurm script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add slurm script" />
+    <MESSAGE value="Add new element for execute remote action" />
+    <MESSAGE value="Add new script to execute" />
+    <MESSAGE value="Delete the trasformer load path references" />
+    <MESSAGE value="Add conda activate environament in slurm script" />
+    <MESSAGE value="Update data for save bad classification files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update data for save bad classification files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -256,24 +289,34 @@
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py</url>
+          <line>253</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/run.py</url>
-          <line>49</line>
-          <option name="timeStamp" value="42" />
+          <line>188</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="49" />
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/import_classification.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="52" />
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py</url>
+          <line>281</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py</url>
+          <line>257</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py</url>
+          <line>260</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
