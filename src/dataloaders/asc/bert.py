@@ -198,8 +198,12 @@ def get(logger=None,args=None):
         # Run prediction for full data
 
         data[t]['test']=eval_data
-
-        taskcla.append((t,int(data[t]['ncla'])))
+        domainName = os.path.basename(data[t]['name'])
+        if domainName == 'asc':
+            domainName = os.path.dirname(data[t]['name'])
+            domainName = os.path.basename(domainName)
+        print(domainName)
+        taskcla.append((t,int(data[t]['ncla']),domainName))
 
 
 

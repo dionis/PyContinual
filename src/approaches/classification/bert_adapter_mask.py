@@ -262,7 +262,7 @@ class Appr(ApprBase):
                          nElement, evaluation =  iElement
                          nElement = nElement.replace( bert_token[0],"")
                          nElement = nElement.replace(bert_token[1],"")
-                         badClassfiSentence[ ipos ] = nElement.strip()
+                         badClassfiSentence[ ipos ] = ( nElement.strip(),evaluation)
                    ##### Find the sentences with hits equal not equal to zero #####
                    #input_ids : It has all sentences and it useful to untokenize with BertTokenizer
 

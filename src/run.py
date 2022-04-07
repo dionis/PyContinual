@@ -124,7 +124,7 @@ if args.print_report:
 # Start Training.
 # ----------------------------------------------------------------------
 
-for t,ncla in taskcla:
+for t,ncla, domain in taskcla:
 
 
     if args.eval_each_step:
@@ -166,7 +166,9 @@ for t,ncla in taskcla:
 
 
     if  args.task == 'asc': #special setting
-        if 'XuSemEval' in data[t]['name']:
+        if args.common_prmtrs != None:
+            args.num_train_epochs = args.xusemeval_num_train_epochs = args.nepochs
+        elif 'XuSemEval' in data[t]['name']:
             args.num_train_epochs=args.xusemeval_num_train_epochs #10
         else:
             args.num_train_epochs=args.bingdomains_num_train_epochs #30
@@ -264,8 +266,11 @@ for t,ncla in taskcla:
     else:
         test_set = t+1
     for u in range(test_set):
+        t_valid, ncla_valid, domain_valid = taskcla[u]
 
         test=data[u]['test']
+
+        appr.set_validation_domain( domain, domain_valid)
 
         if args.multi_gpu and args.distributed:
             test_sampler = DistributedSampler(test)

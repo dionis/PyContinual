@@ -126,7 +126,7 @@ def asc_config(parser):
     parser.add_argument('--transfer_route',action='store_true')
     parser.add_argument('--no_capsule',action='store_true')
     parser.add_argument('--momentum', action='store_true')
-    parser.add_argument('--nepochs', type=int, default=100)
+    parser.add_argument('--nepochs', type=int, default=10)
     parser.add_argument('--srk_train_batch_size', type=int, default=32)
     parser.add_argument('--dataset_name', type=str)
     parser.add_argument('--class_per_task', type=int, default=2)
@@ -190,6 +190,9 @@ def asc_config(parser):
 
     parser.add_argument('--valset_ratio', default=0.5, type=float,
                         help='set ratio between 0 and 1 for validation support')
+
+    parser.add_argument('--common_prmtrs', action='store_true',help='Set common hyperparameters for all dataset training')
+
     return parser
 
 def train_config(parser):

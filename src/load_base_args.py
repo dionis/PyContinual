@@ -12,7 +12,8 @@ def load():
         args.xusemeval_num_train_epochs = 10
         args.bingdomains_num_train_epochs = 30
         args.bingdomains_num_train_epochs_multiplier = 3
-        args.nepochs = 100
+        if  args.nepochs <= 0 or args.nepochs == None:
+          args.nepochs = 100
 
         #Updating for tree level clasess (positive, negative, neutral)
         args.nclasses = 3
