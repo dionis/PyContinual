@@ -113,7 +113,7 @@ def get(logger=None,args=None):
             data[t]['name'] = dataset
             data[t]['ncla'] = 3
 
-        processor = data_utils.AscProcessor()
+        processor = data_utils.AscProcessor(args)
         label_list = processor.get_labels()
         #,cache_dir = "Transformer" + os.path.sep,  local_files_only=True
         tokenizer = ABSATokenizer.from_pretrained(   args.bert_model,cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
@@ -176,7 +176,7 @@ def get(logger=None,args=None):
         data[t]['valid']=valid_data
 
 
-        processor = data_utils.AscProcessor()
+        processor = data_utils.AscProcessor(args)
         label_list = processor.get_labels()
         tokenizer = BertTokenizer.from_pretrained(args.bert_model,cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
 

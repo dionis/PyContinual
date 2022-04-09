@@ -166,13 +166,14 @@ for t,ncla, domain in taskcla:
 
 
     if  args.task == 'asc': #special setting
-        if args.common_prmtrs != None:
-            args.num_train_epochs = args.xusemeval_num_train_epochs = args.nepochs
-        elif 'XuSemEval' in data[t]['name']:
-            args.num_train_epochs=args.xusemeval_num_train_epochs #10
+        if args.common_prmtrs == None or args.common_prmtrs == False:
+            if 'XuSemEval' in data[t]['name']:
+                args.num_train_epochs=args.xusemeval_num_train_epochs #10
+            else:
+                args.num_train_epochs=args.bingdomains_num_train_epochs #30
+                num_train_steps*=args.bingdomains_num_train_epochs_multiplier # every task got refresh, *3
         else:
-            args.num_train_epochs=args.bingdomains_num_train_epochs #30
-            num_train_steps*=args.bingdomains_num_train_epochs_multiplier # every task got refresh, *3
+            print ("Common Hyperparamerters defined !!!!!")
 
     if args.multi_gpu and args.distributed:
         valid_sampler = DistributedSampler(valid) #TODO: DitributedSequentailSampler

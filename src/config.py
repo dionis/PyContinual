@@ -193,6 +193,10 @@ def asc_config(parser):
 
     parser.add_argument('--common_prmtrs', action='store_true',help='Set common hyperparameters for all dataset training')
 
+    parser.add_argument('--invert_token', action='store_true',
+                        help='In training process invert token about senteces token [SEP] aspect token [SEP]')
+
+
     return parser
 
 def train_config(parser):

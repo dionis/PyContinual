@@ -8,7 +8,8 @@ def load():
     if args.task == 'asc': #aspect sentiment classication
         if args.ntasks == 10:
            args.ntasks = 19
-        args.num_train_epochs = 10
+        if args.num_train_epochs == None or args.num_train_epochs <= 0:
+          args.num_train_epochs = 10
         args.xusemeval_num_train_epochs = 10
         args.bingdomains_num_train_epochs = 30
         args.bingdomains_num_train_epochs_multiplier = 3
