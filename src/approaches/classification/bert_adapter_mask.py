@@ -2,6 +2,7 @@ import sys,time
 import numpy as np
 import torch
 import os
+import shutil
 import logging
 import glob
 import math
@@ -32,9 +33,23 @@ from my_optimization import BertAdam
 class Appr(ApprBase):
 
 
-    def __init__(self,model,logger,taskcla, args=None):
-        super().__init__(model=model,logger=logger,taskcla=taskcla,args=args)
+    def __init__(self,model,logger,taskcla, args=None, tokenizer = None):
+        super().__init__(model=model,logger=logger,taskcla=taskcla,args=args, tokenizer = tokenizer)
         print('DIL BERT ADAPTER MASK SUP NCL')
+        self.tokenizer = tokenizer;
+
+        print (os.path.abspath(os.path.dirname(sys.argv[0])))
+        currentExectionAddress = os.path.abspath(os.path.dirname(sys.argv[0]))
+
+        self.current_domain = None
+        self.validation_domain = None
+        self.BAD_CLASSIFICATION_ADDRESS =currentExectionAddress + os.path.sep + "output" + os.path.sep + args.baseline + "_"+args.dataloaders ;
+        if args != None:
+           if  os.path.exists (self.BAD_CLASSIFICATION_ADDRESS):
+                 #os.removedirs(self.BAD_CLASSIFICATION_ADDRESS)
+                 shutil.rmtree(self.BAD_CLASSIFICATION_ADDRESS, ignore_errors=False, onerror=None)
+           file = os.makedirs(self.BAD_CLASSIFICATION_ADDRESS)
+
 
         return
 
@@ -190,20 +205,25 @@ class Appr(ApprBase):
             # break
         return global_step
 
-
-
+    def set_validation_domain ( self, current_domain, validation_domain):
+          self.current_domain = current_domain
+          self.validation_domain = validation_domain
 
 
     def eval(self,t,data,test=None,trained_task=None):
         total_loss=0
         total_acc=0
+        total_f1=0
         total_num=0
         self.model.eval()
 
         target_list = []
         pred_list = []
+        badClassifierRecord = {0:0,1:0,2:0}
+        labelTag = {0: "negative", 1: "neutral", 2: "positive"}
 
         with torch.no_grad():
+            badClassfiSentenceAll = []
             for step, batch in enumerate(data):
                 batch = [
                     bat.to(self.device) if bat is not None else None for bat in batch]
@@ -251,6 +271,27 @@ class Appr(ApprBase):
 
                 _,pred=output.max(1)
                 hits=(pred==targets).float()
+
+                print ("BAD Prediction in batch %d", step," in task %d ",t)
+                if self.tokenizer != None:
+                  badClassfiSentence = [(self.tokenizer.decode(input_ids[ipos]), (pred[ipos],targets[ipos])) for ipos, iElement in enumerate(hits.detach().numpy()) if iElement == 0]
+                  if len(badClassfiSentence) > 0:
+                      bert_token = ['[CLS]','[PAD]']
+                      for ipos, iElement in enumerate (badClassfiSentence):
+                         nElement, evaluation =  iElement
+                         nElement = nElement.replace( bert_token[0],"")
+                         nElement = nElement.replace(bert_token[1],"")
+                         badClassfiSentence[ ipos ] = ( nElement.strip(),evaluation)
+                  badClassfiSentenceAll = badClassfiSentenceAll + badClassfiSentence
+                   ##### Find the sentences with hits equal not equal to zero #####
+                   #input_ids : It has all sentences and it useful to untokenize with BertTokenizer
+
+                  #https://stackoverflow.com/questions/66232938/how-to-untokenize-bert-tokens
+
+                  #https://albertauyeung.github.io/2020/06/19/bert-tokenization.html/
+
+
+                ##################################################
                 target_list.append(targets)
                 pred_list.append(pred)
                 # Log
@@ -258,9 +299,24 @@ class Appr(ApprBase):
                 total_acc+=hits.sum().data.cpu().numpy().item()
                 total_num+=real_b
 
-            f1=self.f1_compute_fn(y_pred=torch.cat(pred_list,0),y_true=torch.cat(target_list,0),average='macro')
+            f1 =self.f1_compute_fn(y_pred=torch.cat(pred_list,0),y_true=torch.cat(target_list,0),average='macro')
 
+            # Creta BAD clasification file
+            if self.current_domain != None and self.current_domain != "" and self.validation_domain != None and self.validation_domain != "":
 
+                if os.path.exists(self.BAD_CLASSIFICATION_ADDRESS):
+                    fileToWrite = open(self.BAD_CLASSIFICATION_ADDRESS + os.path.sep + self.current_domain + "_Vs_" + self.validation_domain + ".txt", mode="w+")
+                    for iElement, value in enumerate(badClassfiSentenceAll):
+                        sentence, data = value
+                        pred, target = data
+                        fileToWrite.write(sentence + "\n")
+                        fileToWrite.write("ASPECT: predict = " + labelTag[pred.item()] + " target = " + labelTag[target.item()] + "\n")
+                        badClassifierRecord[target.item()] += 1
+
+                    fileToWrite.write("Statistics: "+ labelTag[0]  +" = " +  str(badClassifierRecord[0])+ " "+ labelTag[1] +" = " + str(badClassifierRecord[1])
+                                      + " "+ labelTag[2] +" = " + str(badClassifierRecord[2]) + "\n")
+
+                    fileToWrite.close()
         return total_loss/total_num,total_acc/total_num,f1
 
 

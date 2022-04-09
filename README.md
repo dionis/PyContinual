@@ -1,7 +1,14 @@
 
 
 
+# Error remote execution
 
+File "/home/dilopez/PHD_EXPERIMENTS/PyContinual/src/approaches/classification/                                                                                                    bert_adapter_mask.py", line 71, in train
+    train_loss,train_acc,train_f1_macro=self.eval(t,train,trained_task=t)
+  File "/home/dilopez/PHD_EXPERIMENTS/PyContinual/src/approaches/classification/                                                                                                    bert_adapter_mask.py", line 250, in eval
+    loss,_=self.hat_criterion_adapter(output,targets,masks)
+UnboundLocalError: local variable 'output' referenced before assignment
+Write failed: Connection reset by peer
 
 
 

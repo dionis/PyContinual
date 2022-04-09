@@ -37,7 +37,11 @@ datasets = [
             './dat/absa/Bing9Domains/asc/Nokia6600',
             './dat/absa/Bing9Domains/asc/Norton',
 
-            './dat/absa/TripAdvisor/asc'
+            './dat/absa/TripAdvisor/asc',
+
+            './dat/absa/FewItemsDomains/asc/CanonG3',
+            './dat/absa/FewItemsDomains/asc/Nokia6610',
+            './dat/absa/FewItemsTripAdvisor/asc'
             ]
 
 
@@ -65,7 +69,10 @@ domains = [
      'Bing9domains_Nokia6600',
      'Bing9domains_Norton',
 
-     'TripAdvisor'
+     'TripAdvisor',
+     'FewItemsDomains_CanonG3',
+     'FewItemsDomains_Nokia6610',
+     'FewItemsTripAdvisor'
    ]
 
 
@@ -106,7 +113,7 @@ def get(logger=None,args=None):
             data[t]['name'] = dataset
             data[t]['ncla'] = 3
 
-        processor = data_utils.AscProcessor()
+        processor = data_utils.AscProcessor(args)
         label_list = processor.get_labels()
         #,cache_dir = "Transformer" + os.path.sep,  local_files_only=True
         tokenizer = ABSATokenizer.from_pretrained( args.bert_model)
@@ -128,8 +135,10 @@ def get(logger=None,args=None):
         all_segment_ids = torch.tensor([f.segment_ids for f in train_features], dtype=torch.long)
         all_input_mask = torch.tensor([f.input_mask for f in train_features], dtype=torch.long)
         all_label_ids = torch.tensor([f.label_id for f in train_features], dtype=torch.long)
+        #all_example_ids = torch.tensor([f.example_id for f in train_features], dtype=torch.long) #All id in task to extract bat examples
         all_tasks = torch.tensor([t for f in train_features], dtype=torch.long)
 
+        #train_data = TensorDataset(all_input_ids, all_segment_ids, all_input_mask, all_label_ids,all_example_ids,all_tasks)
         train_data = TensorDataset(all_input_ids, all_segment_ids, all_input_mask, all_label_ids,all_tasks)
 
         data[t]['train'] = train_data
@@ -167,7 +176,7 @@ def get(logger=None,args=None):
         data[t]['valid']=valid_data
 
 
-        processor = data_utils.AscProcessor()
+        processor = data_utils.AscProcessor(args)
         label_list = processor.get_labels()
         tokenizer = BertTokenizer.from_pretrained(args.bert_model)
 
@@ -189,8 +198,12 @@ def get(logger=None,args=None):
         # Run prediction for full data
 
         data[t]['test']=eval_data
-
-        taskcla.append((t,int(data[t]['ncla'])))
+        domainName = os.path.basename(data[t]['name'])
+        if domainName == 'asc':
+            domainName = os.path.dirname(data[t]['name'])
+            domainName = os.path.basename(domainName)
+        print(domainName)
+        taskcla.append((t,int(data[t]['ncla']),domainName))
 
 
 
@@ -201,6 +214,6 @@ def get(logger=None,args=None):
     data['ncla']=n
 
 
-    return data,taskcla
+    return data,taskcla, tokenizer
 
 

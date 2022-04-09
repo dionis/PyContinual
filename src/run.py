@@ -43,11 +43,11 @@ print('Load data...')
 #
 #  --model_name bert_spc --approach ar1
 #
-
+tokenizer = None
 if args.backbone=='w2v' or args.backbone=='w2v_as':
     data,taskcla,vocab_size,embeddings=import_modules.dataloader.get(logger=logger,args=args)
 else:
-    data,taskcla=import_modules.dataloader.get(logger=logger,args=args)
+    data,taskcla, tokenizer=import_modules.dataloader.get(logger=logger,args=args)
 
 print('\nTask info =',taskcla)
 #
@@ -88,7 +88,7 @@ else:
 
 if 'net' in locals(): net = net.to(device)
 if 'net_old' in locals(): net_old = net_old.to(device)
-appr=import_modules.approach.Appr(net,logger=logger,taskcla=taskcla,args=args)
+appr=import_modules.approach.Appr(net,logger=logger,taskcla=taskcla,args=args, tokenizer = tokenizer)
 
 if not args.eval_each_step:
     resume_checkpoint(appr,net)
@@ -124,7 +124,7 @@ if args.print_report:
 # Start Training.
 # ----------------------------------------------------------------------
 
-for t,ncla in taskcla:
+for t,ncla, domain in taskcla:
 
 
     if args.eval_each_step:
@@ -166,11 +166,14 @@ for t,ncla in taskcla:
 
 
     if  args.task == 'asc': #special setting
-        if 'XuSemEval' in data[t]['name']:
-            args.num_train_epochs=args.xusemeval_num_train_epochs #10
+        if args.common_prmtrs == None or args.common_prmtrs == False:
+            if 'XuSemEval' in data[t]['name']:
+                args.num_train_epochs=args.xusemeval_num_train_epochs #10
+            else:
+                args.num_train_epochs=args.bingdomains_num_train_epochs #30
+                num_train_steps*=args.bingdomains_num_train_epochs_multiplier # every task got refresh, *3
         else:
-            args.num_train_epochs=args.bingdomains_num_train_epochs #30
-            num_train_steps*=args.bingdomains_num_train_epochs_multiplier # every task got refresh, *3
+            print ("Common Hyperparamerters defined !!!!!")
 
     if args.multi_gpu and args.distributed:
         valid_sampler = DistributedSampler(valid) #TODO: DitributedSequentailSampler
@@ -264,8 +267,11 @@ for t,ncla in taskcla:
     else:
         test_set = t+1
     for u in range(test_set):
+        t_valid, ncla_valid, domain_valid = taskcla[u]
 
         test=data[u]['test']
+
+        appr.set_validation_domain( domain, domain_valid)
 
         if args.multi_gpu and args.distributed:
             test_sampler = DistributedSampler(test)

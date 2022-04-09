@@ -98,7 +98,8 @@ class InputFeatures(object):
                     position_ids=None,
 
                     valid_ids=None,
-                    label_mask=None
+                    label_mask=None,
+                    example_id=None
 
                     ):
         self.input_ids = input_ids
@@ -128,6 +129,8 @@ class InputFeatures(object):
 
         self.valid_ids = valid_ids
         self.label_mask = label_mask
+
+        self.example_id = example_id
 
 
 
@@ -241,6 +244,8 @@ class DscProcessor(DataProcessor):
 class AscProcessor(DataProcessor):
     """Processor for the SemEval Aspect Sentiment Classification."""
 
+    def __init__(self, arg):
+         self.arg = arg
     def get_train_examples(self, data_dir, fn="train.json"):
         """See base class."""
         return self._create_examples(
@@ -280,8 +285,13 @@ class AscProcessor(DataProcessor):
         examples = []
         for (i, ids) in enumerate(lines):
             guid = "%s-%s" % (set_type, ids )
-            text_a = lines[ids]['term']
-            text_b = lines[ids]['sentence']
+            text_a = text_b = label = None
+            if self.arg != None and self.arg.invert_token == True:
+                text_a = lines[ids]['sentence']
+                text_b = lines[ids]['term']
+            else:
+                text_a = lines[ids]['term']
+                text_b = lines[ids]['sentence']
             label = lines[ids]['polarity']
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
@@ -319,7 +329,8 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
     # label = lines[ids]['polarity']
 
     if transformer_args.task == 'asc': # for pair
-        label_map={'+': 0,'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
+        #label_map={'+': 0,'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
+        label_map = {'+': 2, 'positive': 2, '-': 0, 'negative': 0, 'neutral': 1}
     elif transformer_args.task == 'nli':
         label_map={'neutral': 0, 'entailment': 1, 'contradiction': 2}
     elif transformer_args.task == 'ae':
