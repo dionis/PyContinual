@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Update data in Repository">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="set cuda value read in. hits.cpu().detach().numpy()">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +84,9 @@
       <module name="PyContinual" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -228,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646739861410</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="set cuda value read in. hits.cpu().detach().numpy()">
+      <created>1649615179336</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1649615179337</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,7 +278,8 @@
     <MESSAGE value="Add new script to execute" />
     <MESSAGE value="Delete the trasformer load path references" />
     <MESSAGE value="Add conda activate environament in slurm script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add conda activate environament in slurm script" />
+    <MESSAGE value="set cuda value read in. hits.cpu().detach().numpy()" />
+    <option name="LAST_COMMIT_MESSAGE" value="set cuda value read in. hits.cpu().detach().numpy()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
