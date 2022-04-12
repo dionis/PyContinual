@@ -51,6 +51,8 @@ else:
     data,taskcla, tokenizer=import_modules.dataloader.get(logger=logger,args=args)
 
 print('\nTask info =',taskcla)
+#Save as output file the task training and evaluating order
+pd.DataFrame(taskcla)[2].to_csv(args.output + args.experiment + '_order_process.csv', header=False)
 #
 # Inits
 print('Inits...')
@@ -309,7 +311,6 @@ for t,ncla, domain in taskcla:
 
             # Save
             print('Save at '+args.output)
-            pd.DataFrame(taskcla)[2].to_csv(args.output + args.experiment+ '_order_process.csv', header=False)
             np.savetxt(args.output + args.experiment+ '_progressive.acc',acc,'%.4f',delimiter='\t')
             np.savetxt(args.output + args.experiment+ '_progressive.f1_macro',f1_macro,'%.4f',delimiter='\t')
 
