@@ -43,7 +43,7 @@ class Appr(ApprBase):
 
         self.current_domain = None
         self.validation_domain = None
-        self.BAD_CLASSIFICATION_ADDRESS =currentExectionAddress + os.path.sep + "output" + os.path.sep + args.baseline + "_"+args.dataloaders ;
+        self.BAD_CLASSIFICATION_ADDRESS =currentExectionAddress + os.path.sep + "output" + os.path.sep +  args.baseline + "_"+args.dataloaders + os.path.sep + args.experiment ;
         if args != None:
            if  os.path.exists (self.BAD_CLASSIFICATION_ADDRESS):
                  #os.removedirs(self.BAD_CLASSIFICATION_ADDRESS)

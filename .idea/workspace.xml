@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="set cuda value read in. hits.cpu().detach().numpy()">
-      <change afterPath="$PROJECT_DIR$/phd_newHPC_PyContinualExecution_official.sl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phd_newPyContinualExecution_official.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_prep/asc_wexperiment_phd" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_prep/asc_wexperiment_phd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phd_newHPC_PyContinualExecution_official.sl" beforeDir="false" afterPath="$PROJECT_DIR$/phd_newHPC_PyContinualExecution_official.sl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phd_newPyContinualExecution_official.sh" beforeDir="false" afterPath="$PROJECT_DIR$/phd_newPyContinualExecution_official.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

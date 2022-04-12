@@ -15,10 +15,10 @@
 
 
 case $SLURM_ARRAY_TASK_ID in
-0) ARGS="--ntasks 8 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_experiment_phd --use_predefine_args" ;;
-1) ARGS="--ntasks 8 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_wexperiment_phd --use_predefine_args" ;;
-2) ARGS="--ntasks 7 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_fareway_restaurant_experiment_phd --use_predefine_args" ;;
-3) ARGS="--ntasks 7 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_fareway_hotels_experiment_phd --use_predefine_args"  ;;
+0) ARGS="--ntasks 8 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_experiment_phd --use_predefine_args --save_model --num_train_epochs 10 --save_each_step --aux_net --experiment same_phd_taskplus" ;;
+1) ARGS="--ntasks 7 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_wexperiment_phd --use_predefine_args --save_model --num_train_epochs 10 --save_each_step --aux_net --experiment same_phd" ;;
+2) ARGS="--ntasks 7 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_wexperiment_phd --use_predefine_args --num_train_epochs 10 --common_prmtrs --save_model --save_each_step --aux_net --experiment same_parameters" ;;
+3) ARGS="--ntasks 7 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_wexperiment_phd --use_predefine_args --num_train_epochs 10  --common_prmtrs --save_model --save_each_step --aux_net --experiment invert_input_sameparameters"  ;;
 esac
 
 module load Python/3.7.0-foss-2018b
