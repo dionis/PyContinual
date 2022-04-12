@@ -272,7 +272,7 @@ class Appr(ApprBase):
                 _,pred=output.max(1)
                 hits=(pred==targets).float()
 
-                print ("BAD Prediction in batch %d", step," in task %d ",t)
+                #print ("BAD Prediction in batch %d", step," in task %d ",t)
                 if self.tokenizer != None:
                   #if torch.cuda.is_available() else hits.detach().numpy()
                   badClassfiSentence = [(self.tokenizer.decode(input_ids[ipos]), (pred[ipos],targets[ipos])) for ipos, iElement in enumerate( hits.cpu().detach().numpy()) if iElement == 0]
