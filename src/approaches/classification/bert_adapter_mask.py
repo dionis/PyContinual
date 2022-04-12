@@ -272,7 +272,7 @@ class Appr(ApprBase):
                 _,pred=output.max(1)
                 hits=(pred==targets).float()
 
-                print ("BAD Prediction in batch %d", step," in task %d ",t)
+                #print ("BAD Prediction in batch %d", step," in task %d ",t)
                 if self.tokenizer != None:
                   badClassfiSentence = [(self.tokenizer.decode(input_ids[ipos]), (pred[ipos],targets[ipos])) for ipos, iElement in enumerate(hits.detach().numpy()) if iElement == 0]
                   if len(badClassfiSentence) > 0:

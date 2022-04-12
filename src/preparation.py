@@ -60,7 +60,8 @@ precision_avg=np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
 recall_avg=np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
 f1_avg=np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
 
-base_model_path = args.model_path
+base_model_path = model_path
+base_aux_model_path = model_path
 base_resume_from_file = args.resume_from_file
 
 #

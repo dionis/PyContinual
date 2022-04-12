@@ -10,6 +10,7 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 import os
 import random
 from preparation import *
+import pandas as pd
 
 import torch.nn as nn
 import pickle
@@ -228,8 +229,8 @@ for t,ncla, domain in taskcla:
         exit()
 
     if args.save_each_step:
-        args.model_path = base_model_path + 'steps'+str(t)
-        args.aux_model_path = base_aux_model_path + 'steps'+str(t)
+        args.model_path = base_model_path  +  args.experiment +'_steps'+str(t)
+        args.aux_model_path = base_aux_model_path +  args.experiment +'_aux_steps'+str(t)
 
     if args.save_model:
         print('save model ')
@@ -249,9 +250,10 @@ for t,ncla, domain in taskcla:
 
 
         if args.aux_net:
-            torch.save({
-                        'model_state_dict': appr.aux_model.state_dict(),
-                        }, args.aux_model_path)
+            if appr.aux_model != None:
+                torch.save({
+                            'model_state_dict': appr.aux_model.state_dict(),
+                            }, args.aux_model_path)
             if hasattr(appr, 'mask_pre'): torch.save(appr.mask_pre,args.aux_model_path+'_mask_pre') # not in state_dict
             if hasattr(appr, 'mask_back'): torch.save(appr.mask_back,args.aux_model_path+'_mask_back')
         else:
@@ -266,6 +268,8 @@ for t,ncla, domain in taskcla:
         test_set = args.ntasks
     else:
         test_set = t+1
+    #Clean for each task
+    appr.set_validation_domain(None, None)
     for u in range(test_set):
         t_valid, ncla_valid, domain_valid = taskcla[u]
 
@@ -305,8 +309,9 @@ for t,ncla, domain in taskcla:
 
             # Save
             print('Save at '+args.output)
-            np.savetxt(args.output + 'progressive.acc',acc,'%.4f',delimiter='\t')
-            np.savetxt(args.output + 'progressive.f1_macro',f1_macro,'%.4f',delimiter='\t')
+            pd.DataFrame(taskcla)[2].to_csv(args.output + args.experiment+ '_order_process.csv', header=False)
+            np.savetxt(args.output + args.experiment+ '_progressive.acc',acc,'%.4f',delimiter='\t')
+            np.savetxt(args.output + args.experiment+ '_progressive.f1_macro',f1_macro,'%.4f',delimiter='\t')
 
             # Done
             print('*'*100)
@@ -316,7 +321,17 @@ for t,ncla, domain in taskcla:
                 for j in range(acc.shape[1]):
                     print('{:5.1f}% '.format(100*acc[i,j]),end='')
                 print()
+
             print('*'*100)
+            print('#' * 100)
+
+            print('F1-Macros =')
+            for i in range(f1_macro.shape[0]):
+                print('\t', end='')
+                for j in range(f1_macro.shape[1]):
+                    print('{:5.1f}% '.format(100 * f1_macro[i, j]), end='')
+                print()
+            print('*' * 100)
             print('Done!')
 
             print('[Elapsed time = {:.1f} h]'.format((time.time()-tstart)/(60*60)))
