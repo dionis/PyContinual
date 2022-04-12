@@ -64,6 +64,7 @@ xz==5.2.5
 zipp==3.6.0
 zlib==1.2.11
 zstd==1.4.9
+pandas
 
 
 

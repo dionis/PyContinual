@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Change parameters in scripts for bash and slurm execution">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_newtestrequirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/_newtestrequirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/requeriment_files/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/requeriment_files/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
