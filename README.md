@@ -10,7 +10,8 @@ File "/home/dilopez/PHD_EXPERIMENTS/PyContinual/src/approaches/classification/  
 UnboundLocalError: local variable 'output' referenced before assignment
 Write failed: Connection reset by peer
 
-
+# Download file from Google Drive
+https://github.com/wkentaro/gdown
 
 
 

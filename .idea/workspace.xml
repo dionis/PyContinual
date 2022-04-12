@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="set cuda value read in. hits.cpu().detach().numpy()">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Change parameters in scripts for bash and slurm execution">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phd_newHPC_PyContinualExecution_official.sl" beforeDir="false" afterPath="$PROJECT_DIR$/phd_newHPC_PyContinualExecution_official.sl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phd_newPyContinualExecution_official.sh" beforeDir="false" afterPath="$PROJECT_DIR$/phd_newPyContinualExecution_official.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649761680956</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Change parameters in scripts for bash and slurm execution">
+      <created>1649764699555</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1649764699555</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,7 +296,8 @@
     <MESSAGE value="Add conda activate environament in slurm script" />
     <MESSAGE value="Update data for save bad classification files" />
     <MESSAGE value="Add experiment name parameter to difference in output result files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add experiment name parameter to difference in output result files." />
+    <MESSAGE value="Change parameters in scripts for bash and slurm execution" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change parameters in scripts for bash and slurm execution" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
