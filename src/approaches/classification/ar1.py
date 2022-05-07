@@ -274,6 +274,9 @@ class Appr(object):
 
     def train(self, t, train, valid, num_train_steps, train_data_loader, test_data_loader):
     #def train(self, t, train_data_loader, test_data_loader, num_train_steps,train,valid):
+
+        self.model.to(self.device)
+
         val_data_loader = valid
         best_loss=np.inf
         #best_model=utils.get_model(self.model)
