@@ -57,7 +57,7 @@ class Net(torch.nn.Module):
            except (AttributeError):
                bert_output = self.model.forward(t, x, s)
 
-
+           bert_output = self.model.tm(bert_output[t])
            return bert_output,masks
         return None, None
         # h=x.view(x.size(0),-1)
