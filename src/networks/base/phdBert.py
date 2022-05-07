@@ -25,33 +25,22 @@ class Net(torch.nn.Module):
 
         self.last = self.model.last
 
-        #Only learn parameters in these structure in AR1 algorithm
-        #self.owner_structure = torch.nn.Linear(opt.bert_dim, opt.polarities_dim )
+        ###
+        ### Inicial todos los pesos a 0 segun algoritmo del paper
+        ###
+        self.tm = torch.nn.Linear(self.args.nclasses, self.args.nclasses)
 
+        # Initialice 0 because reset_parametes input other standar initialization
 
-        #Create a Linear output layer for each domain or task
-        #in regularization concept only fix wheigts in output layer for each domain
+        neuronsize = self.tm.weight.shape[0]
+        input_neuron_size = self.tm.weight.shape[1]
 
-        # self.last = torch.nn.ModuleList()
-        # for t, n,_ in self.taskcla:
-        #     self.last.append(torch.nn.Linear(opt.polarities_dim, opt.polarities_dim))
+        for i in range(neuronsize):
+            for j in range(input_neuron_size):
+                self.tm.weight.data[i, j] = 0.0
 
-        #self.tm = torch.nn.Linear( opt.polarities_dim, opt.polarities_dim)
+            self.tm.bias.data[i] = 0.0
 
-        # self.gate = torch.nn.Sigmoid()
-        # # All embedding stuff should start with 'e'
-        # self.ec1 = torch.nn.Embedding(len(self.taskcla), 64)
-        # self.ec2 = torch.nn.Embedding(len(self.taskcla), 128)
-        # self.ec3 = torch.nn.Embedding(len(self.taskcla), 256)
-        # self.efc1 = torch.nn.Embedding(len(self.taskcla), 2048)
-        # self.efc2 = torch.nn.Embedding(len(self.taskcla), 2048)
-        # # """ (e.g., used in the compression experiments)
-        # lo, hi = 0, 2
-        # self.ec1.weight.data.uniform_(lo, hi)
-        # self.ec2.weight.data.uniform_(lo, hi)
-        # self.ec3.weight.data.uniform_(lo, hi)
-        # self.efc1.weight.data.uniform_(lo, hi)
-        # self.efc2.weight.data.uniform_(lo, hi)
         self.hard = True  #Identify if inner model use Hard algoritm or not
         # """
         return
