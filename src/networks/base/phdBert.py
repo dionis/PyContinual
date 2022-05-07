@@ -21,7 +21,7 @@ class Net(torch.nn.Module):
         self.args = args
         self.args.taskcla = len(self.taskcla)
         #Model atributte to assoaciated to BERT pre-trained
-        self.model =  BERT_SPC(BertModel.from_pretrained(args.bert_model,config=config, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True), self.args)
+        self.model =  BERT_SPC(BertModel.from_pretrained(args.bert_model,config=config, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=False), self.args)
 
         self.last = self.model.last
 
