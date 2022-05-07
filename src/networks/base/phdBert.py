@@ -16,7 +16,7 @@ class Net(torch.nn.Module):
 
         #ncha,size,_=inputsize
         self.taskcla=taskcla
-        config = BertConfig.from_pretrained(args.bert_model, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
+        config = BertConfig.from_pretrained(args.bert_model, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=False)
         config.return_dict = False
         self.args = args
         self.args.taskcla = len(self.taskcla)
