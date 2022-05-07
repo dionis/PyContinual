@@ -525,11 +525,14 @@ class Appr(object):
 
             # Forward current model
             startDateTime = datetime.now()
-            outputs,_=self.model.forward( task, (input_ids,segment_ids,targets))
+            #outputs, _ = self.model.forward(task, (input_ids, segment_ids, targets))
+
+            output,_=self.model( task, (input_ids,segment_ids,targets))
+
            # print('Train DataTime', datetime.now() - startDateTime)
            # print("Train forward")
             self.getMemoryRam()
-            output= self.model.tm(outputs[t])
+            #output= self.model.tm(outputs[t])
             #output = outputs[t]
             loss=self.criterion(t,output,targets)
 
