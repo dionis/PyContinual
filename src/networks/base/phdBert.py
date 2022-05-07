@@ -1,17 +1,29 @@
 import sys
 import torch
+import os
+from transformers import BertModel, BertConfig
+from torch import nn
+import torch.nn.functional as F
 import utils
+
+from .bert_spc import BERT_SPC
+
 
 class Net(torch.nn.Module):
 
-    def __init__(self,inputsize,taskcla, opt):
+    def __init__(self,taskcla,args):
         super(Net,self).__init__()
 
-        ncha,size,_=inputsize
+        #ncha,size,_=inputsize
         self.taskcla=taskcla
-
+        config = BertConfig.from_pretrained(args.bert_model, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
+        config.return_dict = False
+        self.args = args
+        self.args.taskcla = len(self.taskcla)
         #Model atributte to assoaciated to BERT pre-trained
-        self.model = None
+        self.model =  BERT_SPC(BertModel.from_pretrained(args.bert_model,config=config, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True), self.args)
+
+        self.last = self.model.last
 
         #Only learn parameters in these structure in AR1 algorithm
         #self.owner_structure = torch.nn.Linear(opt.bert_dim, opt.polarities_dim )
@@ -106,7 +118,7 @@ class Net(torch.nn.Module):
             self.model.set_Optimizer(optimizer)
 
     def get_Optimizer(self):
-        if self.model != None:
+        if self.model != None and  hasattr(self.model, 'optimizer') and self.model.optimizer != None:
             return self.model.optimizer;
         return None
 

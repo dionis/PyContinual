@@ -183,6 +183,7 @@ for t,ncla, domain in taskcla:
         valid_dataloader = DataLoader(valid, sampler=valid_sampler, batch_size=args.eval_batch_size)
     else:
         valid_sampler = SequentialSampler(valid)
+        ###Optimization with RandomSampler(valid)
         valid_dataloader = DataLoader(valid, sampler=valid_sampler, batch_size=args.eval_batch_size,pin_memory=True)
 
     if args.resume_model and t < args.resume_from_task: continue #resume. dont forget to copy the forward results
@@ -206,6 +207,11 @@ for t,ncla, domain in taskcla:
         else:
             # Train
             print('train')
+            #
+            #   def train(self, t, train_data_loader, test_data_loader, val_data_loader):
+            #
+            #   View ______ IMPORTANT ______
+            #
             appr.train(task,train_dataloader,valid_dataloader,num_train_steps,train,valid)
 
     print('-'*100)

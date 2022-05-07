@@ -128,3 +128,8 @@ Please drop an email to [Zixuan Ke](mailto:zke4@uic.edu), [Xingchang Huang](mail
 
 
 
+
+#Test execution line
+
+
+--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --num_train_epochs 1 --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step
