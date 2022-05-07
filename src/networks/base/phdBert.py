@@ -15,10 +15,12 @@ class Net(torch.nn.Module):
         super(Net,self).__init__()
 
         #ncha,size,_=inputsize
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.taskcla=taskcla
         config = BertConfig.from_pretrained(args.bert_model, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=False)
         config.return_dict = False
         self.args = args
+
         self.args.taskcla = len(self.taskcla)
         #Model atributte to assoaciated to BERT pre-trained
         self.model =  BERT_SPC(BertModel.from_pretrained(args.bert_model,config=config, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=False), self.args)
@@ -57,7 +59,7 @@ class Net(torch.nn.Module):
            except (AttributeError):
                bert_output = self.model.forward(t, x, s)
 
-           bert_output = self.tm(bert_output[t])
+           bert_output = self.tm(bert_output[t.to(self.device )])
            return bert_output,masks
         return None, None
         # h=x.view(x.size(0),-1)

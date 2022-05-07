@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="View">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="View III">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/networks/base/phdBert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/base/phdBert.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -309,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651960705062</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="View III">
+      <created>1651960798771</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1651960798771</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -359,7 +367,8 @@
     <MESSAGE value="Add in action" />
     <MESSAGE value="Add data" />
     <MESSAGE value="View" />
-    <option name="LAST_COMMIT_MESSAGE" value="View" />
+    <MESSAGE value="View III" />
+    <option name="LAST_COMMIT_MESSAGE" value="View III" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -426,12 +435,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/base/phdBert.py</url>
-          <line>65</line>
+          <line>67</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/base/phdBert.py</url>
-          <line>27</line>
+          <line>29</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -441,7 +450,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/base/phdBert.py</url>
-          <line>59</line>
+          <line>61</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
