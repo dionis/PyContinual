@@ -200,6 +200,10 @@ def asc_config(parser):
 
     parser.add_argument('--experiment', default='', type=str, required=False, help='Name of current experiment')
 
+    parser.add_argument('--dropout', default=0.1, type=float)
+
+    parser.add_argument('--log_step', default=5, type=int)
+
     return parser
 
 def train_config(parser):
