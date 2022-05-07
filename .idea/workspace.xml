@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Fix error with cuda">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/approaches/classification/ar1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/ar1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/networks/base/phdBert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/base/phdBert.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -281,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651959139490</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Fix error with cuda">
+      <created>1651959224856</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1651959224856</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
