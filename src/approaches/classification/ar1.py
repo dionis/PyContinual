@@ -257,7 +257,8 @@ class Appr(object):
         ###
         ### Inicial todos los pesos a 0 segun algoritmo del paper
         ###
-        self.model.tm = torch.nn.Linear( self.opt.nclasses, self.opt.nclasses)
+        if self.model.tm == None:
+            self.model.tm = torch.nn.Linear( self.opt.nclasses, self.opt.nclasses)
 
         #Initialice 0 because reset_parametes input other standar initialization
 
@@ -546,7 +547,7 @@ class Appr(object):
 
             n_correct += (torch.argmax(output, -1) == targets).sum().item()
             n_total += len(output)
-            loss_total += loss.item() * len(outputs)
+            loss_total += loss.item() * len(output)
             if global_step % self.opt.log_step == 0:
                 # train_acc = n_correct / n_total
                 train_loss = loss_total / n_total
