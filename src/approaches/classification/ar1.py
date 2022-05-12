@@ -186,8 +186,6 @@ class Appr(object):
         #return torch.optim.SGD(self.tensorVariables, lr=lr)
         #return torch.optim.SGD(self.model.parameters(),lr=lr)
 
-            #if self.opt.optimizer == None:
-            #self.criterion = torch.nn.CrossEntropyLoss()
             _params = filter(lambda p: p.requires_grad, self.model.parameters())
 
             # It is a way to obtain variables for using in optimizer and not finned tuning Bert model
@@ -274,10 +272,8 @@ class Appr(object):
         return
 
     def train(self, t, train, valid, num_train_steps, train_data_loader, test_data_loader):
-    #def train(self, t, train_data_loader, test_data_loader, num_train_steps,train,valid):
 
         self.model.to(self.device)
-
         val_data_loader = valid
         best_loss=np.inf
         #best_model=utils.get_model(self.model)
@@ -292,6 +288,9 @@ class Appr(object):
         print(" ###### Update status of last layer weight in current task(domain) AVOID Stocastic Gradient ########")
 
         for name, var in self.model.named_parameters():
+          if name.find("tm.") != -1:
+              print("tm last variable name", name)
+              print("tm last variable ", var )
           if name.find("model.last.") != -1:
                 var.requires_grad_(False);
                 if re.match("model.last." + str(t), name) != None:
@@ -333,31 +332,20 @@ class Appr(object):
             clock2 = time.time()
             # print('time: ',float((clock1-clock0)*10*25))
 
-            print('| Epoch {:3d}, time={:5.1f}ms/{:5.1f}ms | Train: loss={:.3f}, acc={:5.1f}% |'.format(e + 1,
-                                                                                                        1000 * self.train_batch_size * (
-                                                                                                                    clock1 - clock0) / len(
-                                                                                                            train),
-                                                                                                        1000 * self.train_batch_size * (
-                                                                                                                    clock2 - clock1) / len(
-                                                                                                            train),
-                                                                                                        train_loss,
-                                                                                                        100 * train_acc,
-                                                                                                        100 * train_f1,
-                                                                                                        100 * train_cohen_kappa),
-                  end='')
+
 
             #print("2")
-            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa = self.eval_withregsi(t,valid )
+            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa = self.eval_withregsi(t,train )
 
             #print("3")
-            clock3 = time.time()
 
-            dataset_size = len(val_data_loader.dataset)
+
+            dataset_size = len(train_data_loader.dataset)
             print('| Epoch {:3d}, time={:5.1f}ms/{:5.1f}ms | Train-Val: loss={:.3f}, acc={:5.1f}, f1={:5.1f}, cohen_kappa={:5.1f}%|'.format(e + 1,
                                                                                                         1000 * self.sbatch * (
                                                                                                             clock1 - clock0) / dataset_size,
                                                                                                         1000 * self.sbatch * (
-                                                                                                            clock2 - clock3) / dataset_size,
+                                                                                                            clock1 - clock2) / dataset_size,
                                                                                                         train_loss,
                                                                                                         100 * train_acc,
                                                                                                         100*train_f1,
@@ -367,7 +355,7 @@ class Appr(object):
 
             # Valid
             #print("4")
-            valid_loss, valid_acc , valid_recall, valid_f1, valid_cohen_kappa= self.eval_withregsi(t, test_data_loader)
+            valid_loss, valid_acc , valid_recall, valid_f1, valid_cohen_kappa= self.eval_withregsi(t, valid)
 
             print(' Test: loss={:.3f}, acc={:5.1f}, f1={:5.1f}, cohen_kappa={:5.1f}%|'.format(valid_loss, 100 * valid_acc,100*valid_f1, 100*valid_cohen_kappa), end='')
 
@@ -423,76 +411,6 @@ class Appr(object):
 
                toViewLasLayer.append((name,var))
 
-
-        return
-
-    def trainsi(self,t,xtrain,ytrain,xvalid,yvalid):
-        best_loss=np.inf
-
-        best_model=utils.get_model(self.model)
-        lr=self.lr
-        patience=self.lr_patience
-        self.optimizer=self._get_optimizer(lr)
-
-        # Loop epochs
-        for e in range(self.nepochs):
-            # Train
-            clock0=time.time()
-            self.train_epoch(t,xtrain,ytrain)
-            clock1=time.time()
-            train_loss,train_acc=self.eval(t,xtrain,ytrain)
-            clock2=time.time()
-            print('| Epoch {:3d}, time={:5.1f}ms/{:5.1f}ms | Train: loss={:.3f}, acc={:5.1f}% |'.format(
-                e+1,1000*self.sbatch*(clock1-clock0)/xtrain.size(0),1000*self.sbatch*(clock2-clock1)/xtrain.size(0),train_loss,100*train_acc),end='')
-            # Valid
-            valid_loss,valid_acc=self.eval(t,xvalid,yvalid)
-            print(' Valid: loss={:.3f}, acc={:5.1f}% |'.format(valid_loss,100*valid_acc),end='')
-            # Adapt lr
-            if valid_loss<best_loss:
-                best_loss=valid_loss
-                best_model=utils.get_model(self.model)
-                patience=self.lr_patience
-                print(' *',end='')
-            else:
-                patience-=1
-                if patience<=0:
-                    lr/=self.lr_factor
-                    print(' lr={:.1e}'.format(lr),end='')
-                    if lr<self.lr_min:
-                        print()
-                        break
-                    patience=self.lr_patience
-                    self.optimizer=self._get_optimizer(lr)
-            print()
-
-
-        # After each task is complete, call update_big_omega and reset_small_omega
-        # Reset_small_omega also makes a backup of the final weights, used as hook in the auxiliary loss
-        self.big_omega_var = self.update_big_omega(self.model.named_parameters(), self.previous_weights_mu_minus_1, self.small_omega_var)
-
-        for i, (name, var) in enumerate(self.model.named_parameters()):
-            self.previous_weights_mu_minus_1[name] = var.data
-            self.small_omega_var[name] = 0.0
-
-        # Restore best
-        utils.set_model_(self.model,best_model)
-
-        # Update old
-        self.model_old=deepcopy(self.model)
-        self.model_old.eval()
-        utils.freeze_model(self.model_old) # Freeze the weights
-
-        # Fisher ops
-        if t>0:
-            fisher_old={}
-            for n,_ in self.model.named_parameters():
-                fisher_old[n]=self.fisher[n].clone()
-        self.fisher=utils.fisher_matrix_diag(t,xtrain,ytrain,self.model,self.criterion)
-        if t>0:
-            # Watch out! We do not want to keep t models (or fisher diagonals) in memory, therefore we have to merge fisher diagonals
-            for n,_ in self.model.named_parameters():
-                self.fisher[n]=(self.fisher[n]+fisher_old[n]*t)/(t+1)       # Checked: it is better than the other option
-                #self.fisher[n]=0.5*(self.fisher[n]+fisher_old[n])
 
         return
 
@@ -597,12 +515,12 @@ class Appr(object):
             #print ("Eval forward")
             self.getMemoryRam()
             #output = self.model.tm(outputs[t])
-            output = outputs[t]
-            loss = self.criterion(t, output, targets)
-            _, pred = output.max(1)
+            #output = outputs[t]
+            loss = self.criterion(t, outputs, targets)
+            _, pred = outputs.max(1)
             hits = (pred == targets).float()
 
-            n_correct += (torch.argmax(output, -1) == targets).sum().item()
+            n_correct += (torch.argmax(outputs, -1) == targets).sum().item()
 
             # Log
             current_batch_size = len(pred)
@@ -612,10 +530,10 @@ class Appr(object):
 
             if t_targets_all is None:
                 t_targets_all = targets.detach().numpy()
-                t_outputs_all = output.detach().numpy()
+                t_outputs_all = outputs.detach().numpy()
             else:
                 t_targets_all =  np.concatenate((t_targets_all, targets.detach().numpy()), axis=0)
-                t_outputs_all =  np.concatenate((t_outputs_all, output.detach().numpy()), axis=0)
+                t_outputs_all =  np.concatenate((t_outputs_all, outputs.detach().numpy()), axis=0)
 
         #OJOOOO DEBEMOS REVISAR LAS LABELS [0,1,2] Deben corresponder a como las pone la implementacion
         ##### FALTA LA ETIQUETA PARA CUANDO NO ES ASPECTO
