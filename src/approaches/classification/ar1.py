@@ -341,6 +341,7 @@ class Appr(object):
 
 
             dataset_size = len(train_data_loader.dataset)
+
             print('| Epoch {:3d}, time={:5.1f}ms/{:5.1f}ms | Train-Val: loss={:.3f}, acc={:5.1f}, f1={:5.1f}, cohen_kappa={:5.1f}%|'.format(e + 1,
                                                                                                         1000 * self.sbatch * (
                                                                                                             clock1 - clock0) / dataset_size,

@@ -47,6 +47,7 @@ class Net(torch.nn.Module):
         # """
         return
 
+
     def forward(self,t,x,s=1):
         if self.model != None:
            bert_output = None
