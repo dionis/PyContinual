@@ -530,11 +530,11 @@ class Appr(object):
             total_num += current_batch_size
 
             if t_targets_all is None:
-                t_targets_all = targets.detach().numpy()
-                t_outputs_all = outputs.detach().numpy()
+                t_targets_all = targets.data.cpu().numpy()
+                t_outputs_all = outputs.data.cpu().numpy()
             else:
-                t_targets_all =  np.concatenate((t_targets_all, targets.detach().numpy()), axis=0)
-                t_outputs_all =  np.concatenate((t_outputs_all, outputs.detach().numpy()), axis=0)
+                t_targets_all =  np.concatenate((t_targets_all, targets.data.cpu().numpy()), axis=0)
+                t_outputs_all =  np.concatenate((t_outputs_all, outputs.data.cpu().numpy()), axis=0)
 
         #OJOOOO DEBEMOS REVISAR LAS LABELS [0,1,2] Deben corresponder a como las pone la implementacion
         ##### FALTA LA ETIQUETA PARA CUANDO NO ES ASPECTO
