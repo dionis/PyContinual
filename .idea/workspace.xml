@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add new">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Fix last error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/approaches/classification/ar1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/ar1.py" afterDir="false" />
     </list>
@@ -380,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652489409076</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Fix last error">
+      <created>1652489893194</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1652489893194</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -431,9 +438,9 @@
     <MESSAGE value="Fix some valid ann test evaluation" />
     <MESSAGE value="Variation options" />
     <MESSAGE value="Add data new" />
-    <MESSAGE value="Fix last error" />
     <MESSAGE value="Add new" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new" />
+    <MESSAGE value="Fix last error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix last error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

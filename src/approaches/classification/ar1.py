@@ -611,8 +611,8 @@ class Appr(object):
         #return t_outputs_all , total_loss / total_num, total_acc / total_num, recall, f1
         return pred
 ###-------------------------------------------------------------------------------------------------------------
-    def eval(self, test_data_loader,test,trained_task):
-        return self.eval_withregsi(trained_task, test_data_loader)
+    def eval(self,t,data,test=None,trained_task=None):
+        return self.eval_withregsi(t, data)
 
     def criterion(self,t,output,targets):
         # Regularization for all previous tasks
