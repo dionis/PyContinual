@@ -728,3 +728,8 @@ class Appr(object):
 
 
         return  (t_targest_all, train_loss, train_acc, train_recall, train_f1)
+
+
+    def set_validation_domain(self, current_domain, validation_domain):
+      self.current_domain = current_domain
+      self.validation_domain = validation_domain
