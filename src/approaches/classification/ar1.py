@@ -612,7 +612,10 @@ class Appr(object):
         return pred
 ###-------------------------------------------------------------------------------------------------------------
     def eval(self,t,data,test=None,trained_task=None):
-        return self.eval_withregsi(t, data)
+        valid_loss, valid_acc, valid_recall, valid_f1, valid_cohen_kappa = self.eval_withregsi(t, data)
+
+        #Fix output for CLASSIC code evaluation
+        return (valid_loss, valid_acc, valid_f1)
 
     def criterion(self,t,output,targets):
         # Regularization for all previous tasks
