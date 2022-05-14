@@ -41,6 +41,7 @@ class Appr(object):
         self.logger = logger
         self.taskcla = taskcla
         self.tokenizer = tokenizer
+        self.aux_model = None
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

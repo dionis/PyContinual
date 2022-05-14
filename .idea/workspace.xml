@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Variation options">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add data new">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/approaches/classification/ar1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/ar1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,7 +345,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652481466712</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Add data new">
+      <created>1652485654828</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1652485654828</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add data new">
+      <created>1652487510070</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1652487510070</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -372,7 +387,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Put in gitignore src/dat and src/data directories" />
     <MESSAGE value="Updated Phd's algorithm in model and networks directories" />
     <MESSAGE value="Include phd_HPC_PyContinualExecution_official.sl for executing in HPC with Slurm configurations" />
     <MESSAGE value="Delted Transformer request in local file" />
@@ -397,7 +411,8 @@
     <MESSAGE value="Add and work" />
     <MESSAGE value="Fix some valid ann test evaluation" />
     <MESSAGE value="Variation options" />
-    <option name="LAST_COMMIT_MESSAGE" value="Variation options" />
+    <MESSAGE value="Add data new" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add data new" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -464,22 +479,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>449</line>
+          <line>450</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>315</line>
+          <line>316</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>303</line>
+          <line>304</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>635</line>
+          <line>636</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -489,27 +504,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>519</line>
+          <line>520</line>
           <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>589</line>
+          <line>590</line>
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>330</line>
+          <line>331</line>
           <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>337</line>
+          <line>338</line>
           <option name="timeStamp" value="106" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>358</line>
+          <line>359</line>
           <option name="timeStamp" value="107" />
         </line-breakpoint>
       </breakpoints>
