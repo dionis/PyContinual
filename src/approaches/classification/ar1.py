@@ -329,15 +329,9 @@ class Appr(object):
             self.train_epochesi(t, iter_bar)
 
             clock1 = time.time()
-            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa = self.eval(t, train)
-            clock2 = time.time()
-            # print('time: ',float((clock1-clock0)*10*25))
-
-
-
             #print("2")
             train_loss, train_acc, train_recall, train_f1, train_cohen_kappa = self.eval_withregsi(t,train )
-
+            clock2 = time.time()
             #print("3")
 
 
@@ -617,8 +611,8 @@ class Appr(object):
         #return t_outputs_all , total_loss / total_num, total_acc / total_num, recall, f1
         return pred
 ###-------------------------------------------------------------------------------------------------------------
-    def eval(self, t, test_data_loader):
-        return self.eval_withregsi(t, test_data_loader)
+    def eval(self, test_data_loader,test,trained_task):
+        return self.eval_withregsi(trained_task, test_data_loader)
 
     def criterion(self,t,output,targets):
         # Regularization for all previous tasks
