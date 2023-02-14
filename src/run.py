@@ -212,7 +212,7 @@ for t,ncla, domain in taskcla:
             #
             #   View ______ IMPORTANT ______
             #
-            appr.train(task,train_dataloader,valid_dataloader,num_train_steps,train,valid)
+            appr.train(task,train_dataloader,valid_dataloader,num_train_steps,train,valid_dataloader)
 
     print('-'*100)
 

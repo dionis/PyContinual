@@ -45,6 +45,7 @@ class Appr(object):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         self.model=model
+        self.aux_model = self.model
         self.opt = args
         self.nepochs=nepochs
         self.train_batch_size = self.sbatch=sbatch
@@ -325,7 +326,7 @@ class Appr(object):
             self.train_epochesi(t, iter_bar)
 
             clock1 = time.time()
-            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa = self.eval(t, train)
+            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa = self.evalEx(t, train)
             clock2 = time.time()
             # print('time: ',float((clock1-clock0)*10*25))
 
@@ -689,7 +690,10 @@ class Appr(object):
         #return t_outputs_all , total_loss / total_num, total_acc / total_num, recall, f1
         return pred
 ###-------------------------------------------------------------------------------------------------------------
-    def eval(self, t, test_data_loader):
+    def eval(self, t, test_data_loader,test=None,trained_task=None):
+        test_loss, test_acc, recall, f1, cohen_kappa = self.eval_withregsi(t, test_data_loader)
+        return (test_loss, test_acc, f1)
+    def evalEx(self, t, test_data_loader,test=None,trained_task=None):
         return self.eval_withregsi(t, test_data_loader)
 
     def criterion(self,t,output,targets):
@@ -800,3 +804,9 @@ class Appr(object):
 
 
         return  (t_targest_all, train_loss, train_acc, train_recall, train_f1)
+
+
+
+    def set_validation_domain ( self, current_domain, validation_domain):
+          self.current_domain = current_domain
+          self.validation_domain = validation_domain
