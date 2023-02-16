@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Add ablation (approach/nostrategy.py) algorithm.">
-      <change beforePath="$PROJECT_DIR$/src/approaches/classification/nostrategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/nostrategy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_capsule_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_capsule_mask.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,14 +159,8 @@
       <workItem from="1676539610966" duration="7969000" />
       <workItem from="1676547761308" duration="534000" />
       <workItem from="1676551888035" duration="3293000" />
-      <workItem from="1676555872369" duration="1796000" />
-    </task>
-    <task id="LOCAL-00004" summary="Updated Phd's algorithm in model and networks directories">
-      <created>1644763611590</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1644763611590</updated>
+      <workItem from="1676555872369" duration="2252000" />
+      <workItem from="1676566833876" duration="350000" />
     </task>
     <task id="LOCAL-00005" summary="Include phd_HPC_PyContinualExecution_official.sl for executing in HPC with Slurm configurations">
       <created>1644764106916</created>
@@ -503,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676557511712</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Add ablation (approach/nostrategy.py) algorithm.">
+      <created>1676557674674</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1676557674674</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
