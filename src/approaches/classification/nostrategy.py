@@ -310,7 +310,7 @@ class Appr(object):
             clock1 = time.time()
 
             #print("2")
-            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, preccision = self.eval_withregsi(t,train )
+            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, precision = self.eval_withregsi(t,train )
 
             #print("3")
             clock2 = time.time()
@@ -330,7 +330,7 @@ class Appr(object):
 
             # Valid
             #print("4")
-            valid_loss, valid_acc , valid_recall, valid_f1, valid_cohen_kappa= self.eval_withregsi(t, test_data_loader)
+            valid_loss, valid_acc , valid_recall, valid_f1, valid_cohen_kappa, precision = self.eval_withregsi(t, test_data_loader)
 
             print(' Test: loss={:.3f}, acc={:5.1f}, f1={:5.1f}, cohen_kappa={:5.1f}%|'.format(valid_loss, 100 * valid_acc,100*valid_f1, 100*valid_cohen_kappa), end='')
 
