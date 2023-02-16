@@ -25,6 +25,7 @@ class Appr(object):
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model=model
+        self.aux_model = self.model
         self.opt = args
         self.nepochs=nepochs
         self.sbatch=sbatch
