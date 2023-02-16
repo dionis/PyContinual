@@ -18,7 +18,6 @@ from my_optimization import BertAdam
 
 class Appr(object):
     
-
     def __init__(self,model,logger,taskcla, tokenizer = None,nepochs=100,sbatch=64,lr=0.05,lr_min=1e-4,lr_factor=3,lr_patience=5,clipgrad=10000,lamb=0.75,smax=400,args=None):
         self.logger = logger
         self.taskcla = taskcla
