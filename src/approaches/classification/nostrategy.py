@@ -552,7 +552,8 @@ class Appr(object):
 
             # Forward
             startDateTime = datetime.now()
-            outputs,_ = self.model.forward(task, inputs)
+            #outputs,_ = self.model.forward(task, inputs)
+            outputs, _ = self.model.forward(task, (input_ids, segment_ids, targets))
             #print('Eval DataTime', datetime.now() - startDateTime)
             #print ("Eval forward")
             self.getMemoryRam()
