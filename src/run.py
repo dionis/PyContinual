@@ -12,6 +12,15 @@ import random
 from preparation import *
 import pandas as pd
 
+# USING SPANISH ROBERTA
+# Bibliografy:
+#   https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne
+# from transformers import AutoTokenizer, AutoModelForMaskedLM
+#
+# tokenizer = AutoTokenizer.from_pretrained("PlanTL-GOB-ES/roberta-base-bne")
+#
+# model = AutoModelForMaskedLM.from_pretrained("PlanTL-GOB-ES/roberta-base-bne")
+
 import torch.nn as nn
 import pickle
 # os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
