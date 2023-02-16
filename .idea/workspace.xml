@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Integration de LLA's Phd algorithm to the CLASSIC code.">
+    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Add ablation (approach/nostrategy.py) algorithm.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,23 +45,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/RESEARCH/PhD/ACTUALIZACION_CIENTIFICA/DEFENSA_DOCTORADO_2023/OPONENCIA/OPONENCIA/BERT-E2E-ABSA",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/RESEARCH/PhD/ACTUALIZACION_CIENTIFICA/DEFENSA_DOCTORADO_2023/OPONENCIA/OPONENCIA/BERT-E2E-ABSA&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual" />
@@ -154,6 +154,7 @@
       <workItem from="1676368793369" duration="5007000" />
       <workItem from="1676398538008" duration="2060000" />
       <workItem from="1676431087575" duration="343000" />
+      <workItem from="1676508891988" duration="617000" />
     </task>
     <task id="LOCAL-00001" summary="Do">
       <created>1644763086154</created>
@@ -442,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676402507575</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Add ablation (approach/nostrategy.py) algorithm.">
+      <created>1676508972433</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1676508972433</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +499,8 @@
     <MESSAGE value="Add action to load." />
     <MESSAGE value="Integration de LLA's Phd algorithm to de CLASSIC code." />
     <MESSAGE value="Integration de LLA's Phd algorithm to the CLASSIC code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Integration de LLA's Phd algorithm to the CLASSIC code." />
+    <MESSAGE value="Add ablation (approach/nostrategy.py) algorithm." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ablation (approach/nostrategy.py) algorithm." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
