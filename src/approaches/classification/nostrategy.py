@@ -575,7 +575,7 @@ class Appr(object):
                 # t_targets_all = targets.detach().numpy()
                 # t_outputs_all = output.detach().numpy()
                 t_targets_all = targets.data.cpu().numpy()
-                t_outputs_all = outputs.data.cpu().numpy()
+                t_outputs_all = output.data.cpu().numpy()
             else:
                 t_targets_all =  np.concatenate((t_targets_all, targets.detach().numpy()), axis=0)
                 t_outputs_all =  np.concatenate((t_outputs_all, output.detach().numpy()), axis=0)
