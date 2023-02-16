@@ -114,7 +114,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/run.py" />
-      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline ablation_phd --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --num_train_epochs 1 --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution" />
+      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline b-cl --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --num_train_epochs 1 --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -160,14 +160,7 @@
       <workItem from="1676547761308" duration="534000" />
       <workItem from="1676551888035" duration="3293000" />
       <workItem from="1676555872369" duration="2252000" />
-      <workItem from="1676566833876" duration="350000" />
-    </task>
-    <task id="LOCAL-00005" summary="Include phd_HPC_PyContinualExecution_official.sl for executing in HPC with Slurm configurations">
-      <created>1644764106916</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1644764106916</updated>
+      <workItem from="1676566833876" duration="1367000" />
     </task>
     <task id="LOCAL-00006" summary="Delted Transformer request in local file">
       <created>1645745840313</created>
@@ -505,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676557674674</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Add ablation (approach/nostrategy.py) algorithm.">
+      <created>1676567191080</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1676567191080</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -795,10 +795,15 @@
           <line>622</line>
           <option name="timeStamp" value="144" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_capsule_mask.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1676544156519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1676567964251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

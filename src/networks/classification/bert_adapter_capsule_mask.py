@@ -65,7 +65,7 @@ class Net(torch.nn.Module):
 
         self.taskcla=taskcla
         self.last=torch.nn.ModuleList()
-        for t,n in self.taskcla:
+        for t,n,name in self.taskcla:
             self.last.append(torch.nn.Linear(args.bert_hidden_size,n))
         self.dropout = nn.Dropout(args.hidden_dropout_prob)
 
