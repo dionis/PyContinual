@@ -16,16 +16,28 @@ class Net(torch.nn.Module):
 
         #ncha,size,_=inputsize
         self.taskcla=taskcla
-        #config = BertConfig.from_pretrained(args.bert_model, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
-        config = BertConfig.from_pretrained(args.bert_model)
+
+        if args.local_execution:
+            config = BertConfig.from_pretrained(args.bert_model,
+                                              cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,
+                                              local_files_only = True
+                                              )
+        else:
+            config = BertConfig.from_pretrained(args.bert_model)
 
         config.return_dict = False
         self.args = args
         self.args.taskcla = len(self.taskcla)
         #Model atributte to assoaciated to BERT pre-trained
-        #self.model =  BERT_SPC(BertModel.from_pretrained(args.bert_model,config=config, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True), self.args)
-
-        self.model = BERT_SPC(BertModel.from_pretrained(args.bert_model,config=config), self.args)
+        if args.local_execution:
+            self.model =  BERT_SPC(BertModel.from_pretrained(args.bert_model,
+                                                             config = config,
+                                                             cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,
+                                                             local_files_only = True),
+                                     self.args
+                                   )
+        else:
+            self.model = BERT_SPC(BertModel.from_pretrained(args.bert_model,config=config), self.args)
 
         self.last = self.model.last
 

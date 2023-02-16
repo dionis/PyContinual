@@ -1,3 +1,4 @@
+
 import sys,time,os
 import numpy as np
 import torch
@@ -8,14 +9,22 @@ import psutil
 import re
 from sklearn import metrics
 from torch.autograd import Variable
+from tqdm import tqdm, trange
 
+sys.path.append("./approaches/base/")
+from my_optimization import BertAdam
 
 ########################################################################################################################
 
 class Appr(object):
     
 
-    def __init__(self,model,nepochs=100,sbatch=64,lr=0.05,lr_min=1e-4,lr_factor=3,lr_patience=5,clipgrad=10000,lamb=0.75,smax=400,args=None):
+    def __init__(self,model,logger,taskcla, tokenizer = None,nepochs=100,sbatch=64,lr=0.05,lr_min=1e-4,lr_factor=3,lr_patience=5,clipgrad=10000,lamb=0.75,smax=400,args=None):
+        self.logger = logger
+        self.taskcla = taskcla
+        self.tokenizer = tokenizer
+
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model=model
         self.opt = args
         self.nepochs=nepochs
@@ -33,7 +42,7 @@ class Appr(object):
         self.smax=smax
         self.logpath = None
         self.single_task = False
-        self.logpath = args.parameter
+        #self.logpath = args.parameter
         self.LAYER = 0   #Only use the last output layer in first domain
 
         # Synaptic Implementatio development
@@ -93,24 +102,24 @@ class Appr(object):
         self.clear_tmp_outputlayer()
         self.current_task = -1
 
-        if len(args.parameter)>=1:
-            params=args.parameter.split(',')
-            print('Setting parameters to',params)
-            if len(params)>1:
-                if utils.is_number(params[0]):
-                    self.lamb=float(params[0])
-                else:
-                    self.logpath = params[0]
-                if utils.is_number(params[1]):
-                    self.smax=float(params[1])
-                else:
-                    self.logpath = params[1]
-                if len(params)>2 and not utils.is_number(params[2]):
-                    self.logpath = params[2]
-                if len(params)>3 and utils.is_number(params[3]):
-                    self.single_task = int(params[3])
-            else:
-                self.logpath = args.parameter
+        # if len(args.parameter)>=1:
+        #     params=args.parameter.split(',')
+        #     print('Setting parameters to',params)
+        #     if len(params)>1:
+        #         if utils.is_number(params[0]):
+        #             self.lamb=float(params[0])
+        #         else:
+        #             self.logpath = params[0]
+        #         if utils.is_number(params[1]):
+        #             self.smax=float(params[1])
+        #         else:
+        #             self.logpath = params[1]
+        #         if len(params)>2 and not utils.is_number(params[2]):
+        #             self.logpath = params[2]
+        #         if len(params)>3 and utils.is_number(params[3]):
+        #             self.single_task = int(params[3])
+        #     else:
+        #         self.logpath = args.parameter
 
         if self.logpath is not None:
             self.logs={}
@@ -141,18 +150,81 @@ class Appr(object):
     def _set_optimizer(self, _new_optimize):
         if _new_optimize != None: self.optimizer = _new_optimize
 
+    # def _get_optimizer(self,lr=None):
+    #     if lr is None: lr=self.lr
+    #
+    #     print("!!!!New optmization!!!!!")
+    #     # if self.optimizer != None:
+    #     #     print("--------Optmization---------")
+    #     #     return self.optimizer
+    #
+    #     #return torch.optim.SGD(self.tensorVariables, lr=lr)
+    #     #return torch.optim.SGD(self.model.parameters(),lr=lr)
+    #     return self.opt.optimizer(self.model.parameters(), lr=self.opt.learning_rate, weight_decay=self.opt.l2reg)
     def _get_optimizer(self,lr=None):
-        if lr is None: lr=self.lr
+            if lr is None: lr=self.lr
 
-        print("!!!!New optmization!!!!!")
+            print("!!!!New optmization!!!!!")
         # if self.optimizer != None:
         #     print("--------Optmization---------")
         #     return self.optimizer
 
         #return torch.optim.SGD(self.tensorVariables, lr=lr)
         #return torch.optim.SGD(self.model.parameters(),lr=lr)
-        return self.opt.optimizer(self.model.parameters(), lr=self.opt.learning_rate, weight_decay=self.opt.l2reg)
 
+            #if self.opt.optimizer == None:
+            #self.criterion = torch.nn.CrossEntropyLoss()
+            _params = filter(lambda p: p.requires_grad, self.model.parameters())
+
+            # It is a way to obtain variables for using in optimizer and not finned tuning Bert model
+            # modelVariables = [(name,var) for i, (name, var) in enumerate(self.model.named_parameters())if name.find("bert") == -1]
+            #
+            # for name, var in modelVariables:
+            #  print ("Variable ==> " + name)
+
+            #-----------------------------------------------------------------
+            #
+            # A Study with different optimizer (Analizing the optimizer features)
+            # can be useful in model optimization
+            #
+            #-------------------------------------------------------------------
+
+            # optimizers = {
+            #     'adadelta': torch.optim.Adadelta,  # default lr=1.0
+            #     'adagrad': torch.optim.Adagrad,  # default lr=0.01
+            #     'adam': torch.optim.Adam,  # default lr=0.001
+            #     'adamax': torch.optim.Adamax,  # default lr=0.002
+            #     'asgd': torch.optim.ASGD,  # default lr=0.01
+            #     'rmsprop': torch.optim.RMSprop,  # default lr=0.01
+            #     'sgd': torch.optim.SGD,
+            #     'adamw': torch.optim.AdamW,  # default lr=0.001
+            #
+            #     'nadam': nnt.NAdam
+            #     # class neuralnet_pytorch.optim.NAdam(params, lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, decay=<function NAdam.<lambda>>)
+            #
+            # }
+
+            #From original code
+            # parser.add_argument('--l2reg', default=0.01, type=float)
+            if hasattr(self.opt,'l2reg') == False:
+                self.opt.l2reg = 0.01 #Experimental with default values
+
+            if self.opt.optimizer == "adam":
+               self.opt.optimizer =  torch.optim.Adam(_params, lr=self.opt.learning_rate, weight_decay=self.opt.l2reg)
+            elif self.opt.optimizer == "adamw":
+                self.opt.optimizer = torch.optim.AdamW(_params,
+                              lr=self.opt.learning_rate,
+                              eps=1e-6
+                              )
+            elif self.opt.optimizer == "bertadam" or self.opt.optimizer == None or self.opt.optimizer == "" :
+                self.opt.optimizer = BertAdam(_params,
+                                 lr=self.opt.learning_rate,
+                                 warmup=self.opt.warmup_proportion,
+                                 t_total=self.opt.num_train_epochs)
+            else:
+                self.opt.optimizer = torch.optim.Adam(_params, lr=self.opt.learning_rate, weight_decay=self.opt.l2reg)
+
+            return self.opt.optimizer
     def update_big_omega(self, list_variables, previous_weights_mu_minus_1, small_omega_var):
         big_omega_var = {}
         for i, (name, var) in enumerate(list_variables):
@@ -170,8 +242,8 @@ class Appr(object):
         ###
         ### Inicial todos los pesos a 0 segun algoritmo del paper
         ###
-        self.model.tm = torch.nn.Linear( self.opt.polarities_dim, self.opt.polarities_dim)
-
+        #self.model.tm = torch.nn.Linear( self.opt.polarities_dim, self.opt.polarities_dim)
+        self.model.tm = torch.nn.Linear( self.opt.nclasses, self.opt.nclasses)
         #Initialice 0 because reset_parametes input other standar initialization
 
         neuronsize = self.model.tm.weight.shape[0]
@@ -185,7 +257,9 @@ class Appr(object):
 
         return
 
-    def train(self, t, train_data_loader, test_data_loader, val_data_loader):
+    def train(self, t, train, valid, num_train_steps, train_data_loader, test_data_loader):
+    #def train(self, t, train_data_loader, test_data_loader, val_data_loader):
+        val_data_loader = valid
         best_loss=np.inf
         #best_model=utils.get_model(self.model)
         lr=self.lr
@@ -231,12 +305,13 @@ class Appr(object):
             print(self.optimizer)
             print("----------------------")
             #print("1")
-            self.train_epochesi(t, train_data_loader)
+            iter_bar = tqdm(train, desc='Train Iter (loss=X.XXX)')
+            self.train_epochesi(t, iter_bar)
 
             clock1 = time.time()
 
             #print("2")
-            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa = self.eval_withregsi(t,val_data_loader )
+            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, preccision = self.eval_withregsi(t,train )
 
             #print("3")
             clock2 = time.time()
@@ -329,12 +404,14 @@ class Appr(object):
             clock0=time.time()
             self.train_epoch(t,xtrain,ytrain)
             clock1=time.time()
-            train_loss,train_acc=self.eval(t,xtrain,ytrain)
+            train_loss,train_acc, train_recall, train_f1, train_cohen_kappa, preccision =\
+                self.evalEx(t,xtrain,ytrain)
             clock2=time.time()
             print('| Epoch {:3d}, time={:5.1f}ms/{:5.1f}ms | Train: loss={:.3f}, acc={:5.1f}% |'.format(
                 e+1,1000*self.sbatch*(clock1-clock0)/xtrain.size(0),1000*self.sbatch*(clock2-clock1)/xtrain.size(0),train_loss,100*train_acc),end='')
             # Valid
-            valid_loss,valid_acc=self.eval(t,xvalid,yvalid)
+            valid_loss,valid_acc, train_recall, train_f1, train_cohen_kappa, preccision =\
+               self.evalEx(t,xvalid,yvalid)
             print(' Valid: loss={:.3f}, acc={:5.1f}% |'.format(valid_loss,100*valid_acc),end='')
             # Adapt lr
             if valid_loss<best_loss:
@@ -396,9 +473,14 @@ class Appr(object):
         for i_batch, sample_batched in enumerate(train_data_loader):
             global_step += 1
             #print("Batch size: " + str (sample_batched.__len__()))
-            inputs = [sample_batched[col].to(self.opt.device) for col in self.opt.inputs_cols]
+            #inputs = [sample_batched[col].to(self.opt.device) for col in self.opt.inputs_cols]
             # outputs = self.model(inputs)
-            targets = sample_batched['polarity'].to(self.opt.device)
+
+            batch = [
+                bat.to(self.device) if bat is not None else None for bat in sample_batched]
+            input_ids, segment_ids, input_mask, targets, _ = batch
+
+            #targets = sample_batched['polarity'].to(self.opt.device)
 
 
             task = torch.autograd.Variable(torch.LongTensor([t]).cuda(), volatile=False, requires_grad=False) \
@@ -408,7 +490,7 @@ class Appr(object):
 
             # Forward current model
             startDateTime = datetime.now()
-            outputs,_=self.model.forward( task, inputs)
+            outputs,_=self.model.forward( task, (input_ids,segment_ids,targets))
            # print('Train DataTime', datetime.now() - startDateTime)
            # print("Train forward")
             self.getMemoryRam()
@@ -570,7 +652,12 @@ class Appr(object):
                               average='macro')
         return t_outputs_all , total_loss / total_num, total_acc / total_num, recall, f1
 ###-------------------------------------------------------------------------------------------------------------
-    def eval(self, t, test_data_loader):
+    # def eval(self, t, test_data_loader):
+    #     return self.eval_withregsi(t, test_data_loader)
+    def eval(self, t, test_data_loader,test=None,trained_task=None):
+        test_loss, test_acc, recall, f1, cohen_kappa, preccision = self.eval_withregsi(t, test_data_loader)
+        return (test_loss, test_acc, f1)
+    def evalEx(self, t, test_data_loader,test=None,trained_task=None):
         return self.eval_withregsi(t, test_data_loader)
 
     def criterion(self,t,output,targets):

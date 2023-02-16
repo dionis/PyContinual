@@ -204,6 +204,11 @@ def asc_config(parser):
 
     parser.add_argument('--log_step', default=5, type=int)
 
+    parser.add_argument('--local_execution',
+                        action='store_true',
+                        help='Use Transformer directory path for huggingface pre-model load'
+                        )
+
     return parser
 
 def train_config(parser):
