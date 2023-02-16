@@ -25,8 +25,9 @@ from my_optimization import BertAdam
 
 class Appr(ApprBase):
 
-    def __init__(self,model,logger,taskcla, args=None):
+    def __init__(self,model,logger,taskcla, args=None, tokenizer = None):
         super().__init__(model=model,logger=logger,taskcla=taskcla,args=args)
+        self.tokenizer = tokenizer
         print('BERT ADAPTER CAPSULE MASK NCL')
 
         return
