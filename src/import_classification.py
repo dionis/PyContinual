@@ -250,6 +250,9 @@ if args.task in language_dataset:
         elif args.baseline == 'ar1':   # My Phd work in Classic contexts
             from approaches.classification import ar1 as approach
             from networks.base import phdBert as network
+        elif args.baseline == 'ablation_phd': # My Phd work in Classic contexts with ablation
+            from approaches.classification import nostrategy as approach
+            from networks.base import phdBert as network
         elif args.baseline == 'mtl':
             from approaches.classification import bert_mtl as approach
             from networks.classification import bert_adapter as network
