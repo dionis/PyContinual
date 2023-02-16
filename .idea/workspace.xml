@@ -159,7 +159,7 @@
       <workItem from="1676539610966" duration="7969000" />
       <workItem from="1676547761308" duration="534000" />
       <workItem from="1676551888035" duration="3293000" />
-      <workItem from="1676555872369" duration="420000" />
+      <workItem from="1676555872369" duration="1001000" />
     </task>
     <task id="LOCAL-00001" summary="Do">
       <created>1644763086154</created>
@@ -497,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676555132895</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Add ablation (approach/nostrategy.py) algorithm.">
+      <created>1676556296892</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1676556296892</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

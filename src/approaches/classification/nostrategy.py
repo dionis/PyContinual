@@ -586,14 +586,14 @@ class Appr(object):
         f1 = metrics.f1_score(t_targets_all, np.argmax(t_outputs_all, -1), labels=[0, 1, 2], average='macro')
         recall = metrics.recall_score(t_targets_all, np.argmax(t_outputs_all, -1), labels=[0, 1, 2],
                               average='macro')
+        precision = metrics.precision_score(t_targets_all, np.argmax(t_outputs_all, -1), average='macro')
 
         #Reference https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html
         #          https://scikit-learn.org/stable/modules/model_evaluation.html#cohen-kappa
 
-
         cohen_kappa = metrics.cohen_kappa_score(t_targets_all,np.argmax(t_outputs_all, -1))
 
-        return total_loss / total_num, total_acc / total_num, recall, f1, cohen_kappa
+        return total_loss / total_num, total_acc / total_num, recall, f1, cohen_kappa, precision
 
     ##
     #   Clasify Aspect in Sentence/ Production method
