@@ -89,7 +89,7 @@ class Net(torch.nn.Module):
 
         pooled_output = self.dropout(pooled_output)
         y=[]
-        for t,i in self.taskcla:
+        for t,i, name in self.taskcla:
             y.append(self.last[t](pooled_output))
 
         masks = self.mask(t,s)
