@@ -538,9 +538,13 @@ class Appr(object):
         for i_batch, sample_batched in enumerate(val_data_loader):
             # clear gradient accumulators
 
-            inputs = [sample_batched[col].to(self.opt.device) for col in self.opt.inputs_cols]
+            #inputs = [sample_batched[col].to(self.opt.device) for col in self.opt.inputs_cols]
             # outputs = self.model(inputs)
-            targets = sample_batched['polarity'].to(self.opt.device)
+            #targets = sample_batched['polarity'].to(self.opt.device)
+
+            batch = [
+                bat.to(self.device) if bat is not None else None for bat in sample_batched]
+            input_ids, segment_ids, input_mask, targets, _ = batch
 
             task = torch.autograd.Variable(torch.LongTensor([t]).cuda(), volatile=False, requires_grad=False) \
                 if torch.cuda.is_available() \
