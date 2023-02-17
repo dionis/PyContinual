@@ -326,7 +326,7 @@ class Appr(object):
             self.train_epochesi(t, iter_bar)
 
             clock1 = time.time()
-            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, preccision = \
+            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, train_recall, train_precision = \
                 self.evalEx(t, train)
             clock2 = time.time()
             # print('time: ',float((clock1-clock0)*10*25))
@@ -345,7 +345,7 @@ class Appr(object):
                   end='')
 
             #print("2")
-            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, preccision = \
+            train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, precision = \
                 self.eval_withregsi(t,valid )
 
             #print("3")
@@ -366,7 +366,7 @@ class Appr(object):
 
             # Valid
             #print("4")
-            valid_loss, valid_acc , valid_recall, valid_f1, valid_cohen_kappa, preccision = \
+            valid_loss, valid_acc , valid_recall, valid_f1, valid_cohen_kappa, valid_recall, valid_precision, = \
                 self.eval_withregsi(t, test_data_loader)
 
             print(' Test: loss={:.3f}, acc={:5.1f}, f1={:5.1f}, cohen_kappa={:5.1f}%|'.format(valid_loss, 100 * valid_acc,100*valid_f1, 100*valid_cohen_kappa), end='')
@@ -628,7 +628,23 @@ class Appr(object):
 
         cohen_kappa = metrics.cohen_kappa_score(t_targets_all,np.argmax(t_outputs_all, -1))
 
-        return total_loss / total_num, total_acc / total_num, recall, f1, cohen_kappa, precision
+        #####################################################################
+        ##Save bad classified parameter
+        ## Domain << Sentences - aspect - bad polarity != good polarity >>
+        ##
+        print('SAVE bad classification on ', self.opt.output + self.opt.experiment )
+        print(' Domain ', t)
+        ###################################################################
+        #How to get tokens to words in BERT tokenizer
+        # Bibliografy
+        #  https://stackoverflow.com/questions/71552716/how-to-get-tokens-to-words-in-bert-tokenizer
+        #  https://huggingface.co/docs/transformers/main_classes/tokenizer
+
+        print (' Sentences ', self.tokenizer.convert_ids_to_tokens(input_ids[0], skip_special_tokens=True))
+        #t (Domain)
+        #########################################################################
+
+        return total_loss / total_num, total_acc / total_num, recall, f1, cohen_kappa, recall, precision
 
     ##
     #   Clasify Aspect in Sentence/ Production method
@@ -694,9 +710,12 @@ class Appr(object):
         #return t_outputs_all , total_loss / total_num, total_acc / total_num, recall, f1
         return pred
 ###-------------------------------------------------------------------------------------------------------------
+    # def eval(self, t, test_data_loader,test=None,trained_task=None):
+    #     test_loss, test_acc, recall, f1, cohen_kappa, preccision = self.eval_withregsi(t, test_data_loader)
+    #     return (test_loss, test_acc, f1)
     def eval(self, t, test_data_loader,test=None,trained_task=None):
-        test_loss, test_acc, recall, f1, cohen_kappa, preccision = self.eval_withregsi(t, test_data_loader)
-        return (test_loss, test_acc, f1)
+        return self.evalEx(self, t, test_data_loader,test=None,trained_task=None)
+
     def evalEx(self, t, test_data_loader,test=None,trained_task=None):
         return self.eval_withregsi(t, test_data_loader)
 

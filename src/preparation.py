@@ -40,6 +40,10 @@ performance_output_forward=args.output+'_forward_performance'
 f1_macro_output=args.output+'_f1_macro'
 f1_macro_output_forward=args.output+'_forward_f1_macro'
 
+recall_macro_output_forward = args.output+'_forward_recall_macro'
+precision_macro_output_forward = args.output+'_forward_precision_macro'
+kappa_macro_output_forward = args.output+'_forward_kappa_macro'
+
 precision_avg_output=args.output+'_precision_avg'
 precision_avg_output_forward=args.output+'_forward_precision_avg'
 recall_avg_output=args.output+'_recall_avg'
@@ -55,6 +59,10 @@ performance_d_f1=args.output+'_performance_d_f1'
 acc=np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
 lss=np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
 f1_macro=np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
+
+precision_macro = np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
+recall_macro = np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
+kappa_macro = np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
 
 precision_avg=np.zeros((args.ntasks,args.ntasks),dtype=np.float32)
 recall_avg=np.zeros((args.ntasks,args.ntasks),dtype=np.float32)

@@ -185,7 +185,7 @@ for t,ncla, domain in taskcla:
                 args.num_train_epochs=args.bingdomains_num_train_epochs #30
                 num_train_steps*=args.bingdomains_num_train_epochs_multiplier # every task got refresh, *3
         else:
-            print ("Common Hyperparamerters defined !!!!!")
+            print ("!!!!! Common Hyper parameters defined !!!!!")
 
     if args.multi_gpu and args.distributed:
         valid_sampler = DistributedSampler(valid) #TODO: DitributedSequentailSampler
@@ -304,17 +304,18 @@ for t,ncla, domain in taskcla:
         if args.task in classification_tasks: #classification task
 
             if 'kan' in args.baseline:
-                test_loss,test_acc,test_f1_macro=appr.eval(u,test_dataloader,test,which_type='mcl',trained_task=t)
+                test_loss,test_acc,test_f1_macro = appr.eval(u,test_dataloader,test,which_type='mcl',trained_task=t)
                 logger.info('>>> Test on task {:2d} - {:15s}: loss={:.3f}, acc={:5.1f}% <<<'.format(u,data[u]['name'],test_loss,100*test_acc))
             elif 'cat' in args.baseline:
                 valid=data[u]['valid']
                 valid_sampler = SequentialSampler(valid)
-                valid_dataloader = DataLoader(valid, sampler=valid_sampler, batch_size=args.eval_batch_size,pin_memory=True)
-                test_loss,test_acc,test_f1_macro=appr.eval(u,test_dataloader,valid_dataloader,trained_task=t,phase='mcl')
+                valid_dataloader = DataLoader(valid, sampler = valid_sampler, batch_size=args.eval_batch_size,pin_memory=True)
+                test_loss,test_acc,test_f1_macro = appr.eval(u,test_dataloader,valid_dataloader,trained_task=t,phase='mcl')
                 logger.info('>>> Test on task {:2d} - {:15s}: loss={:.3f}, acc={:5.1f}% <<<'.format(u,data[u]['name'],test_loss,100*test_acc))
 
             else:
-                test_loss,test_acc,test_f1_macro=appr.eval(u,test_dataloader,test,trained_task=t)
+                test_loss,test_acc,test_f1_macro, test_kappa_macro, test_recall_macro, test_precision_macro = \
+                    appr.eval(u,test_dataloader,test,trained_task=t)
                 logger.info('>>> Test on task {:2d} - {:15s}: loss={:.3f}, acc={:5.1f}% <<<'.format(u,data[u]['name'],test_loss,100*test_acc))
 
 
@@ -323,12 +324,20 @@ for t,ncla, domain in taskcla:
             acc[t,u]=test_acc
             lss[t,u]=test_loss
             f1_macro[t,u]=test_f1_macro
+            if test_recall_macro != None:
+                recall_macro[t,u] = test_recall_macro
+            if test_precision_macro != None:
+                precision_macro[t, u] = test_precision_macro
+            if test_kappa_macro != None:
+                kappa_macro[t, u] = test_kappa_macro
 
             # Save
             print('Save at '+args.output)
-            np.savetxt(args.output + args.experiment+ '_progressive.acc',acc,'%.4f',delimiter='\t')
-            np.savetxt(args.output + args.experiment+ '_progressive.f1_macro',f1_macro,'%.4f',delimiter='\t')
-
+            np.savetxt(args.output + args.experiment + '_progressive.acc',acc,'%.4f',delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive.f1_macro',f1_macro,'%.4f',delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive.recall_macro', f1_macro, '%.4f', delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive.precision_macro', f1_macro, '%.4f', delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive.kappa_macro', f1_macro, '%.4f', delimiter='\t')
             # Done
             print('*'*100)
             print('Accuracies =')
@@ -348,6 +357,17 @@ for t,ncla, domain in taskcla:
                     print('{:5.1f}% '.format(100 * f1_macro[i, j]), end='')
                 print()
             print('*' * 100)
+
+            if test_recall_macro != None:
+                print('Recall-Macros =')
+                for i in range(recall_macro.shape[0]):
+                    print('\t', end='')
+                    for j in range(recall_macro.shape[1]):
+                        print('{:5.1f}% '.format(100 * recall_macro[i, j]), end='')
+                    print()
+                print('*' * 100)
+
+
             print('Done!')
 
             print('[Elapsed time = {:.1f} h]'.format((time.time()-tstart)/(60*60)))
@@ -370,6 +390,39 @@ for t,ncla, domain in taskcla:
                     for j in range(acc.shape[1]):
                         file.writelines(str(acc[j][j]) + '\n')
                         f1_file.writelines(str(f1_macro[j][j]) + '\n')
+
+            if test_recall_macro != None:
+                with open(recall_macro_output_forward, 'w') as recall_file:
+
+                    if args.baseline == 'one':
+                        for j in range(recall_macro.shape[1]):
+                            recall_file.writelines(str(recall_macro[j][j]) + '\n')
+                    else:
+                        for j in range(recall_macro.shape[1]):
+                            recall_file.writelines(str(recall_macro[-1][j]) + '\n')
+
+            if test_precision_macro != None:
+                with open(precision_macro_output_forward, 'w') as precision_file:
+
+                    if args.baseline == 'one':
+                        for j in range(precision_macro.shape[1]):
+                            precision_file.writelines(str(precision_macro[j][j]) + '\n')
+                    else:
+                        for j in range(precision_macro.shape[1]):
+                            precision_file.writelines(str(precision_macro[-1][j]) + '\n')
+
+            if test_kappa_macro != None:
+
+                with open(kappa_macro_output_forward, 'w') as kappa_file:
+                    if args.baseline == 'one':
+                        for j in range(kappa_macro.shape[1]):
+                            kappa_file.writelines(str(kappa_macro[j][j]) + '\n')
+                    else:
+                        for j in range(kappa_macro.shape[1]):
+                            kappa_file.writelines(str(kappa_macro[-1][j]) + '\n')
+
+
+
 
 
 ########################################################################################################################
