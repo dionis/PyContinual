@@ -61,7 +61,7 @@ class Appr(ApprBase):
             global_step=self.train_epoch(t,train,iter_bar, optimizer,t_total,global_step)
             clock1=time.time()
 
-            train_loss,train_acc,train_f1_macro=self.eval(t,train)
+            train_loss,train_acc,train_f1_macro,_,_,_ = self.eval(t,train)
             clock2=time.time()
             self.logger.info('| Epoch {:3d}, time={:5.1f}ms/{:5.1f}ms | Train: loss={:.3f}, acc={:5.1f}% |'.format(e+1,
                 1000*self.train_batch_size*(clock1-clock0)/len(train),1000*self.train_batch_size*(clock2-clock1)/len(train),train_loss,100*train_acc))
@@ -69,7 +69,7 @@ class Appr(ApprBase):
             #     1000*self.train_batch_size*(clock1-clock0)/len(train),1000*self.train_batch_size*(clock2-clock1)/len(train),train_loss,100*train_acc),end='')
 
 
-            valid_loss,valid_acc,valid_f1_macro=self.eval(t,valid)
+            valid_loss,valid_acc,valid_f1_macro,_,_,_ = self.eval(t,valid)
             self.logger.info(' Valid: loss={:.3f}, acc={:5.1f}% |'.format(valid_loss,100*valid_acc))
             # print(' Valid: loss={:.3f}, acc={:5.1f}% |'.format(valid_loss,100*valid_acc),end='')
 
