@@ -16,4 +16,4 @@ filelock==3.3.2
 importlib-metadata==4.8.1
 huggingface-hub==0.1.1
 psutil>=5.4.8
-torch==1.13.1
+torch==1.11.0a0+17540c5
