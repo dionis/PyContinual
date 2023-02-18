@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Add ablation (approach/nostrategy.py) algorithm.">
+    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Add precision, recall and kappa measure on train / evaluation process and put show bad classication files with text.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/approaches/base/bert_adapter_mask_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/base/bert_adapter_mask_base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/approaches/classification/ar1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/ar1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preparation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preparation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_capsule_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_capsule_mask.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,9 +106,6 @@
       <module name="PyContinual" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -116,7 +113,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/run.py" />
-      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline ar1 --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --num_train_epochs 1 --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution" />
+      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline b-cl --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --num_train_epochs 1 --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -166,14 +163,8 @@
       <workItem from="1676596854827" duration="223000" />
       <workItem from="1676599025330" duration="679000" />
       <workItem from="1676634523788" duration="1202000" />
-      <workItem from="1676638474468" duration="6639000" />
-    </task>
-    <task id="LOCAL-00009" summary="Add new dataset and domain Tripadvisor for our PhD test">
-      <created>1646169432445</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1646169432446</updated>
+      <workItem from="1676638474468" duration="6922000" />
+      <workItem from="1676677721589" duration="4999000" />
     </task>
     <task id="LOCAL-00010" summary="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained">
       <created>1646220969344</created>
@@ -511,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676569573515</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Add precision, recall and kappa measure on train / evaluation process and put show bad classication files with text.">
+      <created>1676645507171</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1676645507171</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,7 +559,8 @@
     <MESSAGE value="Integration de LLA's Phd algorithm to de CLASSIC code." />
     <MESSAGE value="Integration de LLA's Phd algorithm to the CLASSIC code." />
     <MESSAGE value="Add ablation (approach/nostrategy.py) algorithm." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ablation (approach/nostrategy.py) algorithm." />
+    <MESSAGE value="Add precision, recall and kappa measure on train / evaluation process and put show bad classication files with text." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add precision, recall and kappa measure on train / evaluation process and put show bad classication files with text." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -643,12 +642,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>555</line>
+          <line>558</line>
           <option name="timeStamp" value="120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>591</line>
+          <line>594</line>
           <option name="timeStamp" value="121" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -683,7 +682,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>347</line>
+          <line>349</line>
           <option name="timeStamp" value="128" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -733,17 +732,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>328</line>
+          <line>329</line>
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>646</line>
+          <line>651</line>
           <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>368</line>
+          <line>371</line>
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -758,7 +757,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>622</line>
+          <line>625</line>
           <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -778,28 +777,48 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>581</line>
+          <line>584</line>
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>619</line>
+          <line>622</line>
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>634</line>
+          <line>639</line>
           <option name="timeStamp" value="150" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
-          <line>642</line>
+          <line>647</line>
           <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_capsule_mask.py</url>
+          <line>127</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_capsule_mask.py</url>
+          <line>181</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_capsule_mask.py</url>
+          <line>204</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/approaches/base/bert_adapter_mask_base.py</url>
+          <line>296</line>
+          <option name="timeStamp" value="155" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1676645185152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1676682344847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

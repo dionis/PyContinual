@@ -308,3 +308,34 @@ class Appr(object):
         y_true = y_true.cpu().numpy()
         y_pred = y_pred.cpu().numpy()
         return accuracy_score(y_true, y_pred)
+
+    def recall_compute_fn(self,y_true, y_pred, nlabels = [0, 1, 2], average = 'macro'):
+        try:
+            from sklearn.metrics import recall_score
+        except ImportError:
+            raise RuntimeError("This contrib module requires sklearn to be installed.")
+
+        y_true = y_true.cpu().numpy()
+        y_pred = y_pred.cpu().numpy()
+        return recall_score(y_true,y_pred, labels = nlabels, average = average)
+
+    def precision_compute_fn(self, y_true, y_pred,  average):
+        try:
+            from sklearn.metrics import precision_score
+        except ImportError:
+            raise RuntimeError("This contrib module requires sklearn to be installed.")
+
+        y_true = y_true.cpu().numpy()
+        y_pred = y_pred.cpu().numpy()
+        return precision_score(y_true, y_pred, average = average)
+
+    def kappa_compute_fn(self, y_true, y_pred):
+        try:
+            from sklearn.metrics import cohen_kappa_score
+        except ImportError:
+            raise RuntimeError("This contrib module requires sklearn to be installed.")
+
+        y_true = y_true.cpu().numpy()
+        y_pred = y_pred.cpu().numpy()
+        return cohen_kappa_score(y_true, y_pred)
+

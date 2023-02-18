@@ -120,7 +120,9 @@ class Appr(ApprBase):
             # Forward
             masks = output_dict['masks']
             if 'dil' in self.args.scenario:
-                output=output_dict['y']
+                #output=output_dict['y']
+                outputs = output_dict['y']
+                output = outputs[t]
             elif 'til' in self.args.scenario:
                 outputs=output_dict['y']
                 output = outputs[t]
@@ -180,7 +182,9 @@ class Appr(ApprBase):
                 output_dict = self.model.forward(t,input_ids, segment_ids, input_mask,targets,s=self.smax)
                 masks = output_dict['masks']
                 if 'dil' in self.args.scenario:
-                    output=output_dict['y']
+                    #output=output_dict['y']
+                    outputs = output_dict['y']
+                    output = outputs[t]
                 elif 'til' in self.args.scenario:
                     outputs=output_dict['y']
                     output = outputs[t]
@@ -198,9 +202,20 @@ class Appr(ApprBase):
                 total_acc+=hits.sum().data.cpu().numpy().item()
                 total_num+=real_b
 
-            f1=self.f1_compute_fn(y_pred=torch.cat(pred_list,0),y_true=torch.cat(target_list,0),average='macro')
+            f1 = self.f1_compute_fn(y_pred=torch.cat(pred_list,0),y_true=torch.cat(target_list,0),average='macro')
 
+            recall = self.recall_compute_fn(y_pred=torch.cat(pred_list,0), y_true=torch.cat(target_list,0), nlabels=[0, 1, 2],
+                                          average='macro')
+            precision = self.precision_compute_fn(y_pred=torch.cat(pred_list,0), y_true=torch.cat(target_list,0), average='macro')
+
+            # Reference https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html
+            #          https://scikit-learn.org/stable/modules/model_evaluation.html#cohen-kappa
+
+            cohen_kappa = self.kappa_compute_fn(y_pred=torch.cat(pred_list,0), y_true=torch.cat(target_list,0))
                 # break
 
-        return total_loss/total_num,total_acc/total_num,f1
+        return total_loss/total_num,total_acc/total_num,f1,cohen_kappa,recall,precision
 
+    def set_validation_domain ( self, current_domain, validation_domain):
+          self.current_domain = current_domain
+          self.validation_domain = validation_domain

@@ -326,6 +326,7 @@ class Appr(object):
             self.train_epochesi(t, iter_bar)
 
             clock1 = time.time()
+            self.inner_training = False
             train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, train_recall, train_precision = \
                 self.evalEx(t, train)
             clock2 = time.time()
@@ -345,6 +346,7 @@ class Appr(object):
                   end='')
 
             #print("2")
+            self.inner_training = False
             train_loss, train_acc, train_recall, train_f1, train_cohen_kappa, precision = \
                 self.eval_withregsi(t,valid )
 
@@ -366,6 +368,7 @@ class Appr(object):
 
             # Valid
             #print("4")
+            self.inner_training = False
             valid_loss, valid_acc , valid_recall, valid_f1, valid_cohen_kappa, valid_recall, valid_precision, = \
                 self.eval_withregsi(t, test_data_loader)
 
@@ -632,17 +635,19 @@ class Appr(object):
         ##Save bad classified parameter
         ## Domain << Sentences - aspect - bad polarity != good polarity >>
         ##
-        print('SAVE bad classification on ', self.opt.output + self.opt.experiment )
-        print(' Domain ', t)
-        ###################################################################
-        #How to get tokens to words in BERT tokenizer
-        # Bibliografy
-        #  https://stackoverflow.com/questions/71552716/how-to-get-tokens-to-words-in-bert-tokenizer
-        #  https://huggingface.co/docs/transformers/main_classes/tokenizer
-
-        print (' Sentences ', self.tokenizer.convert_ids_to_tokens(input_ids[0], skip_special_tokens=True))
-        #t (Domain)
-        #########################################################################
+        if self.inner_training == True:
+            #
+            print('SAVE bad classification on ', self.opt.output + self.opt.experiment )
+            print(' Domain ', t)
+            ###################################################################
+            #How to get tokens to words in BERT tokenizer
+            # Bibliografy
+            #  https://stackoverflow.com/questions/71552716/how-to-get-tokens-to-words-in-bert-tokenizer
+            #  https://huggingface.co/docs/transformers/main_classes/tokenizer
+            ### REMENBER ONLY IN EXTERNAL SHOW CLASSIFYIN PROCESS
+            print (' Sentences ', self.tokenizer.convert_ids_to_tokens(input_ids[0], skip_special_tokens=True))
+            #t (Domain)
+            #########################################################################
 
         return total_loss / total_num, total_acc / total_num, recall, f1, cohen_kappa, recall, precision
 
