@@ -26,7 +26,7 @@ if not args.multi_gpu: torch.autograd.set_detect_anomaly(True)
 # ----------------------------------------------------------------------
 
 if args.output=='':
-    args.output='./res/'+args.scenario+'/'+args.task+'/'+args.backbone+'_'+args.baseline+'_'+str(args.note)+'.txt'
+    args.output='./res/'+args.scenario+'/'+args.task+'/'+args.backbone+'_'+args.baseline+'_'+str(args.note)
 
 model_path = './models/'+args.scenario+'/'+args.task+'/'
 res_path = './res/'+args.scenario+'/'+args.task+'/'

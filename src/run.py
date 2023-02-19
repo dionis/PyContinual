@@ -367,6 +367,25 @@ for t,ncla, domain in taskcla:
                     print()
                 print('*' * 100)
 
+            if test_precision_macro != None:
+                print('Precision-Macros =')
+                for i in range(precision_macro.shape[0]):
+                    print('\t', end='')
+                    for j in range(precision_macro.shape[1]):
+                        print('{:5.1f}% '.format(100 * precision_macro[i, j]), end='')
+                    print()
+                print('*' * 100)
+
+            if test_kappa_macro != None:
+                print('Kappa-Macros =')
+                for i in range(kappa_macro.shape[0]):
+                    print('\t', end='')
+                    for j in range(kappa_macro.shape[1]):
+                        print('{:5.1f}% '.format(100 * kappa_macro[i, j]), end='')
+                    print()
+                print('*' * 100)
+
+
 
             print('Done!')
 
