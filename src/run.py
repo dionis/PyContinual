@@ -61,7 +61,7 @@ else:
 
 print('\nTask info =',taskcla)
 #Save as output file the task training and evaluating order
-pd.DataFrame(taskcla)[2].to_csv(args.output + args.experiment + '_order_process.csv', header=False)
+pd.DataFrame(taskcla)[2].to_csv(args.output + args.experiment + '_order_process', header=False)
 #
 # Inits
 print('Inits...')
@@ -333,11 +333,11 @@ for t,ncla, domain in taskcla:
 
             # Save
             print('Save at '+args.output)
-            np.savetxt(args.output + args.experiment + '_progressive.acc',acc,'%.4f',delimiter='\t')
-            np.savetxt(args.output + args.experiment + '_progressive.f1_macro',f1_macro,'%.4f',delimiter='\t')
-            np.savetxt(args.output + args.experiment + '_progressive.recall_macro', f1_macro, '%.4f', delimiter='\t')
-            np.savetxt(args.output + args.experiment + '_progressive.precision_macro', f1_macro, '%.4f', delimiter='\t')
-            np.savetxt(args.output + args.experiment + '_progressive.kappa_macro', f1_macro, '%.4f', delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive_acc',acc,'%.4f',delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive_f1_macro',f1_macro,'%.4f',delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive_recall_macro', recall_macro, '%.4f', delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive_precision_macro', precision_macro, '%.4f', delimiter='\t')
+            np.savetxt(args.output + args.experiment + '_progressive_kappa_macro', kappa_macro, '%.4f', delimiter='\t')
             # Done
             print('*'*100)
             print('Accuracies =')
