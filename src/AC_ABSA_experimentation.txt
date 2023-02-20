@@ -1,0 +1,50 @@
+--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --num_train_epochs 1 --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution
+
+
+
+## Linea de ejecucion para los experimentos del Phd (Dataset)
+
+python3 -u run.py --ntasks 8 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders asc_experiment_phd --use_predefine_args
+
+asc_experiment_phd
+
+  TripAdvisor XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_NikonCoolpix4300 Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB XuSemEval14_rest
+  XuSemEval14_rest XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_NikonCoolpix4300 Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB TripAdvisor
+  XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_NikonCoolpix4300 Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB TripAdvisor XuSemEval14_rest
+  XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_NikonCoolpix4300 Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB XuSemEval14_rest TripAdvisor
+  TripAdvisor XuSemEval14_rest XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_NikonCoolpix4300 Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB
+  XuSemEval14_rest TripAdvisor XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_NikonCoolpix4300 Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB
+  
+asc_wexperiment_phd
+  TripAdvisor XuSemEval14_laptop Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB XuSemEval14_rest
+  XuSemEval14_rest XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB TripAdvisor
+  XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB TripAdvisor XuSemEval14_rest
+  XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB XuSemEval14_rest TripAdvisor
+  TripAdvisor XuSemEval14_rest XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB
+  XuSemEval14_rest TripAdvisor XuSemEval14_laptop	Bing5domains_Nokia6610 Bing5domains_ApexAD2600Progressive Bing5domains_CanonG3  Bing5domains_CreativeLabsNomadJukeboxZenXtra40GB
+  
+  
+test_dataset_execution 
+  FewItemsDomains_CanonG3 FewItemsDomains_Nokia6610 FewItemsTripAdvisor
+  FewItemsTripAdvisor FewItemsDomains_CanonG3 FewItemsDomains_Nokia6610
+  FewItemsDomains_CanonG3 FewItemsTripAdvisor FewItemsDomains_Nokia6610
+  
+  
+ #Execution order to ctr
+   ## Article  Achieving Forgetting Prevention and Knowledge Transfer in Continual Learning
+   python3 -u run.py --ntasks 8 --bert_model bert-base-uncased --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 62 --num_train_epochs 10 --scenario dil_classification --idrandom 0 --dataloaders asc_experiment_phd --use_predefine_args
+
+	  #Test execution time 
+	    11:25 am 19/2/2022 - 
+ #Execution order to b-cl
+   ## Adapting BERT for Continual Learning of a Sequence of Aspect Sentiment Classification Tasks
+   python3 -u run.py --ntasks 8 --bert_model bert-base-uncased --backbone bert_adapter --baseline b-cl --task asc --eval_batch_size 128 --train_batch_size 62 --num_train_epochs 10 --scenario dil_classification --idrandom 0 --dataloaders asc_experiment_phd --use_predefine_args
+
+     #Test execution time Paperspace
+	 
+	 
+Error on Paperspace: 
+  CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+	    1 
+   
+--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 62 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution --num_train_epochs 1 
