@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Some modification on algorithm/model BERT ADAPTER CAPSULE MASK NCL.">
-      <change afterPath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_lwf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/networks/classification/cnn_lwf.py" afterDir="false" />
+    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Modified the oupt algoritm execution.">
+      <change afterPath="$PROJECT_DIR$/src/_phd_HPC_CTR_ONLY_EXECUTION_allmultidomain_mod.sl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/approaches/classification/cnn_lwf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preparation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preparation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/approaches/classification/ar1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/ar1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/classification/cnn_lwf.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/cnn_lwf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/RESEARCH/PhD/SOURCE/PyContinual/src/networks/classification",
+    "last_opened_file_path": "D:/RESEARCH/PhD/SOURCE/PyContinual/src",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -67,11 +67,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\networks\classification" />
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src" />
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\approaches\classification" />
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\networks\classification" />
       <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual" />
       <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data_prep" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\TripAdvisor\ae" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\requeriment_files" />
@@ -118,7 +118,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/run.py" />
-      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --num_train_epochs 1 --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution" />
+      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution --num_train_epochs 1" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -172,35 +172,11 @@
       <workItem from="1676677721589" duration="5916000" />
       <workItem from="1676717578759" duration="4161000" />
       <workItem from="1676772188232" duration="6818000" />
-      <workItem from="1676799091217" duration="7364000" />
-    </task>
-    <task id="LOCAL-00014" summary="Add new script to execute">
-      <created>1646738400384</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1646738400384</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Delete the trasformer load path references">
-      <created>1646739052132</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1646739052132</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Add conda activate environament in slurm script">
-      <created>1646739861410</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1646739861410</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Update data for save bad classification files">
-      <created>1649002880012</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1649002880012</updated>
+      <workItem from="1676799091217" duration="9425000" />
+      <workItem from="1676830734879" duration="2599000" />
+      <workItem from="1676835792746" duration="770000" />
+      <workItem from="1676847320323" duration="5522000" />
+      <workItem from="1676861273260" duration="507000" />
     </task>
     <task id="LOCAL-00018" summary="Add experiment name parameter to difference in output result files.">
       <created>1649761680956</created>
@@ -517,7 +493,35 @@
       <option name="project" value="LOCAL" />
       <updated>1676719437653</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Modified the oupt algoritm execution.">
+      <created>1676822179611</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1676822179611</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Modified the oupt algoritm execution.">
+      <created>1676831056097</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1676831056097</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Modified the oupt algoritm execution.">
+      <created>1676831739924</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1676831739924</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Modified the oupt algoritm execution.">
+      <created>1676835964385</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1676835964385</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +573,8 @@
     <MESSAGE value="Add ablation (approach/nostrategy.py) algorithm." />
     <MESSAGE value="Add precision, recall and kappa measure on train / evaluation process and put show bad classication files with text." />
     <MESSAGE value="Some modification on algorithm/model BERT ADAPTER CAPSULE MASK NCL." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some modification on algorithm/model BERT ADAPTER CAPSULE MASK NCL." />
+    <MESSAGE value="Modified the oupt algoritm execution." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified the oupt algoritm execution." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -828,10 +833,15 @@
           <url>file://$PROJECT_DIR$/src/approaches/classification/lwfNLP.py</url>
           <option name="timeStamp" value="156" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="158" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1676682344847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1676858531406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

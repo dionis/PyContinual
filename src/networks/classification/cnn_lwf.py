@@ -39,7 +39,7 @@ class Net(torch.nn.Module):
 
         elif 'til' in args.scenario:
             self.last=torch.nn.ModuleList()
-            for t,n in self.taskcla:
+            for t,n,_ in self.taskcla:
                 self.last.append(torch.nn.Linear(1000,n))
 
         #My implementation about
@@ -129,7 +129,7 @@ class Net(torch.nn.Module):
             y = self.last(h)
         elif 'til' in self.args.scenario:
             y=[]
-            for t,i in self.taskcla:
+            for t,i,_ in self.taskcla:
                 y.append(self.last[t](h))
 
         output_dict['y'] = y

@@ -313,7 +313,7 @@ class Appr(object):
         ##
         self.optimizer = self._get_optimizer(lr)
         # Loop epochs
-        for e in range(self.nepochs):
+        for e in range(int(self.args.num_train_epochs)):
             # Train
             clock0 = time.time()
 
