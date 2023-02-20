@@ -1,9 +1,12 @@
 #!/bin/bash 
 #SBATCH --job-name=MODULE_b-cl
-#SBATCH --partition=gpu
+##SBATCH --exclusive=user
+##SBATCH --partition=public
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:m10:1
-#SBATCH --cpus-per-task=1
+#SBATCH --ntasks=1
+#SBATCH --array=0-3
+#SBATCH --cpus-per-task=4
+##SBATCH --mem=30G
 #SBATCH --time=unlimited
 #SBATCH --mail-user=dionis@uo.edu.cu
 #SBATCH --mail-type=END
