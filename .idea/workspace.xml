@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Modified the oupt algoritm execution.">
-      <change afterPath="$PROJECT_DIR$/src/_phd_HPC_CTR_ONLY_EXECUTION_allmultidomain_mod.sl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/approaches/classification/cnn_lwf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/approaches/classification/ar1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/ar1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/classification/cnn_lwf.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/cnn_lwf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_phd_HPC_B-CL_ONLY_EXECUTION_allmultidomain_mod.sl" beforeDir="false" afterPath="$PROJECT_DIR$/src/_phd_HPC_B-CL_ONLY_EXECUTION_allmultidomain_mod.sl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_phd_HPC_CTR_ONLY_EXECUTION_allmultidomain_mod.sl" beforeDir="false" afterPath="$PROJECT_DIR$/src/_phd_HPC_CTR_ONLY_EXECUTION_allmultidomain_mod.sl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,21 +174,7 @@
       <workItem from="1676830734879" duration="2599000" />
       <workItem from="1676835792746" duration="770000" />
       <workItem from="1676847320323" duration="5522000" />
-      <workItem from="1676861273260" duration="850000" />
-    </task>
-    <task id="LOCAL-00019" summary="Change parameters in scripts for bash and slurm execution">
-      <created>1649764699555</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1649764699555</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Add action to load.">
-      <created>1649775827507</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1649775827507</updated>
+      <workItem from="1676861273260" duration="1460000" />
     </task>
     <task id="LOCAL-00021" summary="Integration de LLA's Phd algorithm to de CLASSIC code.">
       <created>1676289873997</created>
@@ -521,7 +505,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676862120260</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Modified the oupt algoritm execution.">
+      <created>1676862150843</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1676862150843</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Modified the oupt algoritm execution.">
+      <created>1676862398491</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1676862398491</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

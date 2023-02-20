@@ -4,7 +4,6 @@
 ##SBATCH --partition=public
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --array=0-3
 #SBATCH --cpus-per-task=4
 ##SBATCH --mem=30G
 #SBATCH --time=unlimited
