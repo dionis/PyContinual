@@ -176,14 +176,7 @@
       <workItem from="1676830734879" duration="2599000" />
       <workItem from="1676835792746" duration="770000" />
       <workItem from="1676847320323" duration="5522000" />
-      <workItem from="1676861273260" duration="507000" />
-    </task>
-    <task id="LOCAL-00018" summary="Add experiment name parameter to difference in output result files.">
-      <created>1649761680956</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1649761680956</updated>
+      <workItem from="1676861273260" duration="850000" />
     </task>
     <task id="LOCAL-00019" summary="Change parameters in scripts for bash and slurm execution">
       <created>1649764699555</created>
@@ -521,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676835964385</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Modified the oupt algoritm execution.">
+      <created>1676862120260</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1676862120260</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
