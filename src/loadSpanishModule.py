@@ -1,5 +1,13 @@
 ###---------------------------------------------------------------
 ### https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne
+### How to Classifier learning
+###  https://paperswithcode.com/paper/roberta-a-robustly-optimized-bert-pretraining#code
+##   https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/pytorch_fairseq_roberta.ipynb
+###
+#############################################################
+##  About ROBERTa structure
+##
+##   https://paperswithcode.com/paper/roberta-a-robustly-optimized-bert-pretraining#code
 ###----------------------------------------------------------------
 
 from transformers import pipeline
