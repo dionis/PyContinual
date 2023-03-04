@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Modified the oupt algoritm execution.">
+      <change afterPath="$PROJECT_DIR$/src/loadSpanishModule.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_phd_HPC_B-CL_ONLY_EXECUTION_allmultidomain_mod.sl" beforeDir="false" afterPath="$PROJECT_DIR$/src/_phd_HPC_B-CL_ONLY_EXECUTION_allmultidomain_mod.sl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_phd_HPC_CTR_ONLY_EXECUTION_allmultidomain_mod.sl" beforeDir="false" afterPath="$PROJECT_DIR$/src/_phd_HPC_CTR_ONLY_EXECUTION_allmultidomain_mod.sl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="phd_oponente_answer" />
+        <entry key="$PROJECT_DIR$" value="develop_wgpu" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,23 +45,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/RESEARCH/PhD/SOURCE/PyContinual/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/RESEARCH/PhD/SOURCE/PyContinual/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src" />
@@ -79,7 +78,7 @@
       <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data\absa" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.loadSpanishModule">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="PyContinual" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -94,6 +93,25 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="loadSpanishModule" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyContinual" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\Dionis\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/loadSpanishModule.py" />
       <option name="PARAMETERS" value="run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -126,7 +144,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run" />
+        <item itemvalue="Python.loadSpanishModule" />
         <item itemvalue="Python.run" />
         <item itemvalue="Python.run" />
         <item itemvalue="Python.run" />
@@ -174,21 +192,9 @@
       <workItem from="1676830734879" duration="2599000" />
       <workItem from="1676835792746" duration="770000" />
       <workItem from="1676847320323" duration="5522000" />
-      <workItem from="1676861273260" duration="1460000" />
-    </task>
-    <task id="LOCAL-00021" summary="Integration de LLA's Phd algorithm to de CLASSIC code.">
-      <created>1676289873997</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1676289873998</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Integration de LLA's Phd algorithm to de CLASSIC code.">
-      <created>1676290032453</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1676290032453</updated>
+      <workItem from="1676861273260" duration="1919000" />
+      <workItem from="1676882668033" duration="8000" />
+      <workItem from="1677937046296" duration="3295000" />
     </task>
     <task id="LOCAL-00023" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
       <created>1676290529376</created>
@@ -519,7 +525,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676862398491</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Modified the oupt algoritm execution.">
+      <created>1676862844337</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1676862844337</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Modified the oupt algoritm execution.">
+      <created>1676862882299</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1676862882299</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
