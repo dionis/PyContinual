@@ -208,7 +208,6 @@ def asc_config(parser):
                         action='store_true',
                         help='Use Transformer directory path for huggingface pre-model load'
                         )
-
     return parser
 
 def train_config(parser):

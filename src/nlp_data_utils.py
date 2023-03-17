@@ -30,22 +30,19 @@ transformer_args = set_args()
 
 
 class ABSATokenizer(BertTokenizer):
-    def subword_tokenize(self, tokens, labels): # for AE
-        split_tokens, split_labels= [], []
-        idx_map=[]
+    def subword_tokenize(self, tokens, labels):  # for AE
+        split_tokens, split_labels = [], []
+        idx_map = []
         for ix, token in enumerate(tokens):
-            sub_tokens=self.wordpiece_tokenizer.tokenize(token)
+            sub_tokens = self.wordpiece_tokenizer.tokenize(token)
             for jx, sub_token in enumerate(sub_tokens):
                 split_tokens.append(sub_token)
-                if labels[ix]=="B" and jx>0:
+                if labels[ix] == "B" and jx > 0:
                     split_labels.append("I")
                 else:
                     split_labels.append(labels[ix])
                 idx_map.append(ix)
         return split_tokens, split_labels, idx_map
-
-
-
 
 
 class InputExample(object):
@@ -73,35 +70,35 @@ class InputFeatures(object):
     """A single set of features of data."""
 
     def __init__(self,
-                    input_ids=None,
-                    input_mask=None,
-                    segment_ids=None,
+                 input_ids=None,
+                 input_mask=None,
+                 segment_ids=None,
 
-                    tokens_term_ids=None,
-                    tokens_sentence_ids=None,
+                 tokens_term_ids=None,
+                 tokens_sentence_ids=None,
 
-                    term_input_ids=None,
-                    term_input_mask=None,
-                    term_segment_ids=None,
+                 term_input_ids=None,
+                 term_input_mask=None,
+                 term_segment_ids=None,
 
-                    sentence_input_ids=None,
-                    sentence_input_mask=None,
-                    sentence_segment_ids=None,
+                 sentence_input_ids=None,
+                 sentence_input_mask=None,
+                 sentence_segment_ids=None,
 
-                    tokens_term_sentence_ids=None,
-                    label_id=None,
+                 tokens_term_sentence_ids=None,
+                 label_id=None,
 
-                    masked_lm_labels = None,
-                    masked_pos = None,
-                    masked_weights = None,
+                 masked_lm_labels=None,
+                 masked_pos=None,
+                 masked_weights=None,
 
-                    position_ids=None,
+                 position_ids=None,
 
-                    valid_ids=None,
-                    label_mask=None,
-                    example_id=None
+                 valid_ids=None,
+                 label_mask=None,
+                 example_id=None
 
-                    ):
+                 ):
         self.input_ids = input_ids
         self.input_mask = input_mask
         self.segment_ids = segment_ids
@@ -123,7 +120,7 @@ class InputFeatures(object):
         self.sentence_input_mask = sentence_input_mask
         self.sentence_segment_ids = sentence_segment_ids
 
-        self.tokens_term_sentence_ids= tokens_term_sentence_ids
+        self.tokens_term_sentence_ids = tokens_term_sentence_ids
 
         self.position_ids = position_ids
 
@@ -131,7 +128,6 @@ class InputFeatures(object):
         self.label_mask = label_mask
 
         self.example_id = example_id
-
 
 
 class DataProcessor(object):
@@ -159,6 +155,11 @@ class DataProcessor(object):
         with open(input_file) as f:
             return json.load(f)
 
+    def _read_json_encoding(cls, input_file, _encoding='utf-8'):
+        """Reads a json file for tasks in sentiment analysis."""
+        with open(input_file, encoding=_encoding) as f:
+            return json.load(f)
+
     @classmethod
     def _read_tsv(cls, input_file, quotechar=None):
         """Reads a tab separated value file."""
@@ -169,9 +170,9 @@ class DataProcessor(object):
         import codecs
         types_of_encoding = ["utf8", "cp1252"]
         """Reads a json file for tasks in sentiment analysis."""
-        label_map = {'1':'+', '-1':'-', '0':'neutral'}
+        label_map = {'1': '+', '-1': '-', '0': 'neutral'}
         all_data = dict()
-        with open(input_file, encoding ="cp1252", errors ='replace') as f:
+        with open(input_file, encoding="cp1252", errors='replace') as f:
             lines = f.readlines()
             counter = 0
             for i in range(0, len(lines), 3):
@@ -188,22 +189,22 @@ class DataProcessor(object):
         return all_data
 
 
-
 class DtcProcessor(DataProcessor):
     """Processor for document text classification."""
 
-    def get_labels(self,ntasks):
+    def get_labels(self, ntasks):
         return [t for t in range(ntasks)]
 
-    def _create_examples(self,lines,set_type):
+    def _create_examples(self, lines, set_type):
         examples = []
-        for i,(sentence,label) in enumerate(lines):
+        for i, (sentence, label) in enumerate(lines):
             guid = "%s-%s" % (set_type, i)
-            text_a = sentence #no need to split for us
+            text_a = sentence  # no need to split for us
             text_b = None
             label = label
-            examples.append(InputExample(guid=guid,text_a=text_a,text_b=text_b,label=label))
+            examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
         return examples
+
 
 class DscProcessor(DataProcessor):
     """Processor for document text classification."""
@@ -224,14 +225,13 @@ class DscProcessor(DataProcessor):
             self._read_json(os.path.join(data_dir, fn)), "test")
 
     def get_labels(self):
-        return ['-1','1']
-
+        return ['-1', '1']
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
         examples = []
         for (i, ids) in enumerate(lines):
-            guid = "%s-%s" % (set_type, ids )
+            guid = "%s-%s" % (set_type, ids)
             text_a = lines[ids]['sentence']
             text_b = None
             label = lines[ids]['polarity']
@@ -240,12 +240,12 @@ class DscProcessor(DataProcessor):
         return examples
 
 
-
 class AscProcessor(DataProcessor):
     """Processor for the SemEval Aspect Sentiment Classification."""
 
     def __init__(self, arg):
-         self.arg = arg
+        self.arg = arg
+
     def get_train_examples(self, data_dir, fn="train.json"):
         """See base class."""
         return self._create_examples(
@@ -255,6 +255,11 @@ class AscProcessor(DataProcessor):
         """See base class."""
         return self._create_examples(
             self._read_raw(os.path.join(data_dir, fn)), "train")
+
+    def get_train_examples_encoding(self, data_dir, fn="train.json"):
+        """See base class."""
+        return self._create_examples(
+            self._read_json_encoding(os.path.join(data_dir, fn)), "train")
 
     def get_dev_examples(self, data_dir, fn="dev.json"):
         """See base class."""
@@ -266,6 +271,11 @@ class AscProcessor(DataProcessor):
         return self._create_examples(
             self._read_raw(os.path.join(data_dir, fn)), "dev")
 
+    def get_dev_examples_encoding(self, data_dir, fn="dev.json"):
+        """See base class."""
+        return self._create_examples(
+            self._read_json_encoding(os.path.join(data_dir, fn)), "dev")
+
     def get_test_examples(self, data_dir, fn="test.json"):
         """See base class."""
         return self._create_examples(
@@ -276,15 +286,34 @@ class AscProcessor(DataProcessor):
         return self._create_examples(
             self._read_raw(os.path.join(data_dir, fn)), "test")
 
+    def get_test_examples_encoding(self, data_dir, fn="test.json"):
+        """See base class."""
+        return self._create_examples(
+            self._read_json_encoding(os.path.join(data_dir, fn)), "test")
+
     def get_labels(self):
         """See base class."""
         return ["positive", "negative", "neutral"]
+
+    def get_labels(self, domain=''):
+        """See base class."""
+        if 'RestMext' in domain:
+            # Bibliografy:
+            # https://sites.google.com/cimat.mx/rest-mex2023/tracks/sentiment-analysis-task
+            #
+            #
+            # Each opinion's class is an integer between [1, 5],
+            #   where 1 represents the most negative polarity
+            #   and 5 the most positive. Also, each opinion has the type label.
+            return ["more-positive", "positive", "more-negative", "negative", "neutral"]
+        else:
+            return ["positive", "negative", "neutral"]
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
         examples = []
         for (i, ids) in enumerate(lines):
-            guid = "%s-%s" % (set_type, ids )
+            guid = "%s-%s" % (set_type, ids)
             text_a = text_b = label = None
             if self.arg != None and self.arg.invert_token == True:
                 text_a = lines[ids]['sentence']
@@ -297,8 +326,33 @@ class AscProcessor(DataProcessor):
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
         return examples
 
+    def _create_examples_restmext(self, lines, set_type):
+        """Creates examples for the training and dev sets."""
+        ## Set of tag used in RestMext datasets
+        # Title
+        # Polarity
+        # Attraction
+        # Opinion
+        # Location
 
+        for (i, ids) in enumerate(lines):
+            guid = "%s-%s" % (set_type, ids)
+            text_a = text_b = label = None
+            if self.arg != None and self.arg.invert_token == True:
+                text_a = lines[ids]['Opinion']
+                text_b = ''
+                if self.arg != None and self.arg.experiment_title == True:
+                    text_b = lines[ids]['Title'] if lines[ids].has_key('Title') else ''
+            else:
+                text_a = ''
+                if self.arg != None and self.arg.experiment_title == True:
+                    text_a = lines[ids]['Title'] if lines[ids].has_key('Title') else ''
+                text_b = lines[ids]['Opinion']
+            label = lines[ids]['Polarity']
+            examples.append(
+                InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
 
+        return examples
 
 
 class StringProcessor(DataProcessor):
@@ -317,31 +371,33 @@ class StringProcessor(DataProcessor):
                 InputExample(text_a=text_a))
         return examples
 
+
 def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer, mode):
-    """Loads a data file into a list of `InputBatch`s.""" #check later if we can merge this function with the SQuAD preprocessing
+    """Loads a data file into a list of `InputBatch`s."""  # check later if we can merge this function with the SQuAD preprocessing
     # label_map = {}
     # for (i, label) in enumerate(label_list):
     #     label_map[label] = i
 
-    #text_b for sentence (segment 1); text_a for aspect (segment 0)
+    # text_b for sentence (segment 1); text_a for aspect (segment 0)
     # text_a = lines[ids]['term']
     # text_b = lines[ids]['sentence']
     # label = lines[ids]['polarity']
 
-    if transformer_args.task == 'asc': # for pair
-        #label_map={'+': 0,'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
+    if transformer_args.task == 'asc':  # for pair
+        # label_map={'+': 0,'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
         label_map = {'+': 2, 'positive': 2, '-': 0, 'negative': 0, 'neutral': 1}
     elif transformer_args.task == 'nli':
-        label_map={'neutral': 0, 'entailment': 1, 'contradiction': 2}
+        label_map = {'neutral': 0, 'entailment': 1, 'contradiction': 2}
     elif transformer_args.task == 'ae':
-        label_map={'B': 0, 'I': 1, 'O': 2}
+        label_map = {'B': 0, 'I': 1, 'O': 2}
 
     features = []
     for (ex_index, example) in enumerate(examples):
-        if mode!="ae":
+        if mode != "ae":
             tokens_a = tokenizer.tokenize(example.text_a)
-        else: #only do subword tokenization.
-            tokens_a, labels_a, example.idx_map= tokenizer.subword_tokenize([token.lower() for token in example.text_a], example.label )
+        else:  # only do subword tokenization.
+            tokens_a, labels_a, example.idx_map = tokenizer.subword_tokenize(
+                [token.lower() for token in example.text_a], example.label)
 
         tokens_b = None
         if example.text_b:
@@ -381,13 +437,13 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         input_mask = [1] * len(input_ids)
 
         # token_a has a max_length
-        if transformer_args.exp in ['3layer_aspect','2layer_aspect_transfer','2layer_aspect_dynamic']:
-            term_position = tokens.index('[SEP]')-1
-            while term_position < transformer_args.max_term_length: #[CLS],t,[SEP]
-                input_ids.insert(term_position,0)
-                input_mask.insert(term_position,0)
-                segment_ids.insert(term_position,0)
-                term_position+=1
+        if transformer_args.exp in ['3layer_aspect', '2layer_aspect_transfer', '2layer_aspect_dynamic']:
+            term_position = tokens.index('[SEP]') - 1
+            while term_position < transformer_args.max_term_length:  # [CLS],t,[SEP]
+                input_ids.insert(term_position, 0)
+                input_mask.insert(term_position, 0)
+                segment_ids.insert(term_position, 0)
+                term_position += 1
 
             max_seq_length = max_seq_length
         # Zero-pad up to the sequence length.
@@ -400,23 +456,22 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         assert len(input_mask) == max_seq_length
         assert len(segment_ids) == max_seq_length
 
-        if mode!="ae":
+        if mode != "ae":
             label_id = label_map[example.label]
         else:
-            label_id = [-1] * len(input_ids) #-1 is the index to ignore
-            #truncate the label length if it exceeds the limit.
-            lb=[label_map[label] for label in labels_a]
+            label_id = [-1] * len(input_ids)  # -1 is the index to ignore
+            # truncate the label length if it exceeds the limit.
+            lb = [label_map[label] for label in labels_a]
             if len(lb) > max_seq_length - 2:
                 lb = lb[0:(max_seq_length - 2)]
-            label_id[1:len(lb)+1] = lb
-
+            label_id[1:len(lb) + 1] = lb
 
         features.append(
-                InputFeatures(
-                        input_ids=input_ids,
-                        input_mask=input_mask,
-                        segment_ids=segment_ids,
-                        label_id=label_id))
+            InputFeatures(
+                input_ids=input_ids,
+                input_mask=input_mask,
+                segment_ids=segment_ids,
+                label_id=label_id))
     return features
 
 
@@ -437,21 +492,21 @@ def _truncate_seq_pair(tokens_a, tokens_b, max_length):
             tokens_b.pop()
 
 
-def convert_examples_to_features_w2v_dsc(examples, label_list,tokenizer,args):
-
+def convert_examples_to_features_w2v_dsc(examples, label_list, tokenizer, args):
     # prepare for word2vector experiments
 
-    """Loads a data file into a list of `InputBatch`s.""" #check later if we can merge this function with the SQuAD preprocessing
+    """Loads a data file into a list of `InputBatch`s."""  # check later if we can merge this function with the SQuAD preprocessing
     # label_map = {}
     # for (i, label) in enumerate(label_list):
     #     label_map[label] = i
 
-    label_map={'-1': 0, '1': 1}
+    label_map = {'-1': 0, '1': 1}
 
     features = []
     for (ex_index, example) in enumerate(examples):
-        tokens_a_ids = tokenizer.texts_to_sequences([example.text_a.translate(str.maketrans('', '', string.punctuation)).lower()])
-        tokens_a_ids =  pad_sequences(tokens_a_ids, maxlen=args.max_seq_length,padding='post',value=0)[0]
+        tokens_a_ids = tokenizer.texts_to_sequences(
+            [example.text_a.translate(str.maketrans('', '', string.punctuation)).lower()])
+        tokens_a_ids = pad_sequences(tokens_a_ids, maxlen=args.max_seq_length, padding='post', value=0)[0]
 
         # print('example.text_a: ',example.text_a.translate(str.maketrans('', '', string.punctuation)).lower())
         # print('tokens_a_ids: ',tokens_a_ids)
@@ -464,27 +519,29 @@ def convert_examples_to_features_w2v_dsc(examples, label_list,tokenizer,args):
             label_id = label_map[example.label]
 
         features.append(
-                InputFeatures(
-                        tokens_term_ids=tokens_a_ids,
-                        tokens_sentence_ids=tokens_a_ids,
-                        label_id=label_id))
+            InputFeatures(
+                tokens_term_ids=tokens_a_ids,
+                tokens_sentence_ids=tokens_a_ids,
+                label_id=label_id))
     return features
 
-def convert_examples_to_features_w2v(examples, label_list,tokenizer,args):
 
+def convert_examples_to_features_w2v(examples, label_list, tokenizer, args):
     # prepare for word2vector experiments
 
-    """Loads a data file into a list of `InputBatch`s.""" #check later if we can merge this function with the SQuAD preprocessing
+    """Loads a data file into a list of `InputBatch`s."""  # check later if we can merge this function with the SQuAD preprocessing
     # label_map = {}
     # for (i, label) in enumerate(label_list):
     #     label_map[label] = i
 
-    label_map={'+': 0,'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
+    label_map = {'+': 0, 'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
 
     features = []
     for (ex_index, example) in enumerate(examples):
-        tokens_a_ids = tokenizer.texts_to_sequences([example.text_a.translate(str.maketrans('', '', string.punctuation)).lower()])
-        tokens_b_ids = tokenizer.texts_to_sequences([example.text_b.translate(str.maketrans('', '', string.punctuation)).lower()])
+        tokens_a_ids = tokenizer.texts_to_sequences(
+            [example.text_a.translate(str.maketrans('', '', string.punctuation)).lower()])
+        tokens_b_ids = tokenizer.texts_to_sequences(
+            [example.text_b.translate(str.maketrans('', '', string.punctuation)).lower()])
 
         # if len(tokens_a_ids[0])<= 0 or len(tokens_b_ids[0])<= 0:
         #     print('empty')
@@ -492,42 +549,44 @@ def convert_examples_to_features_w2v(examples, label_list,tokenizer,args):
         # assert len(tokens_a_ids[0]) > 0
         # assert len(tokens_b_ids[0]) > 0
 
-        tokens_a_ids =  pad_sequences(tokens_a_ids, maxlen=args.max_term_length,padding='post',value=0)[0]
-        tokens_b_ids =  pad_sequences(tokens_b_ids, maxlen=args.max_sentence_length,padding='post',value=0)[0]
+        tokens_a_ids = pad_sequences(tokens_a_ids, maxlen=args.max_term_length, padding='post', value=0)[0]
+        tokens_b_ids = pad_sequences(tokens_b_ids, maxlen=args.max_sentence_length, padding='post', value=0)[0]
 
         label_id = label_map[example.label]
 
         features.append(
-                InputFeatures(
-                        tokens_term_ids=tokens_a_ids,
-                        tokens_sentence_ids=tokens_b_ids,
-                        label_id=label_id))
+            InputFeatures(
+                tokens_term_ids=tokens_a_ids,
+                tokens_sentence_ids=tokens_b_ids,
+                label_id=label_id))
 
     return features
 
 
-def convert_examples_to_features_w2v_as(examples, label_list,tokenizer,args):
+def convert_examples_to_features_w2v_as(examples, label_list, tokenizer, args):
     # w2v also considers aspect (by adding aspect at the beginning)
     # prepare for word2vector experiments
 
-    """Loads a data file into a list of `InputBatch`s.""" #check later if we can merge this function with the SQuAD preprocessing
+    """Loads a data file into a list of `InputBatch`s."""  # check later if we can merge this function with the SQuAD preprocessing
     # label_map = {}
     # for (i, label) in enumerate(label_list):
     #     label_map[label] = i
 
     if transformer_args.task == 'asc':
-        label_map={'+': 0,'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
+        label_map = {'+': 0, 'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
     elif transformer_args.task == 'nli':
-        label_map={'neutral': 0, 'entailment': 1, 'contradiction': 2}
+        label_map = {'neutral': 0, 'entailment': 1, 'contradiction': 2}
 
     features = []
     for (ex_index, example) in enumerate(examples):
-        tokens_a_ids = tokenizer.texts_to_sequences([example.text_a.translate(str.maketrans('', '', string.punctuation)).lower()])
-        tokens_b_ids = tokenizer.texts_to_sequences([example.text_b.translate(str.maketrans('', '', string.punctuation)).lower()])
+        tokens_a_ids = tokenizer.texts_to_sequences(
+            [example.text_a.translate(str.maketrans('', '', string.punctuation)).lower()])
+        tokens_b_ids = tokenizer.texts_to_sequences(
+            [example.text_b.translate(str.maketrans('', '', string.punctuation)).lower()])
 
         tokens_ids = tokenizer.texts_to_sequences(
-               [example.text_a.translate(str.maketrans('', '', string.punctuation)).lower() + ' ' +
-               example.text_b.translate(str.maketrans('', '', string.punctuation)).lower()])
+            [example.text_a.translate(str.maketrans('', '', string.punctuation)).lower() + ' ' +
+             example.text_b.translate(str.maketrans('', '', string.punctuation)).lower()])
 
         # print([example.text_a.translate(str.maketrans('', '', string.punctuation)).lower()])
         # print([example.text_a.translate(str.maketrans('', '', string.punctuation)).lower() + ' ' +
@@ -541,31 +600,28 @@ def convert_examples_to_features_w2v_as(examples, label_list,tokenizer,args):
         # assert len(tokens_a_ids[0]) > 0
         # assert len(tokens_b_ids[0]) > 0
 
-        tokens_ids =  pad_sequences(tokens_ids, maxlen=args.max_seq_length,padding='post',value=0)[0]
-        tokens_a_ids =  pad_sequences(tokens_a_ids, maxlen=args.max_term_length,padding='post',value=0)[0]
-        tokens_b_ids =  pad_sequences(tokens_b_ids, maxlen=args.max_sentence_length,padding='post',value=0)[0]
+        tokens_ids = pad_sequences(tokens_ids, maxlen=args.max_seq_length, padding='post', value=0)[0]
+        tokens_a_ids = pad_sequences(tokens_a_ids, maxlen=args.max_term_length, padding='post', value=0)[0]
+        tokens_b_ids = pad_sequences(tokens_b_ids, maxlen=args.max_sentence_length, padding='post', value=0)[0]
 
         label_id = label_map[example.label]
 
         features.append(
-                InputFeatures(
-                        tokens_term_sentence_ids=tokens_ids,
-                        tokens_term_ids=tokens_a_ids,
-                        tokens_sentence_ids=tokens_b_ids,
-                        label_id=label_id))
+            InputFeatures(
+                tokens_term_sentence_ids=tokens_ids,
+                tokens_term_ids=tokens_a_ids,
+                tokens_sentence_ids=tokens_b_ids,
+                label_id=label_id))
 
     return features
 
 
-
-
-
 def convert_examples_to_features_dtc(examples, label_list, max_seq_length, tokenizer):
     """Loads a data file into a list of `InputBatch`s."""
-    #TODO: input document only
+    # TODO: input document only
 
     features = []
-    for (ex_index,example) in enumerate(examples):
+    for (ex_index, example) in enumerate(examples):
         labels_a = example.label
         tokens_a = tokenizer.tokenize(example.text_a)
 
@@ -573,7 +629,6 @@ def convert_examples_to_features_dtc(examples, label_list, max_seq_length, token
         # print('example.text_a: ',example.text_a)
         # print('tokens_a: ',tokens_a)
 
-
         # Account for [CLS] and [SEP] with "- 2"
         if len(tokens_a) > max_seq_length - 2:
             tokens_a = tokens_a[0:(max_seq_length - 2)]
@@ -604,29 +659,26 @@ def convert_examples_to_features_dtc(examples, label_list, max_seq_length, token
         assert len(input_mask) == max_seq_length
         assert len(segment_ids) == max_seq_length
 
-
         features.append(
-                InputFeatures(
-                        input_ids=input_ids,
-                        input_mask=input_mask,
-                        segment_ids=segment_ids,
-                        label_id=labels_a))
+            InputFeatures(
+                input_ids=input_ids,
+                input_mask=input_mask,
+                segment_ids=segment_ids,
+                label_id=labels_a))
     return features
 
 
-
-
-def convert_examples_to_features_dsc(examples, label_list, max_seq_length, tokenizer,mode):
+def convert_examples_to_features_dsc(examples, label_list, max_seq_length, tokenizer, mode):
     """Loads a data file into a list of `InputBatch`s."""
-    #TODO: input document only
-    label_map={'-1': 0, '1': 1}
+    # TODO: input document only
+    label_map = {'-1': 0, '1': 1}
     if transformer_args.task == 'dsc':
-        label_map={'-1': 0, '1': 1}
+        label_map = {'-1': 0, '1': 1}
     elif transformer_args.task == 'ssc':
-        label_map={'0': 0, '1': 1,'2': 2}
+        label_map = {'0': 0, '1': 1, '2': 2}
 
     features = []
-    for (ex_index,example) in enumerate(examples):
+    for (ex_index, example) in enumerate(examples):
         labels_a = label_map[example.label]
         tokens_a = tokenizer.tokenize(example.text_a)
 
@@ -634,7 +686,6 @@ def convert_examples_to_features_dsc(examples, label_list, max_seq_length, token
         # print('example.text_a: ',example.text_a)
         # print('tokens_a: ',tokens_a)
 
-
         # Account for [CLS] and [SEP] with "- 2"
         if len(tokens_a) > max_seq_length - 2:
             tokens_a = tokens_a[0:(max_seq_length - 2)]
@@ -665,13 +716,12 @@ def convert_examples_to_features_dsc(examples, label_list, max_seq_length, token
         assert len(input_mask) == max_seq_length
         assert len(segment_ids) == max_seq_length
 
-
         features.append(
-                InputFeatures(
-                        input_ids=input_ids,
-                        input_mask=input_mask,
-                        segment_ids=segment_ids,
-                        label_id=labels_a))
+            InputFeatures(
+                input_ids=input_ids,
+                input_mask=input_mask,
+                segment_ids=segment_ids,
+                label_id=labels_a))
     return features
 
 
@@ -684,9 +734,6 @@ def whitespace_tokenize(text):
     return tokens
 
 
-
 def get_random_word(vocab_words):
-    i = randint(0, len(vocab_words)-1)
+    i = randint(0, len(vocab_words) - 1)
     return vocab_words[i]
-
-

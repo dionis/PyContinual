@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Modified the oupt algoritm execution.">
+      <change afterPath="$PROJECT_DIR$/src/data_prep/restmex2022" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_prep/restmex2022_continual" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loadSpanishModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/loadSpanishModule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nlp_data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/nlp_data_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/RESEARCH/PhD/SOURCE/PyContinual/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/RESEARCH/PhD/SOURCE/PyContinual/src/dat/absa&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -64,21 +68,21 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\dat\absa" />
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\" />
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\data_prep" />
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src" />
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\approaches\classification" />
-      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\networks\classification" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data_prep" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\dat\absa\RestMex2022\sa\Restaurant" />
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\dat\absa\RestMex2022\sa\Attractive" />
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\dat\absa\RestMex2022\sa\Hotel" />
+      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\dat\absa\RestMex2022\sa\All" />
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\requeriment_files" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\networks\base" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\dat\absa\TripAdvisor\asc" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data_prep" />
-      <recent name="E:\___Dionis_MO\Articulos\IMPLEMENTACION\SOURCE\Inoid_ABSA_DL\Phd_Source\PyContinual\src\data\absa" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.loadSpanishModule">
+  <component name="RunManager" selected="Python.run">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="PyContinual" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -101,10 +105,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="classify_to_json" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyContinual" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Dionis\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm/classify_to_json.py" />
+      <option name="PARAMETERS" value="run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="loadSpanishModule" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyContinual" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\Dionis\AppData\Local\Programs\Python\Python37\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -112,6 +141,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/loadSpanishModule.py" />
+      <option name="PARAMETERS" value="run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="model_export_json" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyContinual" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Dionis\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm/model_export_json.py" />
       <option name="PARAMETERS" value="run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,7 +185,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/run.py" />
-      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders test_dataset_execution --use_predefine_args --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution --num_train_epochs 1" />
+      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders restmex2022 --use_predefine_args --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution --num_train_epochs 1" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -142,12 +193,18 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.classify_to_json" />
+      <item itemvalue="Python.loadSpanishModule" />
+      <item itemvalue="Python.model_export_json" />
+      <item itemvalue="Python.run" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.run" />
+        <item itemvalue="Python.classify_to_json" />
+        <item itemvalue="Python.model_export_json" />
         <item itemvalue="Python.loadSpanishModule" />
-        <item itemvalue="Python.run" />
-        <item itemvalue="Python.run" />
-        <item itemvalue="Python.run" />
         <item itemvalue="Python.run" />
       </list>
     </recent_temporary>
@@ -194,14 +251,17 @@
       <workItem from="1676847320323" duration="5522000" />
       <workItem from="1676861273260" duration="1919000" />
       <workItem from="1676882668033" duration="8000" />
-      <workItem from="1677937046296" duration="3917000" />
-    </task>
-    <task id="LOCAL-00024" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
-      <created>1676291169062</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1676291169062</updated>
+      <workItem from="1677937046296" duration="4109000" />
+      <workItem from="1677958854480" duration="283000" />
+      <workItem from="1677963678473" duration="412000" />
+      <workItem from="1678158667395" duration="1336000" />
+      <workItem from="1678160032976" duration="314000" />
+      <workItem from="1678271470902" duration="1577000" />
+      <workItem from="1678446704496" duration="2505000" />
+      <workItem from="1678612251056" duration="2875000" />
+      <workItem from="1678932000895" duration="2741000" />
+      <workItem from="1678956563096" duration="4481000" />
+      <workItem from="1679056026383" duration="601000" />
     </task>
     <task id="LOCAL-00025" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
       <created>1676343983054</created>
@@ -539,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677945177964</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Modified the oupt algoritm execution.">
+      <created>1677945392632</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1677945392633</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -748,16 +815,6 @@
           <option name="timeStamp" value="134" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>177</line>
-          <option name="timeStamp" value="135" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>203</line>
-          <option name="timeStamp" value="136" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/approaches/classification/ar1.py</url>
           <line>325</line>
           <option name="timeStamp" value="137" />
@@ -856,10 +913,36 @@
           <line>78</line>
           <option name="timeStamp" value="158" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>92</line>
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>153</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>135</line>
+          <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>151</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/nlp_data_utils.py</url>
+          <line>341</line>
+          <option name="timeStamp" value="164" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1676858531406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$classify_to_json.coverage" NAME="classify_to_json Coverage Results" MODIFIED="1678447473744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1678959215154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
