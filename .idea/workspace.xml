@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Modified the oupt algoritm execution.">
-      <change afterPath="$PROJECT_DIR$/src/data_prep/restmex2022" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data_prep/restmex2022_continual" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nlp_data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/nlp_data_utils.py" afterDir="false" />
-    </list>
+    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Fix several error in RestMext data processing." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -262,13 +255,6 @@
       <workItem from="1678932000895" duration="2741000" />
       <workItem from="1678956563096" duration="4481000" />
       <workItem from="1679056026383" duration="601000" />
-    </task>
-    <task id="LOCAL-00025" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
-      <created>1676343983054</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1676343983054</updated>
     </task>
     <task id="LOCAL-00026" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
       <created>1676346918664</created>
@@ -606,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677945392633</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Fix several error in RestMext data processing.">
+      <created>1679789044405</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1679789044405</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -659,7 +652,8 @@
     <MESSAGE value="Add precision, recall and kappa measure on train / evaluation process and put show bad classication files with text." />
     <MESSAGE value="Some modification on algorithm/model BERT ADAPTER CAPSULE MASK NCL." />
     <MESSAGE value="Modified the oupt algoritm execution." />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified the oupt algoritm execution." />
+    <MESSAGE value="Fix several error in RestMext data processing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix several error in RestMext data processing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -943,6 +937,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PyContinual$classify_to_json.coverage" NAME="classify_to_json Coverage Results" MODIFIED="1678447473744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1678959215154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1679437106001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
