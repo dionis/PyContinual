@@ -256,13 +256,6 @@
       <workItem from="1678956563096" duration="4481000" />
       <workItem from="1679056026383" duration="601000" />
     </task>
-    <task id="LOCAL-00026" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
-      <created>1676346918664</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1676346918664</updated>
-    </task>
     <task id="LOCAL-00027" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
       <created>1676346945203</created>
       <option name="number" value="00027" />
@@ -599,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679789044405</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Fix several error in RestMext data processing.">
+      <created>1679789187619</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1679789187619</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
