@@ -5,16 +5,22 @@ from transformers import BertModel, BertConfig
 import utils
 from torch import nn
 import torch.nn.functional as F
-
+import pathlib
 class Net(torch.nn.Module):
 
     def __init__(self,taskcla,args):
 
         super(Net,self).__init__()
-        config = BertConfig.from_pretrained(args.bert_model, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
+        pathCurrent = str(pathlib.Path().resolve())
+        config = BertConfig.from_pretrained(args.bert_model,
+                                            cache_dir= pathCurrent + os.path.sep +  "Transformer" + os.path.sep,
+                                            local_files_only=True)
         config.return_dict=False
         self.args = args
-        self.bert = BertModel.from_pretrained(args.bert_model,config=config, cache_dir=    "Transformer" +  os.path.sep, local_files_only=True)
+        self.bert = BertModel.from_pretrained(args.bert_model,
+                                              config=config,
+                                              cache_dir=  pathCurrent + os.path.sep + "Transformer" + os.path.sep,
+                                              local_files_only=True)
 
         '''
         In case you want to fix some layers

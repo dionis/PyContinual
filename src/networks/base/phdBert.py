@@ -5,6 +5,7 @@ from transformers import BertModel, BertConfig
 from torch import nn
 import torch.nn.functional as F
 import utils
+import pathlib
 
 from .bert_spc import BERT_SPC
 
@@ -29,10 +30,12 @@ class Net(torch.nn.Module):
         self.args = args
         self.args.taskcla = len(self.taskcla)
         #Model atributte to assoaciated to BERT pre-trained
+        pathCurrent = str(pathlib.Path().resolve())
+
         if args.local_execution:
             self.model =  BERT_SPC(BertModel.from_pretrained(args.bert_model,
                                                              config = config,
-                                                             cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,
+                                                             cache_dir = pathCurrent + os.path.sep + "Transformer" + os.path.sep,
                                                              local_files_only = True),
                                      self.args
                                    )

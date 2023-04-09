@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="Fix several error in RestMext data processing." />
+    <list default="true" id="c22eaa8f-dd15-4219-84e1-26bf4895f990" name="Changes" comment="Fix several error in RestMext data processing.">
+      <change beforePath="$PROJECT_DIR$/.idea/PyContinual.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PyContinual.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/base/phdBert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/base/phdBert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serialization/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/src/serialization/README.MD" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop_wgpu" />
+        <entry key="$PROJECT_DIR$" value="serialize_rest_mex23" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/RESEARCH/PhD/SOURCE/PyContinual/src/dat/absa&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/RESEARCH_GROUP/ESTUDIANTES_ALTO_APROVECHAMIENTO/SEMINARIO_EJERCICIOS-WORK_HPC&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -61,11 +68,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\RESEARCH_GROUP\ESTUDIANTES_ALTO_APROVECHAMIENTO\SEMINARIO_EJERCICIOS-WORK_HPC" />
+      <recent name="D:\RESEARCH_GROUP\ESTUDIANTES_ALTO_APROVECHAMIENTO\SEMINARIO_EJERCICIOS-WORK_HPCsrc" />
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\dat\absa" />
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\" />
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\data_prep" />
-      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src" />
-      <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\approaches\classification" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\RESEARCH\PhD\SOURCE\PyContinual\src\dat\absa\RestMex2022\sa\Restaurant" />
@@ -178,7 +185,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/run.py" />
-      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders restmex2022 --use_predefine_args --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --local_execution --num_train_epochs 1" />
+      <option name="PARAMETERS" value="--ntasks 3 --bert_model bert-base-uncased --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders restmex2022 --use_predefine_args --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --num_train_epochs 1 --local_execution" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -195,9 +202,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.run" />
-        <item itemvalue="Python.classify_to_json" />
         <item itemvalue="Python.model_export_json" />
         <item itemvalue="Python.loadSpanishModule" />
+        <item itemvalue="Python.classify_to_json" />
         <item itemvalue="Python.run" />
       </list>
     </recent_temporary>
@@ -205,7 +212,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="43dd56fb-659a-4ce8-aeaf-a9d4764e202c" name="Changes" comment="" />
+      <changelist id="c22eaa8f-dd15-4219-84e1-26bf4895f990" name="Changes" comment="" />
       <created>1644762770633</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -255,6 +262,13 @@
       <workItem from="1678932000895" duration="2741000" />
       <workItem from="1678956563096" duration="4481000" />
       <workItem from="1679056026383" duration="601000" />
+      <workItem from="1679791110365" duration="340000" />
+      <workItem from="1679865727380" duration="231000" />
+      <workItem from="1680961043718" duration="668000" />
+      <workItem from="1680988985558" duration="607000" />
+      <workItem from="1680989607209" duration="931000" />
+      <workItem from="1681008377253" duration="402000" />
+      <workItem from="1681059507489" duration="1711000" />
     </task>
     <task id="LOCAL-00027" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
       <created>1676346945203</created>
@@ -710,12 +724,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/base/phdBert.py</url>
-          <line>82</line>
+          <line>85</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/base/phdBert.py</url>
-          <line>136</line>
+          <line>139</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -835,7 +849,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/base/phdBert.py</url>
-          <line>19</line>
+          <line>20</line>
           <option name="timeStamp" value="143" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -909,22 +923,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>92</line>
+          <line>93</line>
           <option name="timeStamp" value="159" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>153</line>
+          <line>155</line>
           <option name="timeStamp" value="160" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>135</line>
+          <line>137</line>
           <option name="timeStamp" value="161" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
-          <line>151</line>
+          <line>153</line>
           <option name="timeStamp" value="162" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -932,11 +946,26 @@
           <line>341</line>
           <option name="timeStamp" value="164" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>128</line>
+          <option name="timeStamp" value="165" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataloaders/asc/bert.py</url>
+          <line>217</line>
+          <option name="timeStamp" value="166" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/venv/Lib/site-packages/transformers/tokenization_utils_base.py</url>
+          <line>1682</line>
+          <option name="timeStamp" value="167" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PyContinual$classify_to_json.coverage" NAME="classify_to_json Coverage Results" MODIFIED="1678447473744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1679437106001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1681065722882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

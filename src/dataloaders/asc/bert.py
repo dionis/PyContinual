@@ -13,6 +13,7 @@ from nlp_data_utils import ABSATokenizer
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler, random_split
 
 import math
+import pathlib
 
 datasets = [
     './dat/absa/XuSemEval/asc/14/rest',
@@ -123,10 +124,11 @@ def get(logger=None, args=None):
 
         processor = data_utils.AscProcessor(args)
         label_list = processor.get_labels()
+        pathCurrent = str(pathlib.Path().resolve())
 
         if args.local_execution:
             tokenizer = ABSATokenizer.from_pretrained(args.bert_model,
-                                                      cache_dir=".." + os.path.sep + "Transformer" + os.path.sep,
+                                                      cache_dir= pathCurrent + os.path.sep + "Transformer" + os.path.sep,
                                                       local_files_only=True)
         else:
             tokenizer = ABSATokenizer.from_pretrained(args.bert_model)
@@ -210,10 +212,11 @@ def get(logger=None, args=None):
 
         processor = data_utils.AscProcessor(args)
         label_list = processor.get_labels()
+        pathCurrent = str(pathlib.Path().resolve())
 
         if args.local_execution:
             tokenizer = BertTokenizer.from_pretrained(args.bert_model,
-                                                      cache_dir=".." + os.path.sep + "Transformer" + os.path.sep,
+                                                      cache_dir=pathCurrent + os.path.sep + "Transformer" + os.path.sep,
                                                       local_files_only=True)
 
         else:
