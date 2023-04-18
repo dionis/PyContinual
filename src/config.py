@@ -208,6 +208,12 @@ def asc_config(parser):
                         action='store_true',
                         help='Use Transformer directory path for huggingface pre-model load'
                         )
+    parser.add_argument('--experiment_title',
+                        default=False,
+                        type=bool,
+                        help='Use the dataset title in RestMex2022-23 title information'
+                        )
+
     return parser
 
 def train_config(parser):

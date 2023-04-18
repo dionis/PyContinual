@@ -260,6 +260,10 @@ class AscProcessor(DataProcessor):
         """See base class."""
         return self._create_examples(
             self._read_json_encoding(os.path.join(data_dir, fn)), "train")
+    def get_train_examples_encoding_restmext(self, data_dir, fn="train.json"):
+        """See base class."""
+        return self._create_examples_restmext(
+            self._read_json_encoding(os.path.join(data_dir, fn)), "train")
 
     def get_dev_examples(self, data_dir, fn="dev.json"):
         """See base class."""
@@ -276,6 +280,11 @@ class AscProcessor(DataProcessor):
         return self._create_examples(
             self._read_json_encoding(os.path.join(data_dir, fn)), "dev")
 
+    def get_dev_examples_encoding_restmext(self, data_dir,  fn="dev.json"):
+        """See base class."""
+        return self._create_examples_restmext(
+            self._read_json_encoding(os.path.join(data_dir, fn)), "dev")
+
     def get_test_examples(self, data_dir, fn="test.json"):
         """See base class."""
         return self._create_examples(
@@ -289,6 +298,11 @@ class AscProcessor(DataProcessor):
     def get_test_examples_encoding(self, data_dir, fn="test.json"):
         """See base class."""
         return self._create_examples(
+            self._read_json_encoding(os.path.join(data_dir, fn)), "test")
+
+    def get_test_examples_encoding_restmext(self, data_dir,  fn="test.json"):
+        """See base class."""
+        return self._create_examples_restmext(
             self._read_json_encoding(os.path.join(data_dir, fn)), "test")
 
     def get_labels(self):
@@ -334,7 +348,7 @@ class AscProcessor(DataProcessor):
         # Attraction
         # Opinion
         # Location
-
+        examples = []
         for (i, ids) in enumerate(lines):
             guid = "%s-%s" % (set_type, ids)
             text_a = text_b = label = None
@@ -386,6 +400,8 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
     if transformer_args.task == 'asc':  # for pair
         # label_map={'+': 0,'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
         label_map = {'+': 2, 'positive': 2, '-': 0, 'negative': 0, 'neutral': 1}
+        if 'restmex20' in transformer_args.dataloaders:
+            label_map = {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5}
     elif transformer_args.task == 'nli':
         label_map = {'neutral': 0, 'entailment': 1, 'contradiction': 2}
     elif transformer_args.task == 'ae':
@@ -457,6 +473,8 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         assert len(segment_ids) == max_seq_length
 
         if mode != "ae":
+            if type(example.label) is float:
+              example.label = str(int(example.label))
             label_id = label_map[example.label]
         else:
             label_id = [-1] * len(input_ids)  # -1 is the index to ignore

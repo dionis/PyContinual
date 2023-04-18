@@ -151,7 +151,7 @@ def get(logger=None, args=None):
             elif "Restaurant" in dataset:
                 trainFile = "restaurant.json"
 
-            train_examples = processor.get_train_examples_encoding(dataset, fn=trainFile)
+            train_examples = processor.get_train_examples_encoding_restmext(dataset, fn=trainFile)
         else:
             train_examples = processor.get_train_examples(dataset)
 
@@ -189,6 +189,9 @@ def get(logger=None, args=None):
             else:
                 eval_examples = valid_examples
 
+
+        elif "RestMex2022" in dataset:
+            valid_examples = processor.get_dev_examples_encoding_restmext(dataset)
         else:
             valid_examples = processor.get_dev_examples(dataset)
 
@@ -223,7 +226,11 @@ def get(logger=None, args=None):
             tokenizer = BertTokenizer.from_pretrained(args.bert_model)
 
         if not ("TripAdvisor" in dataset):
-            eval_examples = processor.get_test_examples(dataset)
+            if "RestMex2022" in dataset:
+                eval_examples = processor.get_test_examples_encoding_restmext(dataset)
+            else:
+                eval_examples = processor.get_test_examples(dataset)
+
 
         eval_features = data_utils.convert_examples_to_features(eval_examples, label_list, args.max_seq_length,
                                                                 tokenizer, "asc")
