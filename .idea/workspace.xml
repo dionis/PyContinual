@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="View and Add">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Update for RestMext 2022 and 2023 processing data.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nlp_data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/nlp_data_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm/RestMext2022.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm/model_export_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm/model_export_json.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serialization/classify_to_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/serialization/classify_to_json.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serialization/model_export_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/serialization/model_export_json.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +105,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="classify_to_json" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="classify_to_json (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyContinual" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -111,12 +113,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\Dionis\AppData\Local\Programs\Python\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/serialization" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm/classify_to_json.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/serialization/classify_to_json.py" />
       <option name="PARAMETERS" value="run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,6 +141,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/loadSpanishModule.py" />
+      <option name="PARAMETERS" value="run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="model_export_json (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyContinual" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Dionis\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/serialization" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/serialization/model_export_json.py" />
       <option name="PARAMETERS" value="run.py --bert_model 'bert-base-uncased' --backbone bert_adapter --baseline ctr --task asc --eval_batch_size 128 --train_batch_size 32 --scenario til_classification --idrandom 0  --use_predefine_args" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -189,7 +213,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.classify_to_json" />
+      <item itemvalue="Python.classify_to_json (1)" />
+      <item itemvalue="Python.model_export_json (1)" />
       <item itemvalue="Python.loadSpanishModule" />
       <item itemvalue="Python.model_export_json" />
       <item itemvalue="Python.run" />
@@ -197,10 +222,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.run" />
+        <item itemvalue="Python.model_export_json (1)" />
+        <item itemvalue="Python.classify_to_json (1)" />
         <item itemvalue="Python.model_export_json" />
         <item itemvalue="Python.loadSpanishModule" />
-        <item itemvalue="Python.classify_to_json" />
-        <item itemvalue="Python.run" />
       </list>
     </recent_temporary>
   </component>
@@ -266,13 +291,15 @@
       <workItem from="1681083061257" duration="78000" />
       <workItem from="1681521329056" duration="354000" />
       <workItem from="1681783364102" duration="2445000" />
-    </task>
-    <task id="LOCAL-00027" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
-      <created>1676346945203</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1676346945203</updated>
+      <workItem from="1681836516268" duration="472000" />
+      <workItem from="1682504215795" duration="639000" />
+      <workItem from="1682572034535" duration="1689000" />
+      <workItem from="1682649272085" duration="2279000" />
+      <workItem from="1682676918767" duration="2601000" />
+      <workItem from="1682685011550" duration="1149000" />
+      <workItem from="1682757441414" duration="1256000" />
+      <workItem from="1682950912132" duration="3495000" />
+      <workItem from="1682979121302" duration="2504000" />
     </task>
     <task id="LOCAL-00028" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
       <created>1676369542718</created>
@@ -610,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679789187619</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Update for RestMext 2022 and 2023 processing data.">
+      <created>1681836615263</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1681836615263</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +698,8 @@
     <MESSAGE value="Some modification on algorithm/model BERT ADAPTER CAPSULE MASK NCL." />
     <MESSAGE value="Modified the oupt algoritm execution." />
     <MESSAGE value="Fix several error in RestMext data processing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix several error in RestMext data processing." />
+    <MESSAGE value="Update for RestMext 2022 and 2023 processing data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update for RestMext 2022 and 2023 processing data." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -960,19 +995,47 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/nlp_data_utils.py</url>
-          <line>399</line>
+          <line>402</line>
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/nlp_data_utils.py</url>
-          <line>402</line>
+          <line>405</line>
           <option name="timeStamp" value="169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm/model_export_json.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/serialization/model_export_json.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/serialization/classify_to_json.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/nlp_data_utils.py</url>
+          <line>367</line>
+          <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/nlp_data_utils.py</url>
+          <line>484</line>
+          <option name="timeStamp" value="178" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PyContinual$classify_to_json.coverage" NAME="classify_to_json Coverage Results" MODIFIED="1678447473744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1681785786367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$model_export_json__1_.coverage" NAME="model_export_json (1) Coverage Results" MODIFIED="1682758040285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/serialization" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1682981159368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$classify_to_json__1_.coverage" NAME="classify_to_json (1) Coverage Results" MODIFIED="1682758174970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/serialization" />
+    <SUITE FILE_PATH="coverage/PyContinual$model_export_json.coverage" NAME="model_export_json Coverage Results" MODIFIED="1682650428990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
   </component>
 </project>

@@ -356,13 +356,16 @@ class AscProcessor(DataProcessor):
                 text_a = lines[ids]['Opinion']
                 text_b = ''
                 if self.arg != None and self.arg.experiment_title == True:
-                    text_b = lines[ids]['Title'] if lines[ids].has_key('Title') else ''
+                    text_b = lines[ids]['Title'] if 'Title' in lines[ids] else ''
             else:
                 text_a = ''
                 if self.arg != None and self.arg.experiment_title == True:
-                    text_a = lines[ids]['Title'] if lines[ids].has_key('Title') else ''
-                text_b = lines[ids]['Opinion']
-            label = lines[ids]['Polarity']
+                    text_a = lines[ids]['Title'] if 'Title' in lines[ids] else ''
+                text_b = lines[ids]['Opinion'] if 'Opinion' in lines[ids] else lines[ids]['Review']
+            if 'Polarity' in lines[ids]:
+              label = lines[ids]['Polarity'] if type(lines[ids]['Polarity']) == str else str(lines[ids]['Polarity'])
+            else:
+                print('Not polarity')
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
 
@@ -472,10 +475,14 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         assert len(input_mask) == max_seq_length
         assert len(segment_ids) == max_seq_length
 
+        #label_id = '-1'
         if mode != "ae":
             if type(example.label) is float:
               example.label = str(int(example.label))
-            label_id = label_map[example.label]
+            if None != example.label:
+              label_id = label_map[example.label]
+            else:
+              print('Not show')
         else:
             label_id = [-1] * len(input_ids)  # -1 is the index to ignore
             # truncate the label length if it exceeds the limit.
