@@ -7,7 +7,7 @@ import utils
 from torch import nn
 import torch.nn.functional as F
 import random
-
+import pathlib
 
 sys.path.append("./networks/base/")
 from my_transformers import MyBertModel
@@ -18,11 +18,28 @@ class Net(torch.nn.Module):
     def __init__(self,taskcla,args):
 
         super(Net,self).__init__()
-        config = BertConfig.from_pretrained(args.bert_model, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
+        #Model atributte to assoaciated to BERT pre-trained
+        pathCurrent = str(pathlib.Path().resolve())
+
+        if args.local_execution:
+            config = BertConfig.from_pretrained(args.bert_model,
+                                                cache_dir= pathCurrent + os.path.sep + "Transformer" + os.path.sep,
+                                                local_files_only=True)
+
+        else:
+            config = BertConfig.from_pretrained(args.bert_model)
+
         config.return_dict=False
         args.build_adapter_mask = True
-        self.bert = MyBertModel.from_pretrained(args.bert_model,config=config,args=args, cache_dir = ".." + os.path.sep + "Transformer" + os.path.sep,  local_files_only=True)
 
+        if args.local_execution:
+           self.bert = MyBertModel.from_pretrained(args.bert_model,
+                                                   config=config,
+                                                   args= args,
+                                                   cache_dir= pathCurrent + os.path.sep + "Transformer" + os.path.sep,
+                                                   local_files_only=True)
+        else:
+           self.bert = MyBertModel.from_pretrained(args.bert_model, config=config, args= args)
 
         self.args = args
 

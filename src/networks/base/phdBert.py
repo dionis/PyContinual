@@ -17,6 +17,7 @@ class Net(torch.nn.Module):
 
         #ncha,size,_=inputsize
         self.taskcla=taskcla
+        pathCurrent = str(pathlib.Path().resolve())
 
         if args.local_execution:
             config = BertConfig.from_pretrained(args.bert_model,
