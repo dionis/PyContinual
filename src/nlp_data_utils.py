@@ -364,8 +364,6 @@ class AscProcessor(DataProcessor):
                 text_b = lines[ids]['Opinion'] if 'Opinion' in lines[ids] else lines[ids]['Review']
             if 'Polarity' in lines[ids]:
               label = lines[ids]['Polarity'] if type(lines[ids]['Polarity']) == str else str(lines[ids]['Polarity'])
-            else:
-                print('Not polarity')
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
 

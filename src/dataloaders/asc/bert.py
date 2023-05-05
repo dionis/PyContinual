@@ -118,6 +118,9 @@ def get(logger=None, args=None):
         elif 'XuSemEval' in dataset:
             data[t]['name'] = dataset
             data[t]['ncla'] = 3
+        elif 'RestMex20' in dataset:
+            data[t]['name'] = dataset
+            data[t]['ncla'] = 5
         else:
             data[t]['name'] = dataset
             data[t]['ncla'] = 3
