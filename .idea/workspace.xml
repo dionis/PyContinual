@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Update for al RestMex 2023 datasets features.">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Fix Classic for use in RestMex 2023 datasets features.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/base/phdBert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/base/phdBert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/load_base_args.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/load_base_args.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,6 +193,9 @@
       <module name="PyContinual" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -299,14 +301,11 @@
       <workItem from="1682979121302" duration="3506000" />
       <workItem from="1683030565208" duration="5624000" />
       <workItem from="1683065916772" duration="5509000" />
-      <workItem from="1683314731696" duration="11504000" />
-    </task>
-    <task id="LOCAL-00030" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
-      <created>1676369678420</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1676369678420</updated>
+      <workItem from="1683314731696" duration="11794000" />
+      <workItem from="1683401571387" duration="216000" />
+      <workItem from="1683402207942" duration="461000" />
+      <workItem from="1683409791369" duration="6000" />
+      <workItem from="1683415493540" duration="215000" />
     </task>
     <task id="LOCAL-00031" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
       <created>1676369733991</created>
@@ -644,7 +643,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683315497142</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Fix Classic for use in RestMex 2023 datasets features.">
+      <created>1683328419291</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1683328419291</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +680,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Put in gitignore src/dat and src/data directories" />
     <MESSAGE value="Updated Phd's algorithm in model and networks directories" />
     <MESSAGE value="Include phd_HPC_PyContinualExecution_official.sl for executing in HPC with Slurm configurations" />
     <MESSAGE value="Delted Transformer request in local file" />
@@ -699,7 +704,8 @@
     <MESSAGE value="Update for RestMext 2022 and 2023 processing data." />
     <MESSAGE value="Update for RestMext 2023 and 2023 processing data." />
     <MESSAGE value="Update for al RestMex 2023 datasets features." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update for al RestMex 2023 datasets features." />
+    <MESSAGE value="Fix Classic for use in RestMex 2023 datasets features." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Classic for use in RestMex 2023 datasets features." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1074,7 +1080,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PyContinual$classify_to_json.coverage" NAME="classify_to_json Coverage Results" MODIFIED="1678447473744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
     <SUITE FILE_PATH="coverage/PyContinual$model_export_json__1_.coverage" NAME="model_export_json (1) Coverage Results" MODIFIED="1683032079370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/serialization" />
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1683327304418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1683402265832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/PyContinual$classify_to_json__1_.coverage" NAME="classify_to_json (1) Coverage Results" MODIFIED="1682758174970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/serialization" />
     <SUITE FILE_PATH="coverage/PyContinual$model_export_json.coverage" NAME="model_export_json Coverage Results" MODIFIED="1682650428990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
   </component>

@@ -20,6 +20,9 @@ def load():
         args.nclasses = 3
         args.last_id  = True
 
+        if 'restmex20' in args.dataloaders:
+            args.nclasses = 5
+
     if args.task == 'dsc': #document sentiment classication
         args.ntasks = 10
         args.num_train_epochs = 20
