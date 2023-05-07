@@ -14,15 +14,23 @@ train, test = train_test_split(df, test_size=SPLITTER_COEFICIENT)
 
 testDev, testTest = train_test_split(test, test_size=SPLITTER_MIDDLE)
 # parsing to json the df as index form
+#for example, first three rows can be selected by simply writing
+# Bibliografy
+df =  df.iloc[:15]
 payload = df.to_json(force_ascii=False, orient='index')
 
+train = train.iloc[:20]
 payloadTrain = train.to_json(force_ascii=False, orient='index')
 
+testDev = testDev.iloc[:10]
 payloadDev = testDev.to_json(force_ascii=False, orient='index')
 
+testTest = testTest.iloc[:10]
 payloadTestTrain = testTest.to_json(force_ascii=False, orient='index')
 
+dfTest = dfTest.iloc[:10]
 payloadTest = dfTest.to_json(force_ascii=False, orient='index')
+
 
 # Exporting the file as .json
 with open("All_RestMext2023_Train.json", "w", encoding='utf-8') as file:

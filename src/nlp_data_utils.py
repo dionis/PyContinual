@@ -402,7 +402,7 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         # label_map={'+': 0,'positive': 0, '-': 1, 'negative': 1, 'neutral': 2}
         label_map = {'+': 2, 'positive': 2, '-': 0, 'negative': 0, 'neutral': 1}
         if 'restmex20' in transformer_args.dataloaders:
-            label_map = {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5}
+            label_map = {'1': 0, '2': 1, '3': 2, '4': 3, '5': 4}
     elif transformer_args.task == 'nli':
         label_map = {'neutral': 0, 'entailment': 1, 'contradiction': 2}
     elif transformer_args.task == 'ae':
