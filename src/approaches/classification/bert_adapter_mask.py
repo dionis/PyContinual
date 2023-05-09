@@ -318,7 +318,7 @@ class Appr(ApprBase):
                                       + " "+ labelTag[2] +" = " + str(badClassifierRecord[2]) + "\n")
 
                     fileToWrite.close()
-        return total_loss/total_num,total_acc/total_num,f1
+        return total_loss/total_num,total_acc/total_num,f1, 0, 0, 0
 
 
 

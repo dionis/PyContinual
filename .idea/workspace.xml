@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Execute remote and fix error.">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Remote output error compute.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/approaches/classification/bert_adapter_mask.py" afterDir="false" />
     </list>
@@ -310,14 +310,8 @@
       <workItem from="1683582281988" duration="996000" />
       <workItem from="1683589747685" duration="2332000" />
       <workItem from="1683624227294" duration="961000" />
-      <workItem from="1683641941767" duration="612000" />
-    </task>
-    <task id="LOCAL-00035" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
-      <created>1676372853553</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1676372853553</updated>
+      <workItem from="1683641941767" duration="1233000" />
+      <workItem from="1683672006119" duration="65000" />
     </task>
     <task id="LOCAL-00036" summary="Integration de LLA's Phd algorithm to the CLASSIC code.">
       <created>1676372871253</created>
@@ -655,7 +649,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683624668432</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Remote output error compute.">
+      <created>1683644254965</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1683644254965</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,7 +686,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Delted Transformer request in local file" />
     <MESSAGE value="Delted Transformer request in local file II" />
     <MESSAGE value="Add new dataset and domain Tripadvisor for our PhD test" />
     <MESSAGE value="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained" />
@@ -710,7 +710,8 @@
     <MESSAGE value="Fix Classic for use in RestMex 2023 datasets features." />
     <MESSAGE value="Add mor ." />
     <MESSAGE value="Execute remote and fix error." />
-    <option name="LAST_COMMIT_MESSAGE" value="Execute remote and fix error." />
+    <MESSAGE value="Remote output error compute." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remote output error compute." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
