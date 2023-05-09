@@ -221,7 +221,7 @@ class Appr(ApprBase):
         pred_list = []
         badClassifierRecord = {0:0,1:0,2:0,3:0,4:0,5:0}
         #labelTag = {0: "negative", 1: "neutral", 2: "positive"}
-        labelTag = {1: "very_bad", 2: "bad", 3: "neutral",4:"good",5:"very_good"}
+        labelTag = {0: "very_bad", 1: "bad", 2: "neutral",3:"good",4:"very_good"}
 
         with torch.no_grad():
             badClassfiSentenceAll = []
