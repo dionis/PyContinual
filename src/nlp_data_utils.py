@@ -17,7 +17,7 @@
 import json
 import os
 import numpy as np
-from transformers import BertTokenizer
+from transformers import BertTokenizer,AutoTokenizer, AutoModelForCausalLM
 import string
 import torch
 from random import randint, shuffle, choice

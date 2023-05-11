@@ -10,6 +10,7 @@ import numpy as np
 import random
 import nlp_data_utils as data_utils
 from nlp_data_utils import ABSATokenizer
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler, random_split
 
 import math
@@ -130,11 +131,19 @@ def get(logger=None, args=None):
         pathCurrent = str(pathlib.Path().resolve())
 
         if args.local_execution:
-            tokenizer = ABSATokenizer.from_pretrained(args.bert_model,
+            if 'bertin-project' in args.bert_model:
+                tokenizer = AutoTokenizer.from_pretrained(args.bert_model,
+                                                          cache_dir=pathCurrent + os.path.sep + "Transformer" + os.path.sep,
+                                                          local_files_only=True)
+            else:
+                tokenizer = ABSATokenizer.from_pretrained(args.bert_model,
                                                       cache_dir= pathCurrent + os.path.sep + "Transformer" + os.path.sep,
                                                       local_files_only=True)
         else:
-            tokenizer = ABSATokenizer.from_pretrained(args.bert_model)
+            if 'bertin-project' in args.bert_model:
+                tokenizer = AutoTokenizer.from_pretrained(args.bert_model)
+            else:
+                tokenizer = ABSATokenizer.from_pretrained(args.bert_model)
 
         if "TripAdvisor" in dataset:
             train_examples = processor.get_train_examplesEx(dataset)
@@ -221,12 +230,20 @@ def get(logger=None, args=None):
         pathCurrent = str(pathlib.Path().resolve())
 
         if args.local_execution:
-            tokenizer = BertTokenizer.from_pretrained(args.bert_model,
+            if 'bertin-project' in args.bert_model:
+                tokenizer = AutoTokenizer.from_pretrained(args.bert_model,
+                                                          cache_dir=pathCurrent + os.path.sep + "Transformer" + os.path.sep,
+                                                          local_files_only=True)
+            else:
+                tokenizer = BertTokenizer.from_pretrained(args.bert_model,
                                                       cache_dir=pathCurrent + os.path.sep + "Transformer" + os.path.sep,
                                                       local_files_only=True)
 
         else:
-            tokenizer = BertTokenizer.from_pretrained(args.bert_model)
+            if 'bertin-project' in args.bert_model:
+                tokenizer = AutoTokenizer.from_pretrained(args.bert_model)
+            else:
+                tokenizer = BertTokenizer.from_pretrained(args.bert_model)
 
         if not ("TripAdvisor" in dataset):
             if "RestMex2022" in dataset:
