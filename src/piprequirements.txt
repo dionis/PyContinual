@@ -7,7 +7,8 @@ numpy==1.21.6
 scikit-learn==1.0.2
 scipy==1.7.3
 pandas==1.3.4
-tokenizers==0.10.3
+#tokenizers==0.10.3
+tokenizers
 pyparsing==2.4.7
 packaging==21.2
 quadprog==0.1.10
