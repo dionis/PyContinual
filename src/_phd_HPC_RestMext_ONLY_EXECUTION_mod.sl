@@ -10,8 +10,8 @@
 #SBATCH --time=unlimited
 #SBATCH --mail-user=dionis@uo.edu.cu
 #SBATCH --mail-type=END
-#SBATCH -o module_ctr.%N.%j.out # STDOUT
-#SBATCH -e module_ctr.%N.%j.err # STDERR
+#SBATCH -o module_RestMext_2023.%N.%j.out # STDOUT
+#SBATCH -e module_RestMext_2023.%N.%j.err # STDERR
 
 module load Python/3.7.0-foss-2018b
 
