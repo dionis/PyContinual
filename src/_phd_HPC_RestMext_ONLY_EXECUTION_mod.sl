@@ -13,7 +13,7 @@
 #SBATCH -o module_RestMext_2023.%N.%j.out # STDOUT
 #SBATCH -e module_RestMext_2023.%N.%j.err # STDERR
 
-module load Python/3.7.0-foss-2018b
+##module load Python/3.7.0-foss-2018b
 
 cd  $SLURM_SUBMIT_DIR
 

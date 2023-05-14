@@ -10,7 +10,7 @@ import random
 import pathlib
 
 sys.path.append("./networks/base/")
-from my_transformers import MyBertModel
+from my_transformers import MyBertModel, MyBertModelEs
 
 
 class Net(torch.nn.Module):
@@ -33,13 +33,29 @@ class Net(torch.nn.Module):
         args.build_adapter_mask = True
 
         if args.local_execution:
-           self.bert = MyBertModel.from_pretrained(args.bert_model,
+           if 'bertin-project' in args.bert_model:
+               self.bert = MyBertModelEs.from_pretrained(args.bert_model,
+                                                         load_in_8bit=True,
+                                                         device_map='auto',
+                                                         config=config,
+                                                         args=args,
+                                                         cache_dir=pathCurrent + os.path.sep + "Transformer" + os.path.sep,
+                                                         local_files_only=True)
+           else:
+               self.bert = MyBertModel.from_pretrained(args.bert_model,
                                                    config=config,
                                                    args= args,
                                                    cache_dir= pathCurrent + os.path.sep + "Transformer" + os.path.sep,
                                                    local_files_only=True)
         else:
-           self.bert = MyBertModel.from_pretrained(args.bert_model, config=config, args= args)
+            if 'bertin-project' in args.bert_model:
+                self.bert =  self.bert = MyBertModelEs.from_pretrained(args.bert_model,
+                                                                       load_in_8bit=True,
+                                                                       device_map='auto',
+                                                                       config=config,
+                                                                       args= args)
+            else:
+                self.bert = MyBertModel.from_pretrained(args.bert_model, config=config, args= args)
 
         self.args = args
 

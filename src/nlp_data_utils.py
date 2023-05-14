@@ -161,9 +161,9 @@ class DataProcessor(object):
             return json.load(f)
 
     @classmethod
-    def _read_tsv(cls, input_file, quotechar=None):
-        """Reads a tab separated value file."""
-        return readfile(input_file)
+    # def _read_tsv(cls, input_file, quotechar=None):
+    #     """Reads a tab separated value file."""
+    #     return readfile(input_file)
 
     @classmethod
     def _read_raw(cls, input_file):
