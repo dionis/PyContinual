@@ -20,4 +20,4 @@ cd  $SLURM_SUBMIT_DIR
 
 conda activate phdContinualLearning
 
-python3 -u run.py --ntasks 1 --bert_model bertin-project/bertin-gpt-j-6B --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders restmex2022 --use_predefine_args --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --num_train_epochs 1
+python3 -u run.py --ntasks 1 --bert_model ClassCat/roberta-base-spanish --backbone bert_adapter --baseline classic --task asc --eval_batch_size 128 --train_batch_size 32 --scenario dil_classification --idrandom 0 --dataloaders restmex2022 --use_predefine_args --experiment test_exe --common_prmtrs --save_model --aux_net --save_each_step --num_train_epochs 1
