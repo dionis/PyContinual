@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add slurm RestMext2023 script.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_phd_HPC_RestMext_ONLY_EXECUTION_mod.sl" beforeDir="false" afterPath="$PROJECT_DIR$/src/_phd_HPC_RestMext_ONLY_EXECUTION_mod.sl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/base/my_transformers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/base/my_transformers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nlp_data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/nlp_data_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/piprequirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/piprequirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -322,14 +318,8 @@
       <workItem from="1683894879602" duration="650000" />
       <workItem from="1683895794979" duration="4173000" />
       <workItem from="1683928583486" duration="3952000" />
-      <workItem from="1684075866712" duration="1711000" />
-    </task>
-    <task id="LOCAL-00043" summary="Add ablation (approach/nostrategy.py) algorithm.">
-      <created>1676509821128</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1676509821128</updated>
+      <workItem from="1684075866712" duration="6022000" />
+      <workItem from="1684143854401" duration="2947000" />
     </task>
     <task id="LOCAL-00044" summary="Add ablation (approach/nostrategy.py) algorithm.">
       <created>1676519095380</created>
@@ -667,7 +657,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683858795111</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Add slurm RestMext2023 script.">
+      <created>1684078322420</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1684078322420</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1083,7 +1080,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>34</line>
+          <line>36</line>
           <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1118,17 +1115,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>65</line>
+          <line>66</line>
           <option name="timeStamp" value="195" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>87</line>
+          <line>88</line>
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>144</line>
+          <line>145</line>
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1138,7 +1135,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/venv/Lib/site-packages/transformers/models/bert/tokenization_bert.py</url>
-          <line>192</line>
+          <line>212</line>
           <option name="timeStamp" value="200" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1153,8 +1150,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>56</line>
+          <line>57</line>
           <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
+          <line>52</line>
+          <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/networks/base/my_transformers.py</url>
+          <line>898</line>
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="207" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1162,7 +1174,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PyContinual$classify_to_json.coverage" NAME="classify_to_json Coverage Results" MODIFIED="1678447473744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
     <SUITE FILE_PATH="coverage/PyContinual$model_export_json__1_.coverage" NAME="model_export_json (1) Coverage Results" MODIFIED="1683467391023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/serialization" />
-    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1683771301348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/PyContinual$run.coverage" NAME="run Coverage Results" MODIFIED="1684146724442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/PyContinual$classify_to_json__1_.coverage" NAME="classify_to_json (1) Coverage Results" MODIFIED="1682758174970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/serialization" />
     <SUITE FILE_PATH="coverage/PyContinual$model_export_json.coverage" NAME="model_export_json Coverage Results" MODIFIED="1682650428990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/preProcRestMext/algorithm/algorithm" />
   </component>

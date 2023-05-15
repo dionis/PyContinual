@@ -2,7 +2,7 @@
 import sys
 import os
 import torch
-from transformers import BertModel, BertConfig
+from transformers import BertModel, BertConfig, RobertaConfig, AutoConfig
 import utils
 from torch import nn
 import torch.nn.functional as F
@@ -27,7 +27,9 @@ class Net(torch.nn.Module):
                                                 local_files_only=True)
 
         else:
-            config = BertConfig.from_pretrained(args.bert_model)
+            config = AutoConfig.from_pretrained(args.bert_model) if 'bertin-project' in args.bert_model \
+                else BertConfig.from_pretrained(args.bert_model)
+
 
         config.return_dict=False
         args.build_adapter_mask = True
@@ -49,11 +51,10 @@ class Net(torch.nn.Module):
                                                    local_files_only=True)
         else:
             if 'bertin-project' in args.bert_model:
-                self.bert =  self.bert = MyBertModelEs.from_pretrained(args.bert_model,
+                self.bert = MyBertModelEs.from_pretrained(args.bert_model,
                                                                        load_in_8bit=True,
                                                                        device_map='auto',
-                                                                       config=config,
-                                                                       args= args)
+                                                                      )
             else:
                 self.bert = MyBertModel.from_pretrained(args.bert_model, config=config, args= args)
 
