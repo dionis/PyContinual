@@ -27,8 +27,10 @@ class Net(torch.nn.Module):
                                                 local_files_only=True)
 
         else:
-            config = AutoConfig.from_pretrained(args.bert_model) if 'bertin-project' in args.bert_model \
-                else BertConfig.from_pretrained(args.bert_model)
+            if 'bertin-project' in args.bert_model or 'ClassCat/roberta-base-spanish' in args.bert_model:
+               config = AutoConfig.from_pretrained(args.bert_model)
+            else:
+               config = BertConfig.from_pretrained(args.bert_model)
 
             quantization_config = BitsAndBytesConfig(llm_int8_enable_fp32_cpu_offload=True) if 'bertin-project' in args.bert_model \
                 else None
