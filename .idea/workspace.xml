@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add slurm RestMext2023 script.">
+    <list default="true" id="c82e266c-827c-4b4e-8346-92a4a25fd6e3" name="Default Changelist" comment="Add new file to process data.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataloaders/asc/bert.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,28 +320,9 @@
       <workItem from="1683928583486" duration="3952000" />
       <workItem from="1684075866712" duration="6022000" />
       <workItem from="1684143854401" duration="3845000" />
-      <workItem from="1684166074942" duration="376000" />
-    </task>
-    <task id="LOCAL-00045" summary="Add ablation (approach/nostrategy.py) algorithm.">
-      <created>1676554546844</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1676554546844</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Add ablation (approach/nostrategy.py) algorithm.">
-      <created>1676554729718</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1676554729718</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Add ablation (approach/nostrategy.py) algorithm.">
-      <created>1676554853877</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1676554853877</updated>
+      <workItem from="1684166074942" duration="1022000" />
+      <workItem from="1684179890659" duration="151000" />
+      <workItem from="1684181699790" duration="1369000" />
     </task>
     <task id="LOCAL-00048" summary="Add ablation (approach/nostrategy.py) algorithm.">
       <created>1676555132895</created>
@@ -665,7 +646,28 @@
       <option name="project" value="LOCAL" />
       <updated>1684146968414</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="Fix error by error on GPU execution and use settings in https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu.">
+      <created>1684166491223</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1684166491224</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Add new file to process data.">
+      <created>1684181780923</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1684181780923</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Add new file to process data.">
+      <created>1684182250408</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1684182250408</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,8 +697,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Copy correct new dataset and domain Tripadvisor for our PhD test and algorithm trained" />
-    <MESSAGE value="Add new element for execute remote action" />
     <MESSAGE value="Add new script to execute" />
     <MESSAGE value="Delete the trasformer load path references" />
     <MESSAGE value="Add conda activate environament in slurm script" />
@@ -720,7 +720,9 @@
     <MESSAGE value="Remote output error compute." />
     <MESSAGE value="Output error execution." />
     <MESSAGE value="Add slurm RestMext2023 script." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add slurm RestMext2023 script." />
+    <MESSAGE value="Fix error by error on GPU execution and use settings in https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu." />
+    <MESSAGE value="Add new file to process data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new file to process data." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1081,7 +1083,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>47</line>
+          <line>49</line>
           <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1116,17 +1118,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>79</line>
+          <line>81</line>
           <option name="timeStamp" value="195" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>101</line>
+          <line>103</line>
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>158</line>
+          <line>160</line>
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1151,12 +1153,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>70</line>
+          <line>72</line>
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/networks/classification/bert_adapter_mask.py</url>
-          <line>65</line>
+          <line>67</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

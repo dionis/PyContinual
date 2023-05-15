@@ -131,7 +131,7 @@ def get(logger=None, args=None):
         pathCurrent = str(pathlib.Path().resolve())
 
         if args.local_execution:
-            if 'bertin-project' in args.bert_model:
+            if 'bertin-project' in args.bert_model  or 'ClassCat/roberta-base-spanish' in args.bert_model:
                 tokenizer = AutoTokenizer.from_pretrained(args.bert_model,
                                                           cache_dir=pathCurrent + os.path.sep + "Transformer" + os.path.sep,
                                                           local_files_only=True)
@@ -140,7 +140,7 @@ def get(logger=None, args=None):
                                                       cache_dir= pathCurrent + os.path.sep + "Transformer" + os.path.sep,
                                                       local_files_only=True)
         else:
-            if 'bertin-project' in args.bert_model:
+            if 'bertin-project' in args.bert_model or 'ClassCat/roberta-base-spanish' in args.bert_model:
                 tokenizer = AutoTokenizer.from_pretrained(args.bert_model)
             else:
                 tokenizer = ABSATokenizer.from_pretrained(args.bert_model)
