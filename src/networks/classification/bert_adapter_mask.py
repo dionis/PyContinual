@@ -2,7 +2,7 @@
 import sys
 import os
 import torch
-from transformers import BertModel, BertConfig, RobertaConfig, AutoConfig
+from transformers import BertModel, BertConfig, RobertaConfig, AutoConfig, BitsAndBytesConfig
 import utils
 from torch import nn
 import torch.nn.functional as F
@@ -30,19 +30,32 @@ class Net(torch.nn.Module):
             config = AutoConfig.from_pretrained(args.bert_model) if 'bertin-project' in args.bert_model \
                 else BertConfig.from_pretrained(args.bert_model)
 
+            quantization_config = BitsAndBytesConfig(llm_int8_enable_fp32_cpu_offload=True) if 'bertin-project' in args.bert_model \
+                else None
+
 
         config.return_dict=False
         args.build_adapter_mask = True
 
+        device_map = {
+            "transformer.word_embeddings": 0,
+            "transformer.word_embeddings_layernorm": 0,
+            "lm_head": "cpu",
+            "transformer.h": 0,
+            "transformer.ln_f": 0,
+        }
+
         if args.local_execution:
            if 'bertin-project' in args.bert_model:
+
                self.bert = MyBertModelEs.from_pretrained(args.bert_model,
                                                          load_in_8bit=True,
-                                                         device_map='auto',
                                                          config=config,
                                                          args=args,
                                                          cache_dir=pathCurrent + os.path.sep + "Transformer" + os.path.sep,
-                                                         local_files_only=True)
+                                                         local_files_only=True,
+                                                         device_map = device_map,
+                                                         quantization_config = quantization_config)
            else:
                self.bert = MyBertModel.from_pretrained(args.bert_model,
                                                    config=config,
@@ -52,9 +65,9 @@ class Net(torch.nn.Module):
         else:
             if 'bertin-project' in args.bert_model:
                 self.bert = MyBertModelEs.from_pretrained(args.bert_model,
-                                                                       load_in_8bit=True,
-                                                                       device_map='auto',
-                                                                      )
+                                                                       load_in_8bit = True,
+                                                                       device_map = device_map,
+                                                                       quantization_config = quantization_config)
             else:
                 self.bert = MyBertModel.from_pretrained(args.bert_model, config=config, args= args)
 
